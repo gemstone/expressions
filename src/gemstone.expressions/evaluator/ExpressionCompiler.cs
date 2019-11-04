@@ -115,7 +115,7 @@ namespace gemstone.expressions.evaluator
         public string Expression { get; }
 
         /// <summary>
-        /// Gets the compiled Linq <see cref="System.Linq.Expressions.Expression"/> after C# <see cref="Expression"/> is compiled.
+        /// Gets the compiled <see cref="System.Linq.Expressions.Expression">Linq Expression</see> after <see cref="Expression">C# Code Expression</see> is compiled.
         /// </summary>
         public Expression CompiledExpression { get; private set; }
 

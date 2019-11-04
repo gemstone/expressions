@@ -123,7 +123,7 @@
     </member>
     <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.CompiledExpression">
       <summary>
-            Gets the compiled Linq <see cref="T:System.Linq.Expressions.Expression" /> after C# <see cref="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression" /> is compiled.
+            Gets the compiled <see cref="T:System.Linq.Expressions.Expression">Linq Expression</see> after <see cref="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression">C# Code Expression</see> is compiled.
             </summary>
     </member>
     <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.CompiledFunction">
