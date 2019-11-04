@@ -75,6 +75,7 @@ namespace gemstone.expressions.evaluator
         /// <summary>
         /// Executes compiled <see cref="Func{TResult}"/> based expression.
         /// </summary>
+        /// <returns>Evaluated expression result.</returns>
         public TResult ExecuteFunction() => CompiledFunction();
     }
 
@@ -200,11 +201,14 @@ namespace gemstone.expressions.evaluator
         /// <summary>
         /// Executes compiled <see cref="Action{TInstanceParameter}"/> based expression.
         /// </summary>
+        /// <param name="instance">Instance parameter with current field values as needed by expression.</param>
         public void ExecuteAction(TInstanceParameter instance) => CompiledAction(instance);
 
         /// <summary>
         /// Executes compiled <see cref="Func{TInstanceParameter, TResult}"/> based expression.
         /// </summary>
+        /// <param name="instance">Instance parameter with current field values as needed by expression.</param>
+        /// <returns>Evaluated expression result.</returns>
         public TResult ExecuteFunction(TInstanceParameter instance) => CompiledFunction(instance);
 
         /// <summary>
