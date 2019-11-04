@@ -35,7 +35,7 @@ namespace UnitTests
     }
 
     [TestClass]
-    public class ParsingTests
+    public class EvalutatorTests
     {
         public const string RadarConst = "RADAR!TEST";
 
@@ -51,7 +51,7 @@ namespace UnitTests
 
         public class StaticDynamicTest
         {
-            public dynamic Testing = new StaticDynamic(typeof(ParsingTests));
+            public dynamic Testing = new StaticDynamic(typeof(EvalutatorTests));
         }
 
         [TestMethod]
@@ -120,18 +120,18 @@ namespace UnitTests
         [TestMethod]
         public void RegisteredTypeStaticAccessTests()
         {
-            ExpressionCompiler regConstText = new ExpressionCompiler($"ParsingTests.RadarConst == \"{RadarConst}\"");
-            ExpressionCompiler regStaticFieldText = new ExpressionCompiler($"ParsingTests.StaticRadarField == \"{RadarConst}\"");
-            ExpressionCompiler regStaticPropText = new ExpressionCompiler($"ParsingTests.StaticRadarProperty == \"{RadarConst}\"");
-            ExpressionCompiler regStaticMethodTest = new ExpressionCompiler($"ParsingTests.StaticRadarMethod() == \"{RadarConst}\"");
+            ExpressionCompiler regConstText = new ExpressionCompiler($"EvalutatorTests.RadarConst == \"{RadarConst}\"");
+            ExpressionCompiler regStaticFieldText = new ExpressionCompiler($"EvalutatorTests.StaticRadarField == \"{RadarConst}\"");
+            ExpressionCompiler regStaticPropText = new ExpressionCompiler($"EvalutatorTests.StaticRadarProperty == \"{RadarConst}\"");
+            ExpressionCompiler regStaticMethodTest = new ExpressionCompiler($"EvalutatorTests.StaticRadarMethod() == \"{RadarConst}\"");
 
-            regConstText.TypeRegistry.RegisterType(typeof(ParsingTests));
-            regStaticFieldText.TypeRegistry.RegisterType(typeof(ParsingTests));
-            regStaticPropText.TypeRegistry.RegisterType(typeof(ParsingTests));
+            regConstText.TypeRegistry.RegisterType(typeof(EvalutatorTests));
+            regStaticFieldText.TypeRegistry.RegisterType(typeof(EvalutatorTests));
+            regStaticPropText.TypeRegistry.RegisterType(typeof(EvalutatorTests));
 
             // Verify that type cannot be accessed via a symbol - currently CSharpScript does not allow dynamics, e.g., StaticDynamic
-            Assert.ThrowsException<ArgumentException>(() => regStaticMethodTest.TypeRegistry.RegisterSymbol("Testing", typeof(ParsingTests)));
-            regStaticMethodTest.TypeRegistry.RegisterType(typeof(ParsingTests));
+            Assert.ThrowsException<ArgumentException>(() => regStaticMethodTest.TypeRegistry.RegisterSymbol("Testing", typeof(EvalutatorTests)));
+            regStaticMethodTest.TypeRegistry.RegisterType(typeof(EvalutatorTests));
 
             Assert.IsTrue((bool)regConstText.ExecuteFunction());
             Assert.IsTrue((bool)regStaticFieldText.ExecuteFunction());
@@ -170,12 +170,12 @@ namespace UnitTests
 
         public class TestParams
         {
-            public ParsingTests Instance;
+            public EvalutatorTests Instance;
         }
 
         public void ShowData()
         {
-            Console.WriteLine("Text from ParsingTests class");
+            Console.WriteLine("Text from EvalutatorTests class");
         }
 
         [TestMethod]
