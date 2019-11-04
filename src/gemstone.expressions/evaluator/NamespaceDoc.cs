@@ -1,5 +1,5 @@
 ﻿//******************************************************************************************************
-//  Class.cs - Gbtc
+//  NamespaceDoc.cs - Gbtc
 //
 //  Copyright © 2019, Grid Protection Alliance.  All Rights Reserved.
 //
@@ -16,17 +16,21 @@
 //
 //  Code Modification History:
 //  ----------------------------------------------------------------------------------------------------
-//  11/04/2019 - J. Ritchie Carroll
+//  10/16/2019 - J. Ritchie Carroll
 //       Generated original version of source code.
 //
 //******************************************************************************************************
 
-namespace gemstone.expressions
+using System.Runtime.CompilerServices;
+
+namespace gemstone.expressions.evaluator
 {
     /// <summary>
-    /// Sample class for new Expressions library.
+    /// The <see cref="gemstone.expressions.evaluator"/> namespace organizes all Gemstone library
+    /// functionality related to runtime expression evaluation.
     /// </summary>
-    public class Class
+    [CompilerGenerated]
+    class NamespaceDoc
     {
     }
 }

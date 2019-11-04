@@ -28,7 +28,7 @@ namespace gemstone.expressions
     /// <summary>
     /// The <see cref="gemstone.expressions"/> namespace organizes all Gemstone library functionality
     /// related to expressions. The root expressions namespace also includes common expressions classes,
-    /// e.g., <see cref="ConcurrencyLimiter"/>.
+    /// e.g., <see cref="StaticDynamic"/> and <see cref="RuntimeCompiler"/>.
     /// </summary>
     [CompilerGenerated]
     class NamespaceDoc
