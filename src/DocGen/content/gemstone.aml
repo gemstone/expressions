@@ -23,9 +23,9 @@
             <para>
               <legacyBold>
                 <externalLink>
-                  <linkText>gemstone.gemtem</linkText>
-                  <linkAlternateText>gemstone.gemtem</linkAlternateText>
-                  <linkUri>https://gemstone.github.io/gemtem/</linkUri>
+                  <linkText>gemstone.expressions</linkText>
+                  <linkAlternateText>gemstone.expressions</linkAlternateText>
+                  <linkUri>https://gemstone.github.io/expressions/</linkUri>
                   <linkTarget>_blank</linkTarget>
                 </externalLink>               
               </legacyBold>
@@ -39,7 +39,7 @@
                 <externalLink>
                   <linkText>gemstone.data</linkText>
                   <linkAlternateText>gemstone.data</linkAlternateText>
-                  <linkUri>https://gemstone.github.io/gemtem/</linkUri>
+                  <linkUri>https://gemstone.github.io/expressions/</linkUri>
                   <linkTarget>_blank</linkTarget>
                 </externalLink>
               </legacyBold>
@@ -53,7 +53,7 @@
                 <externalLink>
                   <linkText>gemstone.etc</linkText>
                   <linkAlternateText>gemstone.etc</linkAlternateText>
-                  <linkUri>https://gemstone.github.io/gemtem/</linkUri>
+                  <linkUri>https://gemstone.github.io/expressions/</linkUri>
                   <linkTarget>_blank</linkTarget>
                 </externalLink>
               </legacyBold>
