@@ -60,22 +60,34 @@ namespace gemstone.expressions.evaluator
         /// <summary>
         /// Gets <see cref="Action"/> delegate for compiled expression.
         /// </summary>
+        /// <remarks>
+        /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public new Action CompiledAction => () => base.CompiledAction(null);
 
         /// <summary>
         /// Gets <see cref="Func{TResult}"/> delegate for compiled expression.
         /// </summary>
+        /// <remarks>
+        /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public new Func<TResult> CompiledFunction => () => base.CompiledFunction(null);
 
         /// <summary>
         /// Executes compiled <see cref="Action"/> based expression.
         /// </summary>
+        /// <remarks>
+        /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public void ExecuteAction() => CompiledAction();
 
         /// <summary>
         /// Executes compiled <see cref="Func{TResult}"/> based expression.
         /// </summary>
         /// <returns>Evaluated expression result.</returns>
+        /// <remarks>
+        /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public TResult ExecuteFunction() => CompiledFunction();
     }
 
@@ -141,6 +153,9 @@ namespace gemstone.expressions.evaluator
         /// <summary>
         /// Gets <see cref="Action{TInstanceParameter}"/> delegate for compiled expression.
         /// </summary>
+        /// <remarks>
+        /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public Action<TInstanceParameter> CompiledAction
         {
             get
@@ -160,6 +175,9 @@ namespace gemstone.expressions.evaluator
         /// <summary>
         /// Gets <see cref="Func{TInstanceParameter, TResult}"/> delegate for compiled expression.
         /// </summary>
+        /// <remarks>
+        /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public Func<TInstanceParameter, TResult> CompiledFunction
         {
             get
@@ -202,6 +220,9 @@ namespace gemstone.expressions.evaluator
         /// Executes compiled <see cref="Action{TInstanceParameter}"/> based expression.
         /// </summary>
         /// <param name="instance">Instance parameter with current field values as needed by expression.</param>
+        /// <remarks>
+        /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public void ExecuteAction(TInstanceParameter instance) => CompiledAction(instance);
 
         /// <summary>
@@ -209,6 +230,9 @@ namespace gemstone.expressions.evaluator
         /// </summary>
         /// <param name="instance">Instance parameter with current field values as needed by expression.</param>
         /// <returns>Evaluated expression result.</returns>
+        /// <remarks>
+        /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
+        /// </remarks>
         public TResult ExecuteFunction(TInstanceParameter instance) => CompiledFunction(instance);
 
         /// <summary>

@@ -1,5 +1,5 @@
 //******************************************************************************************************
-//  gemstone.expressions.cs - Gbtc
+//  EvalutatorTests.cs - Gbtc
 //
 //  Copyright © 2019, Grid Protection Alliance.  All Rights Reserved.
 //
