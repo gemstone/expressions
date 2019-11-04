@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Assemblies property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Assemblies.htm" />
+  <HelpKINode Title="Compile method">
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter).Compile Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_Compile.htm" />
+    <HelpKINode Title="RuntimeCompiler.Compile Method " Url="html/M_gemstone_expressions_RuntimeCompiler_Compile.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CompiledAction property">
+    <HelpKINode Title="ExpressionCompiler(TResult).CompiledAction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledAction.htm" />
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter).CompiledAction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledAction.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CompiledExpression property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledExpression.htm" />
+  <HelpKINode Title="CompiledFunction property">
+    <HelpKINode Title="ExpressionCompiler(TResult).CompiledFunction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledFunction.htm" />
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter).CompiledFunction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledFunction.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExecuteAction method">
+    <HelpKINode Title="ExpressionCompiler(TResult).ExecuteAction Method " Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteAction.htm" />
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter).ExecuteAction Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteAction.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExecuteFunction method">
+    <HelpKINode Title="ExpressionCompiler(TResult).ExecuteFunction Method " Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteFunction.htm" />
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter).ExecuteFunction Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteFunction.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Expression property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_Expression.htm" />
+  <HelpKINode Title="ExpressionCompiler class">
+    <HelpKINode Title="ExpressionCompiler Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExpressionCompiler(Of TResult) class">
+    <HelpKINode Title="ExpressionCompiler(TResult) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExpressionCompiler(Of TResult).CompiledAction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledAction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult).CompiledFunction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult).ExecuteAction method" Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteAction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult).ExecuteFunction method" Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult).ExpressionCompiler constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1__ctor.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter) class">
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).Compile method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_Compile.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).CompiledAction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledAction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).CompiledExpression property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledExpression.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).CompiledFunction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).ExecuteAction method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteAction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).ExecuteFunction method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).Expression property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_Expression.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).ExpressionCompiler constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2__ctor.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).InstanceParameterType property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_InstanceParameterType.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).ToString method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ToString.htm" />
+  <HelpKINode Title="ExpressionCompiler(Of TResult, TInstanceParameter).TypeRegistry property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_TypeRegistry.htm" />
+  <HelpKINode Title="ExpressionCompiler.ExpressionCompiler constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler__ctor.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt; class">
+    <HelpKINode Title="ExpressionCompiler(TResult, TInstanceParameter) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.Compile method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_Compile.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.CompiledAction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledAction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.CompiledExpression property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledExpression.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.CompiledFunction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.ExecuteAction method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteAction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.ExecuteFunction method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.Expression property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_Expression.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.ExpressionCompiler constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2__ctor.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.InstanceParameterType property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_InstanceParameterType.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.ToString method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ToString.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult, TInstanceParameter&gt;.TypeRegistry property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_TypeRegistry.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult&gt; class">
+    <HelpKINode Title="ExpressionCompiler(TResult) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ExpressionCompiler&lt;TResult&gt;.CompiledAction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledAction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult&gt;.CompiledFunction property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult&gt;.ExecuteAction method" Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteAction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult&gt;.ExecuteFunction method" Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteFunction.htm" />
+  <HelpKINode Title="ExpressionCompiler&lt;TResult&gt;.ExpressionCompiler constructor" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1__ctor.htm" />
+  <HelpKINode Title="gemstone.expressions namespace" Url="html/N_gemstone_expressions.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator namespace" Url="html/N_gemstone_expressions_evaluator.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.ExpressionCompiler class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.ExpressionCompiler(Of TResult) class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.ExpressionCompiler(Of TResult, TInstanceParameter) class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.ExpressionCompiler&lt;TResult, TInstanceParameter&gt; class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.ExpressionCompiler&lt;TResult&gt; class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.Symbol class" Url="html/T_gemstone_expressions_evaluator_Symbol.htm" />
+  <HelpKINode Title="gemstone.expressions.evaluator.TypeRegistry class" Url="html/T_gemstone_expressions_evaluator_TypeRegistry.htm" />
+  <HelpKINode Title="gemstone.expressions.RuntimeCompiler class" Url="html/T_gemstone_expressions_RuntimeCompiler.htm" />
+  <HelpKINode Title="gemstone.expressions.StaticDynamic class" Url="html/T_gemstone_expressions_StaticDynamic.htm" />
+  <HelpKINode Title="GeneratedContextTypeCount property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_GeneratedContextTypeCount.htm" />
+  <HelpKINode Title="GetContextType method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetContextType.htm" />
+  <HelpKINode Title="GetNewContext method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetNewContext.htm" />
+  <HelpKINode Title="InstanceParameterType property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_InstanceParameterType.htm" />
+  <HelpKINode Title="Item property" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_Item.htm" />
+  <HelpKINode Title="Name property" Url="html/P_gemstone_expressions_evaluator_Symbol_Name.htm" />
+  <HelpKINode Title="Namespaces property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Namespaces.htm" />
+  <HelpKINode Title="RegisteredSymbols property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_RegisteredSymbols.htm" />
+  <HelpKINode Title="RegisteredTypes property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_RegisteredTypes.htm" />
+  <HelpKINode Title="RegisterSymbol method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterSymbol.htm" />
+  <HelpKINode Title="RegisterType method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterType.htm" />
+  <HelpKINode Title="RuntimeCompiler class">
+    <HelpKINode Title="RuntimeCompiler Class" Url="html/T_gemstone_expressions_RuntimeCompiler.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_RuntimeCompiler.htm" />
+  </HelpKINode>
+  <HelpKINode Title="RuntimeCompiler.Compile method" Url="html/M_gemstone_expressions_RuntimeCompiler_Compile.htm" />
+  <HelpKINode Title="StaticDynamic class">
+    <HelpKINode Title="StaticDynamic Class" Url="html/T_gemstone_expressions_StaticDynamic.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_StaticDynamic__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_StaticDynamic.htm" />
+  </HelpKINode>
+  <HelpKINode Title="StaticDynamic.StaticDynamic constructor" Url="html/M_gemstone_expressions_StaticDynamic__ctor.htm" />
+  <HelpKINode Title="StaticDynamic.TryGetMember method" Url="html/M_gemstone_expressions_StaticDynamic_TryGetMember.htm" />
+  <HelpKINode Title="StaticDynamic.TryInvokeMember method" Url="html/M_gemstone_expressions_StaticDynamic_TryInvokeMember.htm" />
+  <HelpKINode Title="Symbol class">
+    <HelpKINode Title="Symbol Class" Url="html/T_gemstone_expressions_evaluator_Symbol.htm" />
+    <HelpKINode Title="constructor" Url="html/Overload_gemstone_expressions_evaluator_Symbol__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_Symbol.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_Symbol.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Symbol.Name property" Url="html/P_gemstone_expressions_evaluator_Symbol_Name.htm" />
+  <HelpKINode Title="Symbol.Symbol constructor" Url="html/Overload_gemstone_expressions_evaluator_Symbol__ctor.htm" />
+  <HelpKINode Title="Symbol.Type property" Url="html/P_gemstone_expressions_evaluator_Symbol_Type.htm" />
+  <HelpKINode Title="Symbol.Value property" Url="html/P_gemstone_expressions_evaluator_Symbol_Value.htm" />
+  <HelpKINode Title="ToString method" Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ToString.htm" />
+  <HelpKINode Title="TryGetMember method" Url="html/M_gemstone_expressions_StaticDynamic_TryGetMember.htm" />
+  <HelpKINode Title="TryInvokeMember method" Url="html/M_gemstone_expressions_StaticDynamic_TryInvokeMember.htm" />
+  <HelpKINode Title="Type property" Url="html/P_gemstone_expressions_evaluator_Symbol_Type.htm" />
+  <HelpKINode Title="TypeRegistry class">
+    <HelpKINode Title="TypeRegistry Class" Url="html/T_gemstone_expressions_evaluator_TypeRegistry.htm" />
+    <HelpKINode Title="constructor" Url="html/M_gemstone_expressions_evaluator_TypeRegistry__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_gemstone_expressions_evaluator_TypeRegistry.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_gemstone_expressions_evaluator_TypeRegistry.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TypeRegistry property" Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_TypeRegistry.htm" />
+  <HelpKINode Title="TypeRegistry.Assemblies property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Assemblies.htm" />
+  <HelpKINode Title="TypeRegistry.GeneratedContextTypeCount property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_GeneratedContextTypeCount.htm" />
+  <HelpKINode Title="TypeRegistry.GetContextType method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetContextType.htm" />
+  <HelpKINode Title="TypeRegistry.GetNewContext method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetNewContext.htm" />
+  <HelpKINode Title="TypeRegistry.Item property" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_Item.htm" />
+  <HelpKINode Title="TypeRegistry.Namespaces property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Namespaces.htm" />
+  <HelpKINode Title="TypeRegistry.RegisteredSymbols property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_RegisteredSymbols.htm" />
+  <HelpKINode Title="TypeRegistry.RegisteredTypes property" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_RegisteredTypes.htm" />
+  <HelpKINode Title="TypeRegistry.RegisterSymbol method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterSymbol.htm" />
+  <HelpKINode Title="TypeRegistry.RegisterType method" Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterType.htm" />
+  <HelpKINode Title="TypeRegistry.TypeRegistry constructor" Url="html/M_gemstone_expressions_evaluator_TypeRegistry__ctor.htm" />
+  <HelpKINode Title="Value property" Url="html/P_gemstone_expressions_evaluator_Symbol_Value.htm" />
+  <HelpKINode Title="welcome">
+    <HelpKINode Title="getting started, root, gemstone" Url="html/gemstone.htm" />
+  </HelpKINode>
+</HelpKI>

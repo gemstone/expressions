@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>gemstone.expressions</name>
+  </assembly>
+  <members>
+    <member name="T:gemstone.expressions.RuntimeCompiler">
+      <summary>
+            Runtime C# code compiler.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.RuntimeCompiler.Compile(System.String,System.Collections.Generic.IEnumerable{System.Reflection.Assembly},Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions,System.String)">
+      <summary>
+            Compiles C# <paramref name="code" /> to a raw <see cref="T:System.Reflection.Assembly" />.
+            </summary>
+      <param name="code">C# code to compile.</param>
+      <param name="references">References to use for compilation.</param>
+      <param name="options">Compilation options.</param>
+      <param name="assemblyName">Assembly name to use.</param>
+      <returns>Raw <see cref="T:System.Byte" /> array representing compiled <see cref="T:System.Reflection.Assembly" />.</returns>
+    </member>
+    <member name="T:gemstone.expressions.StaticDynamic">
+      <summary>
+            Defines a <see cref="T:System.Dynamic.DynamicObject" /> wrapper for static elements and classes.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.StaticDynamic.#ctor(System.Type)">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.StaticDynamic" />.
+            </summary>
+      <param name="type">Class with static elements.</param>
+    </member>
+    <member name="M:gemstone.expressions.StaticDynamic.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+      <summary>
+            Provides the implementation for operations that get member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class can override this method to specify dynamic behavior for operations such as getting a value for a property.
+            </summary>
+      <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the Console.WriteLine(sampleObject.SampleProperty) statement, where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
+      <param name="result">The result of the get operation. For example, if the method is called for a property, you can assign the property value to result.</param>
+      <returns>
+        <c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of the language determines the behavior. (In most cases, a run-time exception is thrown.)</returns>
+    </member>
+    <member name="M:gemstone.expressions.StaticDynamic.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+      <summary>
+            Provides the implementation for operations that invoke a member. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class can override this method to specify dynamic behavior for operations such as calling a method.
+            </summary>
+      <param name="binder">Provides information about the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the statement sampleObject.SampleMethod(100), where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, binder.Name returns "SampleMethod". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
+      <param name="args">The arguments that are passed to the object member during the invoke operation. For example, for the statement sampleObject.SampleMethod(100), where sampleObject is derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, args[0] is equal to 100.</param>
+      <param name="result">The result of the member invocation.</param>
+      <returns>
+        <c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)</returns>
+    </member>
+    <member name="T:gemstone.expressions.evaluator.ExpressionCompiler">
+      <summary>
+            Represents a runtime C# expression evaluator.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler.#ctor(System.String)">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.evaluator.ExpressionCompiler" />.
+            </summary>
+      <param name="expression">C# expression to compile.</param>
+    </member>
+    <member name="T:gemstone.expressions.evaluator.ExpressionCompiler`1">
+      <summary>
+            Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult" />.
+            </summary>
+      <typeparam name="TResult">Return value <see cref="T:System.Type" /> for function based expressions.</typeparam>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`1.#ctor(System.String)">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.evaluator.ExpressionCompiler`1" />.
+            </summary>
+      <param name="expression">C# expression to compile.</param>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`1.CompiledAction">
+      <summary>
+            Gets <see cref="T:System.Action" /> delegate for compiled expression.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`1.CompiledFunction">
+      <summary>
+            Gets <see cref="T:System.Func`1" /> delegate for compiled expression.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`1.ExecuteAction">
+      <summary>
+            Executes compiled <see cref="T:System.Action" /> based expression.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`1.ExecuteFunction">
+      <summary>
+            Executes compiled <see cref="T:System.Func`1" /> based expression.
+            </summary>
+      <returns>Evaluated expression result.</returns>
+    </member>
+    <member name="T:gemstone.expressions.evaluator.ExpressionCompiler`2">
+      <summary>
+            Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult" />
+            and instance parameter values <typeparamref name="TInstanceParameter" />.
+            </summary>
+      <typeparam name="TResult">Return value <see cref="T:System.Type" /> for function based expressions.</typeparam>
+      <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> used to define expression accessible field values.</typeparam>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`2.#ctor(System.String)">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.evaluator.ExpressionCompiler`2" />.
+            </summary>
+      <param name="expression">C# expression to compile.</param>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`2.Compile(System.Boolean)">
+      <summary>
+            Compiles C# <see cref="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression" />.
+            </summary>
+      <param name="isMethodCall">
+        <c>true</c> for <see cref="T:System.Action`1" /> based expressions; otherwise,
+            <c>false</c> for <see cref="T:System.Func`2" /> based expressions.
+            </param>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.CompiledAction">
+      <summary>
+            Gets <see cref="T:System.Action`1" /> delegate for compiled expression.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.CompiledExpression">
+      <summary>
+            Gets the compiled Linq <see cref="T:System.Linq.Expressions.Expression" /> after C# <see cref="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression" /> is compiled.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.CompiledFunction">
+      <summary>
+            Gets <see cref="T:System.Func`2" /> delegate for compiled expression.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`2.ExecuteAction(`1)">
+      <summary>
+            Executes compiled <see cref="T:System.Action`1" /> based expression.
+            </summary>
+      <param name="instance">Instance parameter with current field values as needed by expression.</param>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`2.ExecuteFunction(`1)">
+      <summary>
+            Executes compiled <see cref="T:System.Func`2" /> based expression.
+            </summary>
+      <param name="instance">Instance parameter with current field values as needed by expression.</param>
+      <returns>Evaluated expression result.</returns>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression">
+      <summary>
+            Gets the C# code expression to compile.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.InstanceParameterType">
+      <summary>
+            Gets or sets the instance parameter <see cref="T:System.Type" /> used for defining expression accessible
+            field values, defaults to <typeparamref name="TInstanceParameter" />.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.ExpressionCompiler`2.ToString">
+      <summary>
+            Returns a string that represents the <see cref="T:gemstone.expressions.evaluator.ExpressionCompiler`2" />, i.e., the <see cref="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression" /> value.
+            </summary>
+      <returns>The <see cref="P:gemstone.expressions.evaluator.ExpressionCompiler`2.Expression" /> value.</returns>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.ExpressionCompiler`2.TypeRegistry">
+      <summary>
+            Gets or sets the <see cref="T:gemstone.expressions.evaluator.TypeRegistry" /> used for compilation.
+            </summary>
+    </member>
+    <member name="T:gemstone.expressions.evaluator.Symbol">
+      <summary>
+            Represents a symbol consisting of a name, <see cref="P:gemstone.expressions.evaluator.Symbol.Type" /> and value to be accessible for
+            expressions used with the <see cref="T:gemstone.expressions.evaluator.ExpressionCompiler`2" />.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.Symbol.#ctor(System.String,System.Type)">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.evaluator.Symbol" />.
+            </summary>
+      <param name="name">Name of symbol.</param>
+      <param name="type">
+        <see cref="P:gemstone.expressions.evaluator.Symbol.Type" /> of symbol.</param>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.Symbol.#ctor(System.String,System.Type,System.Object)">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.evaluator.Symbol" />.
+            </summary>
+      <param name="name">Name of symbol.</param>
+      <param name="type">
+        <see cref="P:gemstone.expressions.evaluator.Symbol.Type" /> of symbol.</param>
+      <param name="value">Initial value for symbol.</param>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.Symbol.Name">
+      <summary>
+            Gets the symbol name.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.Symbol.Type">
+      <summary>
+            Gets the symbol <see cref="P:gemstone.expressions.evaluator.Symbol.Type" />.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.Symbol.Value">
+      <summary>
+            Gets or sets the symbol value.
+            </summary>
+    </member>
+    <member name="T:gemstone.expressions.evaluator.TypeRegistry">
+      <summary>
+            Defines a registry of types and symbols needed for an <see cref="T:gemstone.expressions.evaluator.ExpressionCompiler" />.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.#ctor">
+      <summary>
+            Creates a new <see cref="T:gemstone.expressions.evaluator.TypeRegistry" />.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.Assemblies">
+      <summary>
+            Gets distinct assemblies for all <see cref="P:gemstone.expressions.evaluator.TypeRegistry.RegisteredTypes" />.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.GeneratedContextTypeCount">
+      <summary>
+            Gets total count of generated context types.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.GetContextType``2">
+      <summary>
+            Gets a compiled context type based on registered types and symbols.
+            </summary>
+      <typeparam name="TResult">Return value <see cref="T:System.Type" /> used for generated context type functions.</typeparam>
+      <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</typeparam>
+      <returns>Compiled context type based on registered types and symbols.</returns>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.GetContextType(System.Type,System.Type)">
+      <summary>
+            Gets a compiled context type based on registered types and symbols.
+            </summary>
+      <param name="resultType">Return value <see cref="T:System.Type" /> used for generated context type functions.</param>
+      <param name="instanceParameterType">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</param>
+      <returns>Compiled context type based on registered types and symbols.</returns>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.GetNewContext``2">
+      <summary>
+            Gets a new context instance.
+            </summary>
+      <typeparam name="TResult">Return value used <see cref="T:System.Type" /> for generated context type functions.</typeparam>
+      <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</typeparam>
+      <returns>New context instance.</returns>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.GetNewContext(System.Type,System.Type)">
+      <summary>
+            Gets a new context instance.
+            </summary>
+      <param name="resultType">Return value used <see cref="T:System.Type" /> for generated context type functions.</param>
+      <param name="instanceParameterType">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</param>
+      <returns>New context instance.</returns>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.Item(System.String)">
+      <summary>
+            Gets value for registered symbol with specified <paramref name="name" />.
+            </summary>
+      <param name="name">Symbol name.</param>
+      <returns>Symbol value.</returns>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.Item(System.String,System.Type)">
+      <summary>
+            Sets value for registered symbol with specified <paramref name="name" />,
+            new symbol will registered if symbol does not exist.
+            </summary>
+      <param name="name">Symbol name.</param>
+      <param name="type">Symbol type.</param>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.Namespaces">
+      <summary>
+            Gets distinct namespaces for all <see cref="P:gemstone.expressions.evaluator.TypeRegistry.RegisteredTypes" />.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.RegisteredSymbols">
+      <summary>
+            Gets registered symbols.
+            </summary>
+    </member>
+    <member name="P:gemstone.expressions.evaluator.TypeRegistry.RegisteredTypes">
+      <summary>
+            Gets registered types including explicitly registered types and types for registered symbols.
+            </summary>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.RegisterSymbol(gemstone.expressions.evaluator.Symbol)">
+      <summary>
+            Registers a new or updates an existing <see cref="T:gemstone.expressions.evaluator.Symbol" />.
+            </summary>
+      <param name="symbol">
+        <see cref="T:gemstone.expressions.evaluator.Symbol" /> to register.</param>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.RegisterSymbol``1(System.String,``0)">
+      <summary>
+            Registers a new or updates an existing <see cref="T:gemstone.expressions.evaluator.Symbol" /> with specified <paramref name="name" /> and <paramref name="value" />.
+            </summary>
+      <param name="name">
+        <see cref="T:gemstone.expressions.evaluator.Symbol" /> name.</param>
+      <param name="value">
+        <see cref="T:gemstone.expressions.evaluator.Symbol" /> value.</param>
+      <typeparam name="T">
+        <see cref="T:System.Type" /> of <paramref name="value" />.</typeparam>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.RegisterType``1">
+      <summary>
+            Registers a new <see cref="T:System.Type" />.
+            </summary>
+      <typeparam name="T">
+        <see cref="T:System.Type" /> to register.</typeparam>
+      <returns>
+        <c>true</c> if <typeparamref name="T" /> was registered successfully; otherwise,
+            <c>false</c> if <typeparamref name="T" /> was already registered.
+            </returns>
+    </member>
+    <member name="M:gemstone.expressions.evaluator.TypeRegistry.RegisterType(System.Type)">
+      <summary>
+            Registers a new <see cref="T:System.Type" />.
+            </summary>
+      <param name="type">
+        <see cref="T:System.Type" /> to register.</param>
+      <returns>
+        <c>true</c> if the <paramref name="type" /> was registered successfully; otherwise,
+            <c>false</c> if the <paramref name="type" /> was already registered.
+            </returns>
+    </member>
+  </members>
+</doc>
