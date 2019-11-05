@@ -3,9 +3,18 @@
 # Expressions
 ### GPA Gemstone Library
 
-The expressions package Lorem ipsum dolor sit amet, ut vel alia maiorum, duo eu veri volutpat conceptam. Eum dico magna rebum at. Eros dicant vix ex, ad pri nostrum sensibus. Et vel omnes recusabo assentior. Nobis regione assentior et sit, eum molestie perfecto te. Id cum accusata consetetur, aliquando dissentiunt vis at. Soleat apeirian et nam.
+The Gemstone Threading Library organizes all Gemstone functionality related to expressions and expression parsing.
 
-Ne usu debet signiferumque. Ut eos quod saepe. Eum ut modus meliore, ea fugit aliquid voluptatibus per, facer molestiae ea ius. Eum sumo ridens molestiae ea. Vix an utinam feugiat, eos ne zril facilisis.
+This library includes helpful expression related classes like the following:
+
+* [ExpressionCompiler](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm):
+  * Represents a [Roslyn](https://github.com/dotnet/roslyn) based runtime C# expression evaluator with the ability to specify types and expression accessible variables using a [TypeRegistry](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_evaluator_TypeRegistry.htm) and an instance parameter type. Provides Linq Expression as well as Action or Func delegates for compiled expression.
+* [RuntimeCompiler](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_RuntimeCompiler.htm):
+  * Represents a [Roslyn](https://github.com/dotnet/roslyn) based runtime C# code compiler (emits assembly bytes).
+* [StaticDynamic](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_StaticDynamic.htm):
+  * Defines a [DynamicObject](https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.dynamicobject) wrapper for static elements and classes.
+
+Among others.
 
 ### Documentation
-[Library Documentation](https://gemstone.github.io/expressions/help)
+[Full Library Documentation](https://gemstone.github.io/expressions/help)
