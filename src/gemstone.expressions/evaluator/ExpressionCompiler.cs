@@ -146,7 +146,6 @@ namespace gemstone.expressions.evaluator
             set
             {
                 m_typeRegistry = value ?? throw new ArgumentNullException(nameof(value));
-                m_typeRegistry.RegisterType(InstanceParameterType ?? typeof(TInstanceParameter));
             }
         }
 
@@ -210,10 +209,12 @@ namespace gemstone.expressions.evaluator
                 .WithImports(typeRegistry.Namespaces)
                 .WithOptimizationLevel(OptimizationLevel.Release);
 
+            object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType ?? typeof(TInstanceParameter));
+
             if (isMethodCall)
-                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Action<TInstanceParameter>>>($"(instance) => ExecuteAction(instance, () => {Expression})", options, typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType ?? typeof(TInstanceParameter))).Result;
+                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Action<TInstanceParameter>>>($"(instance) => ExecuteAction(instance, () => {Expression})", options, context).Result;
             else
-                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Func<TInstanceParameter, TResult>>>($"(instance) => ExecuteFunc(instance, () => {Expression})", options, typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType ?? typeof(TInstanceParameter))).Result;
+                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Func<TInstanceParameter, TResult>>>($"(instance) => ExecuteFunc(instance, () => {Expression})", options, context).Result;
         }
 
         /// <summary>
