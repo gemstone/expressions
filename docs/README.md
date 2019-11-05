@@ -3,7 +3,7 @@
 # Expressions
 ### GPA Gemstone Library
 
-The Gemstone Threading Library organizes all Gemstone functionality related to expressions and expression parsing.
+The Gemstone Expressions Library organizes all Gemstone functionality related to expressions and expression parsing.
 
 This library includes helpful expression related classes like the following:
 
