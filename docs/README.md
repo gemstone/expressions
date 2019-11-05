@@ -7,11 +7,11 @@ The Gemstone Threading Library organizes all Gemstone functionality related to e
 
 This library includes helpful expression related classes like the following:
 
-* [ExpressionCompiler](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm):
-  * Represents a [Roslyn](https://github.com/dotnet/roslyn) based runtime C# expression evaluator with the ability to specify types and expression accessible variables using a [TypeRegistry](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_evaluator_TypeRegistry.htm) and an instance parameter type. Provides Linq Expression as well as Action or Func delegates for compiled expression.
-* [RuntimeCompiler](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_RuntimeCompiler.htm):
+* [ExpressionCompiler](https://gemstone.github.io/expressions/help/html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm):
+  * Represents a [Roslyn](https://github.com/dotnet/roslyn) based runtime C# expression evaluator with the ability to specify types and expression accessible variables using a [TypeRegistry](https://gemstone.github.io/expressions/help/html/T_gemstone_expressions_evaluator_TypeRegistry.htm) and an instance parameter type. Provides a [Linq Expression](https://gemstone.github.io/expressions/help/html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledExpression.htm) as well as [Action](https://gemstone.github.io/expressions/help/html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledAction.htm) or [Func](https://gemstone.github.io/expressions/help/html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledFunction.htm) delegates for compiled expression.
+* [RuntimeCompiler](https://gemstone.github.io/expressions/help/html/T_gemstone_expressions_RuntimeCompiler.htm):
   * Represents a [Roslyn](https://github.com/dotnet/roslyn) based runtime C# code compiler (emits assembly bytes).
-* [StaticDynamic](https://gemstone.github.io/threading/help/html/T_gemstone_expressions_StaticDynamic.htm):
+* [StaticDynamic](https://gemstone.github.io/expressions/help/html/T_gemstone_expressions_StaticDynamic.htm):
   * Defines a [DynamicObject](https://docs.microsoft.com/en-us/dotnet/api/system.dynamic.dynamicobject) wrapper for static elements and classes.
 
 Among others.
