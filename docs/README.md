@@ -5,6 +5,9 @@
 
 The Gemstone Expressions Library organizes all Gemstone functionality related to expressions and expression parsing.
 
+[![GitHub license](https://img.shields.io/github/license/gemstone/expressions?color=4CC61E)](https://github.com/gemstone/expressions/blob/master/LICENSE)
+[![Build status](https://ci.appveyor.com/api/projects/status/5p90y9pujit72lfl?svg=true)](https://ci.appveyor.com/project/ritchiecarroll/expressions)
+
 This library includes helpful expression related classes like the following:
 
 * [ExpressionCompiler](https://gemstone.github.io/expressions/help/html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm):
