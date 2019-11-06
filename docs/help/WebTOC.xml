@@ -1,45 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="6d05ff74-9abc-482b-97bd-22241b458761" Title="gemstone" Url="html/gemstone.htm">
-    <HelpTOCNode Id="0b30491c-48e3-4bbd-a16e-b50c75495899" Title="gemstone.expressions" Url="html/N_gemstone_expressions.htm">
-      <HelpTOCNode Id="d70afd63-641e-41d0-93f7-3cd84f19d512" Title="RuntimeCompiler Class" Url="html/T_gemstone_expressions_RuntimeCompiler.htm">
-        <HelpTOCNode Id="c0e0fd94-7adf-46f4-8380-18f6bfb900d7" Title="RuntimeCompiler Methods" Url="html/Methods_T_gemstone_expressions_RuntimeCompiler.htm">
+  <HelpTOCNode Id="cb0e228d-ea9e-4299-b546-edd9e29074ed" Title="gemstone" Url="html/gemstone.htm">
+    <HelpTOCNode Id="74a02dff-531a-4ed1-86af-366d8d01148f" Title="gemstone.expressions" Url="html/N_gemstone_expressions.htm">
+      <HelpTOCNode Id="eccc3dbf-9399-448f-b05f-292ae8773e9a" Title="RuntimeCompiler Class" Url="html/T_gemstone_expressions_RuntimeCompiler.htm">
+        <HelpTOCNode Id="af4df343-8fb6-4c22-9e52-908cfecabcc0" Title="RuntimeCompiler Methods" Url="html/Methods_T_gemstone_expressions_RuntimeCompiler.htm">
           <HelpTOCNode Title="Compile Method " Url="html/M_gemstone_expressions_RuntimeCompiler_Compile.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="202ab596-62be-44cb-90fb-1b8454baa9c2" Title="StaticDynamic Class" Url="html/T_gemstone_expressions_StaticDynamic.htm">
+      <HelpTOCNode Id="05e28b2e-3deb-4a62-aae2-d336846449c2" Title="StaticDynamic Class" Url="html/T_gemstone_expressions_StaticDynamic.htm">
         <HelpTOCNode Title="StaticDynamic Constructor " Url="html/M_gemstone_expressions_StaticDynamic__ctor.htm" />
-        <HelpTOCNode Id="abdcbd99-9404-47b4-bbc7-200922d70ed6" Title="StaticDynamic Methods" Url="html/Methods_T_gemstone_expressions_StaticDynamic.htm">
+        <HelpTOCNode Id="6429ee97-4cf5-4426-be1b-7427b3f05de0" Title="StaticDynamic Methods" Url="html/Methods_T_gemstone_expressions_StaticDynamic.htm">
           <HelpTOCNode Title="TryGetMember Method " Url="html/M_gemstone_expressions_StaticDynamic_TryGetMember.htm" />
           <HelpTOCNode Title="TryInvokeMember Method " Url="html/M_gemstone_expressions_StaticDynamic_TryInvokeMember.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="6f97db4e-4357-4f82-8db2-96b0701e1eb2" Title="gemstone.expressions.evaluator" Url="html/N_gemstone_expressions_evaluator.htm">
-      <HelpTOCNode Id="6dc6b2d7-968b-42fd-abd0-ecff0b0fbd37" Title="ExpressionCompiler Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm">
+    <HelpTOCNode Id="d91df029-7a1e-467f-8305-fc2d6092ed60" Title="gemstone.expressions.evaluator" Url="html/N_gemstone_expressions_evaluator.htm">
+      <HelpTOCNode Id="c8d79789-7e11-4cfe-bbe0-0be6a5d6bbb6" Title="ExpressionCompiler Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler.htm">
         <HelpTOCNode Title="ExpressionCompiler Constructor " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler__ctor.htm" />
         <HelpTOCNode Title="ExpressionCompiler Properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler.htm" />
         <HelpTOCNode Title="ExpressionCompiler Methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="de8add65-40da-4d0b-a736-1a249758edca" Title="ExpressionCompiler(TResult) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm">
+      <HelpTOCNode Id="f708258c-5ddc-4a8a-9055-0a24eb8ad612" Title="ExpressionCompiler(TResult) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm">
         <HelpTOCNode Title="ExpressionCompiler(TResult) Constructor " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1__ctor.htm" />
-        <HelpTOCNode Id="7b9366a5-ad02-4ccf-82f7-57d732b00922" Title="ExpressionCompiler(TResult) Properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm">
+        <HelpTOCNode Id="2c25b238-0228-4774-8491-a5c6a8d21e6d" Title="ExpressionCompiler(TResult) Properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm">
           <HelpTOCNode Title="CompiledAction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledAction.htm" />
           <HelpTOCNode Title="CompiledFunction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_1_CompiledFunction.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="d66b4fc8-2b7a-4b31-828a-ea035c5db7c1" Title="ExpressionCompiler(TResult) Methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm">
-          <HelpTOCNode Id="36f55312-cf39-40b1-a6fd-ebdc5f65794f" Title="ExecuteAction Method " Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteAction.htm">
+        <HelpTOCNode Id="3c59cbfb-c4dd-496c-ab6e-fe6c7c390f8b" Title="ExpressionCompiler(TResult) Methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_1.htm">
+          <HelpTOCNode Id="69f11bee-29bd-4463-93c4-601fc3b55c91" Title="ExecuteAction Method " Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteAction.htm">
             <HelpTOCNode Title="ExecuteAction Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteAction.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="fe0dfb2c-a33b-4594-82a3-60df4109b582" Title="ExecuteFunction Method " Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteFunction.htm">
+          <HelpTOCNode Id="9d9666a8-553f-46a8-9a93-f1a809605c46" Title="ExecuteFunction Method " Url="html/Overload_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteFunction.htm">
             <HelpTOCNode Title="ExecuteFunction Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_1_ExecuteFunction.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="7729f6e6-7100-4513-afa5-04af7eea76ee" Title="ExpressionCompiler(TResult, TInstanceParameter) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm">
+      <HelpTOCNode Id="0f33eebd-55c6-43b7-a8fe-5100864b2e83" Title="ExpressionCompiler(TResult, TInstanceParameter) Class" Url="html/T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm">
         <HelpTOCNode Title="ExpressionCompiler(TResult, TInstanceParameter) Constructor " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2__ctor.htm" />
-        <HelpTOCNode Id="18b41383-ad0e-4e54-9c0c-57cf060e01d7" Title="ExpressionCompiler(TResult, TInstanceParameter) Properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm">
+        <HelpTOCNode Id="158bdc5a-2982-4653-9c38-aa00c828223d" Title="ExpressionCompiler(TResult, TInstanceParameter) Properties" Url="html/Properties_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm">
           <HelpTOCNode Title="CompiledAction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledAction.htm" />
           <HelpTOCNode Title="CompiledExpression Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledExpression.htm" />
           <HelpTOCNode Title="CompiledFunction Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_CompiledFunction.htm" />
@@ -47,31 +47,31 @@
           <HelpTOCNode Title="InstanceParameterType Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_InstanceParameterType.htm" />
           <HelpTOCNode Title="TypeRegistry Property " Url="html/P_gemstone_expressions_evaluator_ExpressionCompiler_2_TypeRegistry.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="03e7684c-23ff-4bfe-93be-b819864858d9" Title="ExpressionCompiler(TResult, TInstanceParameter) Methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm">
+        <HelpTOCNode Id="8b516896-d54d-4227-bc5d-de1a9a3719b9" Title="ExpressionCompiler(TResult, TInstanceParameter) Methods" Url="html/Methods_T_gemstone_expressions_evaluator_ExpressionCompiler_2.htm">
           <HelpTOCNode Title="Compile Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_Compile.htm" />
           <HelpTOCNode Title="ExecuteAction Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteAction.htm" />
           <HelpTOCNode Title="ExecuteFunction Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ExecuteFunction.htm" />
           <HelpTOCNode Title="ToString Method " Url="html/M_gemstone_expressions_evaluator_ExpressionCompiler_2_ToString.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="7a577b13-df07-4d33-a54b-e78188575efa" Title="Symbol Class" Url="html/T_gemstone_expressions_evaluator_Symbol.htm">
-        <HelpTOCNode Id="72d9858c-efa4-46e4-b63f-fb39e1f28800" Title="Symbol Constructor " Url="html/Overload_gemstone_expressions_evaluator_Symbol__ctor.htm">
+      <HelpTOCNode Id="e86a366e-23ba-4dc2-82da-1797a52a8dcd" Title="Symbol Class" Url="html/T_gemstone_expressions_evaluator_Symbol.htm">
+        <HelpTOCNode Id="55b1d1ee-5840-4046-8d07-4d435d10a2a6" Title="Symbol Constructor " Url="html/Overload_gemstone_expressions_evaluator_Symbol__ctor.htm">
           <HelpTOCNode Title="Symbol Constructor (String, Type)" Url="html/M_gemstone_expressions_evaluator_Symbol__ctor.htm" />
           <HelpTOCNode Title="Symbol Constructor (String, Type, Object)" Url="html/M_gemstone_expressions_evaluator_Symbol__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="0dcc8497-6411-4148-bc8f-20c6bee42fc6" Title="Symbol Properties" Url="html/Properties_T_gemstone_expressions_evaluator_Symbol.htm">
+        <HelpTOCNode Id="2ccf341e-079a-4637-9712-5a5de369c690" Title="Symbol Properties" Url="html/Properties_T_gemstone_expressions_evaluator_Symbol.htm">
           <HelpTOCNode Title="Name Property " Url="html/P_gemstone_expressions_evaluator_Symbol_Name.htm" />
           <HelpTOCNode Title="Type Property " Url="html/P_gemstone_expressions_evaluator_Symbol_Type.htm" />
           <HelpTOCNode Title="Value Property " Url="html/P_gemstone_expressions_evaluator_Symbol_Value.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="Symbol Methods" Url="html/Methods_T_gemstone_expressions_evaluator_Symbol.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="53f49b9a-f511-498f-850b-f1e1e887aed2" Title="TypeRegistry Class" Url="html/T_gemstone_expressions_evaluator_TypeRegistry.htm">
+      <HelpTOCNode Id="d254f247-e794-4803-aaf6-c5078c2b72ed" Title="TypeRegistry Class" Url="html/T_gemstone_expressions_evaluator_TypeRegistry.htm">
         <HelpTOCNode Title="TypeRegistry Constructor " Url="html/M_gemstone_expressions_evaluator_TypeRegistry__ctor.htm" />
-        <HelpTOCNode Id="b284d6ce-4797-45e3-8d82-d3b7b8c5f648" Title="TypeRegistry Properties" Url="html/Properties_T_gemstone_expressions_evaluator_TypeRegistry.htm">
+        <HelpTOCNode Id="e8c63cd8-4934-48e7-bad4-b296ff82b3f4" Title="TypeRegistry Properties" Url="html/Properties_T_gemstone_expressions_evaluator_TypeRegistry.htm">
           <HelpTOCNode Title="Assemblies Property " Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Assemblies.htm" />
           <HelpTOCNode Title="GeneratedContextTypeCount Property " Url="html/P_gemstone_expressions_evaluator_TypeRegistry_GeneratedContextTypeCount.htm" />
-          <HelpTOCNode Id="cf22fa19-749b-44bf-b042-070c737e82ab" Title="Item Property " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_Item.htm">
+          <HelpTOCNode Id="a725c15e-2312-41a4-8074-efc1c495c57b" Title="Item Property " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_Item.htm">
             <HelpTOCNode Title="Item Property (String)" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Item.htm" />
             <HelpTOCNode Title="Item Property (String, Type)" Url="html/P_gemstone_expressions_evaluator_TypeRegistry_Item_1.htm" />
           </HelpTOCNode>
@@ -79,20 +79,20 @@
           <HelpTOCNode Title="RegisteredSymbols Property " Url="html/P_gemstone_expressions_evaluator_TypeRegistry_RegisteredSymbols.htm" />
           <HelpTOCNode Title="RegisteredTypes Property " Url="html/P_gemstone_expressions_evaluator_TypeRegistry_RegisteredTypes.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="67e5c2da-aece-4ba2-bbf3-4730afa80a13" Title="TypeRegistry Methods" Url="html/Methods_T_gemstone_expressions_evaluator_TypeRegistry.htm">
-          <HelpTOCNode Id="d6717770-45bb-40e9-95a9-be372e8c5e2a" Title="GetContextType Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetContextType.htm">
+        <HelpTOCNode Id="86f1cbae-2ecd-4868-8631-5a30320ce4a2" Title="TypeRegistry Methods" Url="html/Methods_T_gemstone_expressions_evaluator_TypeRegistry.htm">
+          <HelpTOCNode Id="52aa1d92-b09c-48e4-9d36-a72ecdb67a93" Title="GetContextType Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetContextType.htm">
             <HelpTOCNode Title="GetContextType(TResult, TInstanceParameter) Method " Url="html/M_gemstone_expressions_evaluator_TypeRegistry_GetContextType__2.htm" />
             <HelpTOCNode Title="GetContextType Method (Type, Type)" Url="html/M_gemstone_expressions_evaluator_TypeRegistry_GetContextType.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="fbc61017-e4c0-4120-b1c3-8b1e4593c8b5" Title="GetNewContext Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetNewContext.htm">
+          <HelpTOCNode Id="0c4f37d9-a2e7-4f53-bc93-cba14ba3d27b" Title="GetNewContext Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_GetNewContext.htm">
             <HelpTOCNode Title="GetNewContext(TResult, TInstanceParameter) Method " Url="html/M_gemstone_expressions_evaluator_TypeRegistry_GetNewContext__2.htm" />
             <HelpTOCNode Title="GetNewContext Method (Type, Type)" Url="html/M_gemstone_expressions_evaluator_TypeRegistry_GetNewContext.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="ddc39bc0-559c-49a6-b81b-a0e3e945e21d" Title="RegisterSymbol Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterSymbol.htm">
+          <HelpTOCNode Id="0876dc05-a52f-4663-a66c-646bb21035e1" Title="RegisterSymbol Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterSymbol.htm">
             <HelpTOCNode Title="RegisterSymbol Method (Symbol)" Url="html/M_gemstone_expressions_evaluator_TypeRegistry_RegisterSymbol.htm" />
             <HelpTOCNode Title="RegisterSymbol(T) Method (String, T)" Url="html/M_gemstone_expressions_evaluator_TypeRegistry_RegisterSymbol__1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="526d2c29-b9e5-416c-acac-bdae03966a77" Title="RegisterType Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterType.htm">
+          <HelpTOCNode Id="adc8a83e-c858-4fc0-a85c-b0002273a901" Title="RegisterType Method " Url="html/Overload_gemstone_expressions_evaluator_TypeRegistry_RegisterType.htm">
             <HelpTOCNode Title="RegisterType(T) Method " Url="html/M_gemstone_expressions_evaluator_TypeRegistry_RegisterType__1.htm" />
             <HelpTOCNode Title="RegisterType Method (Type)" Url="html/M_gemstone_expressions_evaluator_TypeRegistry_RegisterType.htm" />
           </HelpTOCNode>
