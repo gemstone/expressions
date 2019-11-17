@@ -1,7 +1,7 @@
 //******************************************************************************************************
 //  Symbol.cs - Gbtc
 //
-//  Copyright © 2019, Grid Protection Alliance.  All Rights Reserved.
+//  Copyright Â© 2019, Grid Protection Alliance.  All Rights Reserved.
 //
 //  Licensed to the Grid Protection Alliance (GPA) under one or more contributor license agreements. See
 //  the NOTICE file distributed with this work for additional information regarding copyright ownership.
@@ -29,8 +29,8 @@ namespace gemstone.expressions.evaluator
     /// Represents a symbol consisting of a name, <see cref="Type"/> and value to be accessible for
     /// expressions used with the <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>.
     /// </summary>
-	public class Symbol
-	{
+    public class Symbol
+    {
         /// <summary>
         /// Creates a new <see cref="Symbol"/>.
         /// </summary>
