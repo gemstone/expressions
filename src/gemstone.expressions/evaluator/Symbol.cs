@@ -66,6 +66,6 @@ namespace gemstone.expressions.evaluator
         /// <summary>
         /// Gets or sets the symbol value.
         /// </summary>
-		public object Value { get; set; }
+        public object Value { get; set; }
     }
 }
