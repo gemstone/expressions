@@ -143,10 +143,7 @@ namespace gemstone.expressions.evaluator
 
                 return m_typeRegistry;
             }
-            set
-            {
-                m_typeRegistry = value ?? throw new ArgumentNullException(nameof(value));
-            }
+            set => m_typeRegistry = value ?? throw new ArgumentNullException(nameof(value));
         }
 
         /// <summary>

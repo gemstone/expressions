@@ -30,6 +30,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using gemstone.security.cryptography;
 
 namespace gemstone.expressions.evaluator
 {
@@ -68,6 +69,14 @@ namespace gemstone.expressions.evaluator
             RegisterType(typeof(Enumerable));
             RegisterType(typeof(Expression));
             RegisterType(typeof(PropertyInfo));
+        }
+
+        // Used to create a cloned TypeRegistry instance
+        private TypeRegistry(IEnumerable<KeyValuePair<Type, int>> registeredTypes, IEnumerable<KeyValuePair<string, Symbol>> registeredSymbols)
+        {
+            m_registeredTypes = new ConcurrentDictionary<Type, int>(registeredTypes);
+            m_registeredSymbols = new ConcurrentDictionary<string, Symbol>(registeredSymbols);
+            m_contextTypeCache = new ConcurrentDictionary<(Type, Type), (Type, PropertyInfo[], FieldInfo[])>();
         }
 
         #endregion
@@ -164,6 +173,12 @@ namespace gemstone.expressions.evaluator
         #endregion
 
         #region [ Methods ]
+
+        /// <summary>
+        /// Creates a cloned instance of this <see cref="TypeRegistry"/>.
+        /// </summary>
+        /// <returns>Cloned instance of this <see cref="TypeRegistry"/>.</returns>
+        public TypeRegistry Clone() => new TypeRegistry(m_registeredTypes, m_registeredSymbols);
 
         /// <summary>
         /// Registers a new <see cref="Type"/>.
@@ -460,7 +475,7 @@ namespace gemstone.expressions.evaluator
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
 
-            using (SHA256Managed sha = new SHA256Managed())
+            using (SHA256 sha = Cipher.CreateSHA256())
             {
                 byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(text));
                 return BitConverter.ToString(hash).Replace("-", string.Empty);
