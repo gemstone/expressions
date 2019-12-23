@@ -30,9 +30,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using gemstone.security.cryptography;
+using Gemstone.Security.Cryptography;
 
-namespace gemstone.expressions.evaluator
+namespace Gemstone.Expressions.Evaluator
 {
     /// <summary>
     /// Defines a registry of types and symbols needed for an <see cref="ExpressionCompiler"/>.
@@ -392,7 +392,7 @@ namespace gemstone.expressions.evaluator
                 }}}}";
 
             string codeHash = GetSHA256(contextTypeCodeTemplate);
-            string contextTypeNamespace = $"{nameof(evaluator)}{codeHash}";
+            string contextTypeNamespace = $"{nameof(Evaluator)}{codeHash}";
 
             // For now, we must write assembly to a file in order for Roslyn to use it :-p
             // https://github.com/dotnet/roslyn/wiki/Scripting-API-Samples#parameterize-a-script

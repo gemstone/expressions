@@ -23,7 +23,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Contains classes and attributes used for expression modeling.

@@ -23,7 +23,7 @@
 
 using System;
 
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Represents an exception related to <see cref="ValueExpressionAttributeBase.EvaluationOrder"/> values.

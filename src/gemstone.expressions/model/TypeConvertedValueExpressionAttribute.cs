@@ -23,9 +23,9 @@
 
 using System;
 using System.Reflection;
-using gemstone.expressions.evaluator;
+using Gemstone.Expressions.Evaluator;
 
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Defines a C# expression attribute that when evaluated will type convert its value for a property.

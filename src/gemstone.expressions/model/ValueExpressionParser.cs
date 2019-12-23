@@ -29,15 +29,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using gemstone.collections;
-using gemstone.expressions.evaluator;
-using gemstone.reflection;
+using Gemstone.Collections.CollectionExtensions;
+using Gemstone.Expressions.Evaluator;
+using Gemstone.Reflection.MemberInfoExtensions;
 using LinqExpression = System.Linq.Expressions.Expression;
 
 // ReSharper disable UnusedMember.Local
 // ReSharper disable StaticMemberInGenericType
 // ReSharper disable PossibleNullReferenceException
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Represents a parser for <see cref="IValueExpressionAttribute"/> instances.
@@ -85,7 +85,7 @@ namespace gemstone.expressions.model
             //s_defaultTypeRegistry.RegisterType<UserInfo>();
 
             s_defaultTypeRegistry.RegisterType(typeof(Common));
-            s_defaultTypeRegistry.RegisterType(typeof(StringExtensions));
+            s_defaultTypeRegistry.RegisterType(typeof(StringExtensions.StringExtensions));
 
             // Define a regular expression to find "this" keywords
             s_findThisKeywords = new Regex(@"(^this(?=[^\w]))|((?<=[^\w])this(?=[^\w]))|(^this$)", RegexOptions.Compiled | RegexOptions.Multiline);

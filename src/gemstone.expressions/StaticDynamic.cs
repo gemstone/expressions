@@ -25,7 +25,7 @@ using System;
 using System.Dynamic;
 using System.Reflection;
 
-namespace gemstone.expressions
+namespace Gemstone.Expressions
 {
     /// <summary>
     /// Defines a <see cref="DynamicObject"/> wrapper for static elements and classes.

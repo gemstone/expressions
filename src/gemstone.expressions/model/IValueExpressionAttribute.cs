@@ -23,9 +23,9 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using gemstone.expressions.evaluator;
+using Gemstone.Expressions.Evaluator;
 
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Defines an interface for value expression attributes.
@@ -76,7 +76,7 @@ namespace gemstone.expressions.model
         int EvaluationOrder { get; set; }
 
         /// <summary>
-        /// Gets or sets any <see cref="evaluator.TypeRegistry"/> to use if the attribute
+        /// Gets or sets any <see cref="Gemstone.Expressions.Evaluator.TypeRegistry"/> to use if the attribute
         /// <see cref="Expression"/> needs to be pre-parsed.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "TypeRegistry needs to be assigned when needed - default value is null")]

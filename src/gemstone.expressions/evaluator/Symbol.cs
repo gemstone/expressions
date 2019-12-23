@@ -23,7 +23,7 @@
 
 using System;
 
-namespace gemstone.expressions.evaluator
+namespace Gemstone.Expressions.Evaluator
 {
     /// <summary>
     /// Represents a symbol consisting of a name, <see cref="Type"/> and value to be accessible for

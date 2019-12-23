@@ -27,7 +27,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 
-namespace gemstone.expressions.evaluator
+namespace Gemstone.Expressions.Evaluator
 {
     /// <summary>
     /// Represents a runtime C# expression evaluator.
@@ -132,7 +132,7 @@ namespace gemstone.expressions.evaluator
         public Expression CompiledExpression { get; private set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="evaluator.TypeRegistry"/> used for compilation.
+        /// Gets or sets the <see cref="Evaluator.TypeRegistry"/> used for compilation.
         /// </summary>
         public TypeRegistry TypeRegistry
         {

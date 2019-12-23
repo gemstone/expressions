@@ -23,7 +23,7 @@
 
 using System;
 
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Defines a C# expression attribute that when evaluated will specify the default value for a property.

@@ -21,7 +21,7 @@
 //
 //******************************************************************************************************
 
-namespace gemstone.expressions.model
+namespace Gemstone.Expressions.Model
 {
     /// <summary>
     /// Represent a base class used for providing contextual scope when evaluating

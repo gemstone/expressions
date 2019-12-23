@@ -30,7 +30,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
 
-namespace gemstone.expressions
+namespace Gemstone.Expressions
 {
     /// <summary>
     /// Runtime C# code compiler.

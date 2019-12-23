@@ -23,10 +23,10 @@
 
 using System.Runtime.CompilerServices;
 
-namespace gemstone.expressions
+namespace Gemstone.Expressions
 {
     /// <summary>
-    /// The <see cref="gemstone.expressions"/> namespace organizes all Gemstone library functionality
+    /// The <see cref="Gemstone.Expressions"/> namespace organizes all Gemstone library functionality
     /// related to expressions. The root expressions namespace also includes common expressions classes,
     /// e.g., <see cref="StaticDynamic"/> and <see cref="RuntimeCompiler"/>.
     /// </summary>

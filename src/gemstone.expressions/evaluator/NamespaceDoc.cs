@@ -23,10 +23,10 @@
 
 using System.Runtime.CompilerServices;
 
-namespace gemstone.expressions.evaluator
+namespace Gemstone.Expressions.Evaluator
 {
     /// <summary>
-    /// The <see cref="gemstone.expressions.evaluator"/> namespace organizes all Gemstone library
+    /// The <see cref="Gemstone.Expressions.Evaluator"/> namespace organizes all Gemstone library
     /// functionality related to runtime expression evaluation.
     /// </summary>
     [CompilerGenerated]
