@@ -101,7 +101,7 @@ namespace Gemstone.Expressions.Model
         /// <see cref="Expression"/> needs to be pre-parsed.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "TypeRegistry needs to be assigned when needed - default value is null")]
-        public TypeRegistry TypeRegistry { get; set; }
+        public TypeRegistry? TypeRegistry { get; set; }
 
         #endregion
 

@@ -23,6 +23,7 @@
 
 using System;
 using System.Linq.Expressions;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
@@ -47,7 +48,7 @@ namespace Gemstone.Expressions.Evaluator
     /// Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult"/>.
     /// </summary>
     /// <typeparam name="TResult">Return value <see cref="Type"/> for function based expressions.</typeparam>
-    public class ExpressionCompiler<TResult> : ExpressionCompiler<TResult, object>
+    public class ExpressionCompiler<TResult> : ExpressionCompiler<TResult, object> where TResult : new()
     {
         /// <summary>
         /// Creates a new <see cref="ExpressionCompiler{TResult}"/>.
@@ -63,7 +64,7 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public new Action CompiledAction => () => base.CompiledAction(null);
+        public new Action CompiledAction => () => base.CompiledAction?.Invoke(null);
 
         /// <summary>
         /// Gets <see cref="Func{TResult}"/> delegate for compiled expression.
@@ -71,7 +72,11 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public new Func<TResult> CompiledFunction => () => base.CompiledFunction(null);
+        public new Func<TResult> CompiledFunction => () =>
+        {
+            Func<object?, TResult>? compiledFunction = base.CompiledFunction;
+            return compiledFunction != null ? compiledFunction(null) : new TResult();
+        };
 
         /// <summary>
         /// Executes compiled <see cref="Action"/> based expression.
@@ -97,11 +102,11 @@ namespace Gemstone.Expressions.Evaluator
     /// </summary>
     /// <typeparam name="TResult">Return value <see cref="Type"/> for function based expressions.</typeparam>
     /// <typeparam name="TInstanceParameter">Instance parameter <see cref="Type"/> used to define expression accessible field values.</typeparam>
-    public class ExpressionCompiler<TResult, TInstanceParameter>
+    public class ExpressionCompiler<TResult, TInstanceParameter> where TResult : new() where TInstanceParameter : class
     {
         private TypeRegistry m_typeRegistry;
-        private Action<TInstanceParameter> m_compiledAction;
-        private Func<TInstanceParameter, TResult> m_compiledFunction;
+        private Action<TInstanceParameter?>? m_compiledAction;
+        private Func<TInstanceParameter?, TResult>? m_compiledFunction;
 
         /// <summary>
         /// Creates a new <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>.
@@ -111,7 +116,8 @@ namespace Gemstone.Expressions.Evaluator
         {
             if (string.IsNullOrWhiteSpace(expression))
                 throw new ArgumentNullException(nameof(expression));
-
+            
+            m_typeRegistry = new TypeRegistry();
             Expression = expression;
         }
 
@@ -129,20 +135,14 @@ namespace Gemstone.Expressions.Evaluator
         /// <summary>
         /// Gets the compiled <see cref="System.Linq.Expressions.Expression">Linq Expression</see> after <see cref="Expression">C# Code Expression</see> is compiled.
         /// </summary>
-        public Expression CompiledExpression { get; private set; }
+        public Expression? CompiledExpression { get; private set; }
 
         /// <summary>
         /// Gets or sets the <see cref="Evaluator.TypeRegistry"/> used for compilation.
         /// </summary>
         public TypeRegistry TypeRegistry
         {
-            get
-            {
-                if (m_typeRegistry is null)
-                    TypeRegistry = new TypeRegistry();
-
-                return m_typeRegistry;
-            }
+            get => m_typeRegistry;
             set => m_typeRegistry = value ?? throw new ArgumentNullException(nameof(value));
         }
 
@@ -152,19 +152,19 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public Action<TInstanceParameter> CompiledAction
+        public Action<TInstanceParameter?>? CompiledAction
         {
             get
             {
-                Action<TInstanceParameter> getCompiledAction()
+                Action<TInstanceParameter?>? getCompiledAction()
                 {
                     if (CompiledExpression == null)
                         Compile(true);
 
-                    return (CompiledExpression as Expression<Action<TInstanceParameter>>)?.Compile();
+                    return (CompiledExpression as Expression<Action<TInstanceParameter?>>)?.Compile();
                 }
 
-                return m_compiledAction ?? (m_compiledAction = getCompiledAction());
+                return m_compiledAction ??= getCompiledAction();
             }
         }
 
@@ -174,19 +174,19 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this property will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public Func<TInstanceParameter, TResult> CompiledFunction
+        public Func<TInstanceParameter?, TResult>? CompiledFunction
         {
             get
             {
-                Func<TInstanceParameter, TResult> getCompiledFunction()
+                Func<TInstanceParameter?, TResult>? getCompiledFunction()
                 {
                     if (CompiledExpression == null)
                         Compile();
 
-                    return (CompiledExpression as Expression<Func<TInstanceParameter, TResult>>)?.Compile();
+                    return (CompiledExpression as Expression<Func<TInstanceParameter?, TResult>>)?.Compile();
                 }
 
-                return m_compiledFunction ?? (m_compiledFunction = getCompiledFunction());
+                return m_compiledFunction ??= getCompiledFunction();
             }
         }
 
@@ -209,9 +209,9 @@ namespace Gemstone.Expressions.Evaluator
             object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType ?? typeof(TInstanceParameter));
 
             if (isMethodCall)
-                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Action<TInstanceParameter>>>($"(instance) => ExecuteAction(instance, () => {Expression})", options, context).Result;
+                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Action<TInstanceParameter?>>>($"(instance) => ExecuteAction(instance, () => {Expression})", options, context).Result;
             else
-                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Func<TInstanceParameter, TResult>>>($"(instance) => ExecuteFunc(instance, () => {Expression})", options, context).Result;
+                CompiledExpression = CSharpScript.EvaluateAsync<Expression<Func<TInstanceParameter?, TResult>>>($"(instance) => ExecuteFunc(instance, () => {Expression})", options, context).Result;
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public void ExecuteAction(TInstanceParameter instance) => CompiledAction(instance);
+        public void ExecuteAction(TInstanceParameter? instance) => CompiledAction?.Invoke(instance);
 
         /// <summary>
         /// Executes compiled <see cref="Func{TInstanceParameter, TResult}"/> based expression.
@@ -231,7 +231,11 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public TResult ExecuteFunction(TInstanceParameter instance) => CompiledFunction(instance);
+        public TResult ExecuteFunction(TInstanceParameter? instance)
+        {
+            Func<TInstanceParameter?, TResult>? compiledFunction = CompiledFunction;
+            return compiledFunction != null ? compiledFunction(instance) : new TResult();
+        }
 
         /// <summary>
         /// Returns a string that represents the <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>, i.e., the <see cref="Expression"/> value.

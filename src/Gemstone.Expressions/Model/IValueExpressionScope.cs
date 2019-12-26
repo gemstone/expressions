@@ -28,7 +28,7 @@ namespace Gemstone.Expressions.Model
     /// instances of the <see cref="IValueExpressionAttribute"/>.
     /// </summary>
     /// <typeparam name="T">Type of associated model.</typeparam>
-    public interface IValueExpressionScope<T>
+    public interface IValueExpressionScope<T> where T : class
     {
         /// <summary>
         /// Gets or sets the current <typeparamref name="T"/> instance.
@@ -38,6 +38,6 @@ namespace Gemstone.Expressions.Model
         /// can reference the current <typeparamref name="T"/> instance using the <c>this</c> keyword.
         /// See <see cref="ValueExpressionParser{T}.CreateInstance{TExpressionScope}"/>.
         /// </remarks>
-        T Instance { get; set; }
+        T? Instance { get; set; }
     }
 }

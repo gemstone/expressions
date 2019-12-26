@@ -110,7 +110,7 @@ namespace Gemstone.Expressions.Evaluator
         /// </summary>
         /// <param name="name">Symbol name.</param>
         /// <returns>Symbol value.</returns>
-        public object this[string name] => m_registeredSymbols[name]?.Value;
+        public object? this[string name] => m_registeredSymbols[name]?.Value;
 
         /// <summary>
         /// Sets value for registered symbol with specified <paramref name="name"/>,
@@ -475,11 +475,10 @@ namespace Gemstone.Expressions.Evaluator
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
 
-            using (SHA256 sha = Cipher.CreateSHA256())
-            {
-                byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(text));
-                return BitConverter.ToString(hash).Replace("-", string.Empty);
-            }
+            using SHA256 sha = Cipher.CreateSHA256();
+
+            byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(text));
+            return BitConverter.ToString(hash).Replace("-", string.Empty);
         }
 
         #endregion

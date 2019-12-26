@@ -47,7 +47,7 @@ namespace Gemstone.Expressions.Model
         /// will have access to needed symbols. If the expression's return type is known in advance, it
         /// is optimal to provide it in the attribute constructor.
         /// </remarks>
-        public Type ReturnType { get; private set; }
+        public Type? ReturnType { get; private set; }
 
         /// <summary>
         /// Creates a new <see cref="TypeConvertedValueExpressionAttribute"/>
@@ -60,7 +60,7 @@ namespace Gemstone.Expressions.Model
         /// <remarks>
         /// When the <paramref name="returnType"/> is known in advance, it is optimal to provide it.
         /// </remarks>
-        public TypeConvertedValueExpressionAttribute(string expression, Type returnType = null) : base(expression) => ReturnType = returnType;
+        public TypeConvertedValueExpressionAttribute(string expression, Type? returnType = null) : base(expression) => ReturnType = returnType;
 
         /// <summary>
         /// Gets the <see cref="ValueExpressionAttributeBase.Expression"/> based value used to update a modeled property.
@@ -82,7 +82,7 @@ namespace Gemstone.Expressions.Model
         {
             Type sourceType = property.PropertyType;
 
-            if ((object)ReturnType == null)
+            if (ReturnType == null)
                 DeriveReturnType();
 
             if (ReturnType == sourceType)
@@ -114,7 +114,7 @@ namespace Gemstone.Expressions.Model
         /// </remarks>
         public override string GetExpressionUpdateValue(PropertyInfo property)
         {
-            if ((object)ReturnType == null)
+            if (ReturnType == null)
                 DeriveReturnType();
 
             if (ReturnType == property.PropertyType)
@@ -123,14 +123,19 @@ namespace Gemstone.Expressions.Model
             if (ReturnType == typeof(string))
                 return $"Common.TypeConvertToString(Instance.{property.Name})";
 
-            return $"Convert.ChangeType(Instance.{property.Name}, typeof({ReturnType.FullName}))";
+            string returnType = ReturnType?.FullName ?? typeof(object).FullName;
+            return $"Convert.ChangeType(Instance.{property.Name}, typeof({returnType}))";
         }
 
         private void DeriveReturnType()
         {
             try
             {
-                ValueExpressionParser parser = new ValueExpressionParser(Expression) { TypeRegistry = TypeRegistry };
+                ValueExpressionParser parser = new ValueExpressionParser(Expression);
+
+                if (TypeRegistry != null)
+                    parser.TypeRegistry = TypeRegistry;
+
                 ReturnType = parser.ExecuteFunction().GetType();
             }
             catch

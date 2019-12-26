@@ -1126,7 +1126,7 @@ namespace Gemstone.Expressions.Model
             return LinqExpression.Call(instance, property.SetMethod, getParsedValue);
         }
 
-        private static string DeriveExpression(string expression, IValueExpressionAttribute valueExpressionAttribute, PropertyInfo property)
+        private static string DeriveExpression(string? expression, IValueExpressionAttribute valueExpressionAttribute, PropertyInfo property)
         {
             return ValueExpressionParser.DeriveExpression(expression ?? valueExpressionAttribute.GetPropertyUpdateValue(property), valueExpressionAttribute, property, typeof(T).FullName);
         }

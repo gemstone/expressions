@@ -45,40 +45,34 @@ namespace Gemstone.Expressions
         /// <param name="options">Compilation options.</param>
         /// <param name="assemblyName">Assembly name to use.</param>
         /// <returns>Raw <see cref="byte"/> array representing compiled <see cref="Assembly"/>.</returns>
-        public static byte[] Compile(string code, IEnumerable<Assembly> references, CSharpCompilationOptions options = null, string assemblyName = null)
+        public static byte[] Compile(string code, IEnumerable<Assembly> references, CSharpCompilationOptions? options = null, string? assemblyName = null)
         {
-            if (options is null)
-            {
-                options = new CSharpCompilationOptions(
-                    OutputKind.DynamicallyLinkedLibrary,
-                    optimizationLevel: OptimizationLevel.Release);
-            }
-
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(code);
 
             CSharpCompilation compilation = CSharpCompilation.Create(
                 assemblyName ?? Path.GetRandomFileName(),
-                syntaxTrees: new[] { syntaxTree },
-                references: references.Select(assembly => MetadataReference.CreateFromFile(assembly.Location)),
-                options: options);
+                new[] { syntaxTree },
+                references.Select(assembly => MetadataReference.CreateFromFile(assembly.Location)),
+                options ?? new CSharpCompilationOptions(
+                    OutputKind.DynamicallyLinkedLibrary,
+                    optimizationLevel: OptimizationLevel.Release));
 
-            using (MemoryStream stream = new MemoryStream())
+            using MemoryStream stream = new MemoryStream();
+
+            EmitResult result = compilation.Emit(stream);
+
+            if (!result.Success)
             {
-                EmitResult result = compilation.Emit(stream);
+                Exception[] exceptions = result.Diagnostics
+                    .Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)
+                    .Select(diagnostic => new Exception($"{diagnostic.Id}: {diagnostic.GetMessage()}"))
+                    .ToArray();
 
-                if (!result.Success)
-                {
-                    Exception[] exceptions = result.Diagnostics
-                        .Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)
-                        .Select(diagnostic => new Exception($"{diagnostic.Id}: {diagnostic.GetMessage()}"))
-                        .ToArray();
-                    
-                    if (exceptions.Length > 0)
-                        throw new AggregateException(exceptions);
-                }
-
-                return stream.ToArray();
+                if (exceptions.Length > 0)
+                    throw new AggregateException(exceptions);
             }
+
+            return stream.ToArray();
         }
     }
 }

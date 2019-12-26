@@ -51,7 +51,7 @@ namespace Gemstone.Expressions.Evaluator
         /// <param name="name">Name of symbol.</param>
         /// <param name="type"><see cref="Type"/> of symbol.</param>
         /// <param name="value">Initial value for symbol.</param>
-        public Symbol(string name, Type type, object value) : this(name, type) => Value = value;
+        public Symbol(string name, Type type, object? value) : this(name, type) => Value = value;
 
         /// <summary>
         /// Gets the symbol name.
@@ -66,6 +66,6 @@ namespace Gemstone.Expressions.Evaluator
         /// <summary>
         /// Gets or sets the symbol value.
         /// </summary>
-        public object Value { get; set; }
+        public object? Value { get; set; }
     }
 }

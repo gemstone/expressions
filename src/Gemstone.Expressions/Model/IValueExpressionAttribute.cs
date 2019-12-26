@@ -80,7 +80,7 @@ namespace Gemstone.Expressions.Model
         /// <see cref="Expression"/> needs to be pre-parsed.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "TypeRegistry needs to be assigned when needed - default value is null")]
-        TypeRegistry TypeRegistry { get; set; }
+        TypeRegistry? TypeRegistry { get; set; }
 
         /// <summary>
         /// Gets the <see cref="Expression"/> based value used to update a modeled property.
