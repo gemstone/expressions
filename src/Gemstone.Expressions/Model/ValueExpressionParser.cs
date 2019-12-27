@@ -71,21 +71,20 @@ namespace Gemstone.Expressions.Model
         #region [ Static ]
 
         // Static Fields
-        private static readonly TypeRegistry s_defaultTypeRegistry;
         private static readonly Regex s_findThisKeywords;
 
         // Static Constructor
         static ValueExpressionParser()
         {
             // Setup default type registry for parsing value expression attributes
-            s_defaultTypeRegistry = new TypeRegistry();
-            s_defaultTypeRegistry.RegisterType<Guid>();
+            DefaultTypeRegistry = new TypeRegistry();
+            DefaultTypeRegistry.RegisterType<Guid>();
 
             // TODO: Add UserInfo type when added to gemstone.common
             //s_defaultTypeRegistry.RegisterType<UserInfo>();
 
-            s_defaultTypeRegistry.RegisterType(typeof(Common));
-            s_defaultTypeRegistry.RegisterType(typeof(StringExtensions.StringExtensions));
+            DefaultTypeRegistry.RegisterType(typeof(Common));
+            DefaultTypeRegistry.RegisterType(typeof(StringExtensions.StringExtensions));
 
             // Define a regular expression to find "this" keywords
             s_findThisKeywords = new Regex(@"(^this(?=[^\w]))|((?<=[^\w])this(?=[^\w]))|(^this$)", RegexOptions.Compiled | RegexOptions.Multiline);
@@ -96,7 +95,7 @@ namespace Gemstone.Expressions.Model
         /// <summary>
         /// Gets the default <see cref="TypeRegistry"/> instance used for evaluating <see cref="IValueExpressionAttribute"/> instances.
         /// </summary>
-        public static TypeRegistry DefaultTypeRegistry => s_defaultTypeRegistry;
+        public static TypeRegistry DefaultTypeRegistry { get; }
 
         // Static Methods
 
@@ -138,7 +137,7 @@ namespace Gemstone.Expressions.Model
         /// <exception cref="ArgumentNullException">Parameter <paramref name="expression"/> cannot be <c>null</c>.</exception>
         public static string DeriveExpression(string expression, IValueExpressionAttribute valueExpressionAttribute, MemberInfo member, string typeName)
         {
-            if ((object)expression == null)
+            if (expression == null)
                 throw new ArgumentNullException(nameof(expression));
 
             // Check for "this" keywords in expression
@@ -161,7 +160,7 @@ namespace Gemstone.Expressions.Model
     /// Represents a typed parser for <see cref="IValueExpressionAttribute"/> instances.
     /// </summary>
     /// <typeparam name="T">Type of associated model.</typeparam>
-    public class ValueExpressionParser<T> : ExpressionCompiler<T>
+    public class ValueExpressionParser<T> : ExpressionCompiler<T> where T : class
     {
         #region [ Members ]
 
@@ -208,7 +207,7 @@ namespace Gemstone.Expressions.Model
         /// to use <see cref="ValueExpressionParser.DefaultTypeRegistry"/>.
         /// </param>
         /// <param name="isCall"><c>true</c> if parsing an action; otherwise, <c>false</c> for a function.</param>
-        public void Parse(ParameterExpression scope, TypeRegistry typeRegistry = null, bool isCall = false)
+        public void Parse(ParameterExpression scope, TypeRegistry? typeRegistry = null, bool isCall = false)
         {
             if (scope == null)
                 throw new ArgumentNullException(nameof(scope));
@@ -266,7 +265,7 @@ namespace Gemstone.Expressions.Model
         public static bool InitializeType()
         {
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if ((object)typeof(T).GetConstructor(Type.EmptyTypes) != null)
+            if (typeof(T).GetConstructor(Type.EmptyTypes) != null)
                 return Activator.CreateInstance<T>() != null;
 
             return false;
@@ -295,7 +294,7 @@ namespace Gemstone.Expressions.Model
         /// <returns>
         /// Generated delegate that will create new <typeparamref name="T"/> instances with default values applied.
         /// </returns>
-        public static Func<T> CreateInstance(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null)
+        public static Func<T> CreateInstance(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Func<MinimumScope, T> createInstanceFunction = CreateInstance<MinimumScope>(properties, typeRegistry);
 
@@ -327,7 +326,7 @@ namespace Gemstone.Expressions.Model
         /// </returns>
         /// <typeparam name="TValueExpressionAttribute"><see cref="IValueExpressionAttribute"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
-        public static Func<T> CreateInstanceForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
+        public static Func<T> CreateInstanceForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Func<MinimumScope, T> createInstanceFunction = CreateInstanceForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
 
@@ -358,7 +357,7 @@ namespace Gemstone.Expressions.Model
         /// <returns>
         /// Generated delegate that will update <typeparamref name="T"/> instances with default values applied.
         /// </returns>
-        public static Action<T> ApplyDefaults(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null)
+        public static Action<T> ApplyDefaults(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Action<MinimumScope> applyDefaultsFunction = ApplyDefaults<MinimumScope>(properties, typeRegistry);
 
@@ -391,7 +390,7 @@ namespace Gemstone.Expressions.Model
         /// </returns>
         /// <typeparam name="TValueExpressionAttribute"><see cref="IValueExpressionAttribute"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
-        public static Action<T> ApplyDefaultsForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
+        public static Action<T> ApplyDefaultsForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Action<MinimumScope> applyDefaultsFunction = ApplyDefaultsForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
 
@@ -421,7 +420,7 @@ namespace Gemstone.Expressions.Model
         /// <returns>
         /// Generated delegate that will update <typeparamref name="T"/> instances with update expression values applied.
         /// </returns>
-        public static Action<T> UpdateInstance(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null)
+        public static Action<T> UpdateInstance(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Action<MinimumScope> updateInstanceFunction = UpdateInstance<MinimumScope>(properties, typeRegistry);
 
@@ -453,7 +452,7 @@ namespace Gemstone.Expressions.Model
         /// </returns>
         /// <typeparam name="TValueExpressionAttribute"><see cref="IValueExpressionAttribute"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
-        public static Action<T> UpdateInstanceForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
+        public static Action<T> UpdateInstanceForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Action<MinimumScope> updateInstanceFunction = UpdateInstanceForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
 
@@ -490,7 +489,7 @@ namespace Gemstone.Expressions.Model
         /// <returns>
         /// Generated delegate that will execute expression assignments on <typeparamref name="T"/> instances.
         /// </returns>
-        public static Action<T> UpdateExpressions(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null)
+        public static Action<T> UpdateExpressions(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Action<MinimumScope> updateExpressionsFunction = UpdateExpressions<MinimumScope>(properties, typeRegistry);
 
@@ -524,7 +523,7 @@ namespace Gemstone.Expressions.Model
         /// </returns>
         /// <typeparam name="TValueExpressionAttribute"><see cref="IValueExpressionAttribute"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
-        public static Action<T> UpdateExpressionsForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
+        public static Action<T> UpdateExpressionsForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Action<MinimumScope> updateExpressionsFunction = UpdateExpressionsForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
 
@@ -560,7 +559,7 @@ namespace Gemstone.Expressions.Model
         /// <returns>
         /// Generated delegate that will update <typeparamref name="T"/> instances with update expression values applied.
         /// </returns>
-        public static Action<T> UpdateProperties(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null)
+        public static Action<T> UpdateProperties(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             return UpdateInstanceForType<TypeConvertedValueExpressionAttribute>(properties, typeRegistry);
         }
@@ -596,7 +595,7 @@ namespace Gemstone.Expressions.Model
         /// Generated delegate that will create new <typeparamref name="T"/> instances with default values applied.
         /// </returns>
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
-        public static Func<TExpressionScope, T> CreateInstance<TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
+        public static Func<TExpressionScope, T> CreateInstance<TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
         {
             return CreateInstanceForType<DefaultValueExpressionAttribute, TExpressionScope>(properties, typeRegistry);
         }
@@ -635,17 +634,17 @@ namespace Gemstone.Expressions.Model
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
-        public static Func<TExpressionScope, T> CreateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
+        public static Func<TExpressionScope, T> CreateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
             ConstructorInfo constructor = typeof(T).GetConstructor(Type.EmptyTypes);
 
-            if ((object)constructor == null)
+            if (constructor == null)
                 return _ => throw new InvalidOperationException($"No parameterless constructor exists for type \"{typeof(T).FullName}\".");
 
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
 
-            List<Expression> expressions = new List<Expression>();
+            List<LinqExpression> expressions = new List<LinqExpression>();
             ParameterExpression newInstance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
@@ -676,7 +675,7 @@ namespace Gemstone.Expressions.Model
                 }
                 else if (property.TryGetAttribute(out valueExpressionAttribute))
                 {
-                    string expression = null;
+                    string? expression = null;
 
                     try
                     {
@@ -737,7 +736,7 @@ namespace Gemstone.Expressions.Model
         /// Generated delegate that will update <typeparamref name="T"/> instances with expression values applied.
         /// </returns>
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
-        public static Action<TExpressionScope> ApplyDefaults<TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
+        public static Action<TExpressionScope> ApplyDefaults<TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
         {
             return ApplyDefaultsForType<DefaultValueExpressionAttribute, TExpressionScope>(properties, typeRegistry);
         }
@@ -778,12 +777,12 @@ namespace Gemstone.Expressions.Model
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
-        public static Action<TExpressionScope> ApplyDefaultsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
+        public static Action<TExpressionScope> ApplyDefaultsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
 
-            List<Expression> expressions = new List<Expression>();
+            List<LinqExpression> expressions = new List<LinqExpression>();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
@@ -811,7 +810,7 @@ namespace Gemstone.Expressions.Model
                 }
                 else if (property.TryGetAttribute(out valueExpressionAttribute))
                 {
-                    string expression = null;
+                    string? expression = null;
 
                     try
                     {
@@ -868,7 +867,7 @@ namespace Gemstone.Expressions.Model
         /// Generated delegate that will update <typeparamref name="T"/> instances with update expression values applied.
         /// </returns>
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
-        public static Action<TExpressionScope> UpdateInstance<TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
+        public static Action<TExpressionScope> UpdateInstance<TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
         {
             return UpdateInstanceForType<UpdateValueExpressionAttribute, TExpressionScope>(properties, typeRegistry);
         }
@@ -908,12 +907,12 @@ namespace Gemstone.Expressions.Model
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
-        public static Action<TExpressionScope> UpdateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
+        public static Action<TExpressionScope> UpdateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
 
-            List<Expression> expressions = new List<Expression>();
+            List<LinqExpression> expressions = new List<LinqExpression>();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
@@ -931,7 +930,7 @@ namespace Gemstone.Expressions.Model
                 if (!property.TryGetAttribute(out valueExpressionAttribute))
                     continue;
 
-                string expression = null;
+                string? expression = null;
 
                 try
                 {
@@ -989,7 +988,7 @@ namespace Gemstone.Expressions.Model
         /// Generated delegate that will execute expression assignments on <typeparamref name="T"/> instances.
         /// </returns>
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
-        public static Action<TExpressionScope> UpdateExpressions<TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
+        public static Action<TExpressionScope> UpdateExpressions<TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TExpressionScope : IValueExpressionScope<T>
         {
             return UpdateExpressionsForType<TypeConvertedValueExpressionAttribute, TExpressionScope>(properties, typeRegistry);
         }
@@ -1031,12 +1030,12 @@ namespace Gemstone.Expressions.Model
         /// <typeparam name="TExpressionScope"><see cref="IValueExpressionScope{T}"/> parameter type.</typeparam>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
-        public static Action<TExpressionScope> UpdateExpressionsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo> properties = null, TypeRegistry typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
+        public static Action<TExpressionScope> UpdateExpressionsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead);
 
-            List<Expression> expressions = new List<Expression>();
+            List<LinqExpression> expressions = new List<LinqExpression>();
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
 
@@ -1049,7 +1048,7 @@ namespace Gemstone.Expressions.Model
                 if (!property.TryGetAttribute(out valueExpressionAttribute))
                     continue;
 
-                string expression = null;
+                string? expression = null;
 
                 try
                 {
@@ -1065,7 +1064,7 @@ namespace Gemstone.Expressions.Model
                     ValueExpressionParser expressionParser = new ValueExpressionParser(expression);
                     expressionParser.Parse(scopeParameter, typeRegistry, true);
 
-                    if ((object)expressionParser.Expression == null)
+                    if (expressionParser.CompiledExpression == null)
                         throw new InvalidOperationException("Failed to compile");
 
                     expressions.Add(expressionParser.CompiledExpression);
@@ -1088,14 +1087,14 @@ namespace Gemstone.Expressions.Model
             return _ => { };
         }
 
-        private static Expression AssignParsedValueExpression(IValueExpressionAttribute valueExpressionAttribute, TypeRegistry typeRegistry, PropertyInfo property, ParameterExpression scopeParameter, ParameterExpression instance, out string expression)
+        private static LinqExpression AssignParsedValueExpression(IValueExpressionAttribute valueExpressionAttribute, TypeRegistry? typeRegistry, PropertyInfo property, ParameterExpression scopeParameter, ParameterExpression instance, out string expression)
         {
             // Parse value expression
             expression = DeriveExpression(null, valueExpressionAttribute, property);
             ValueExpressionParser expressionParser = new ValueExpressionParser(expression);
             expressionParser.Parse(scopeParameter, typeRegistry);
 
-            if ((object)expressionParser.Expression == null)
+            if (expressionParser.CompiledExpression == null)
                 throw new InvalidOperationException("Failed to compile");
 
             UnaryExpression getParsedValue = LinqExpression.Convert(expressionParser.CompiledExpression, property.PropertyType);

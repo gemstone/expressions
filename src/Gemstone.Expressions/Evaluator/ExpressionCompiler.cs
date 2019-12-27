@@ -23,7 +23,6 @@
 
 using System;
 using System.Linq.Expressions;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
@@ -48,7 +47,7 @@ namespace Gemstone.Expressions.Evaluator
     /// Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult"/>.
     /// </summary>
     /// <typeparam name="TResult">Return value <see cref="Type"/> for function based expressions.</typeparam>
-    public class ExpressionCompiler<TResult> : ExpressionCompiler<TResult, object> where TResult : new()
+    public class ExpressionCompiler<TResult> : ExpressionCompiler<TResult, object>
     {
         /// <summary>
         /// Creates a new <see cref="ExpressionCompiler{TResult}"/>.
@@ -75,7 +74,7 @@ namespace Gemstone.Expressions.Evaluator
         public new Func<TResult> CompiledFunction => () =>
         {
             Func<object?, TResult>? compiledFunction = base.CompiledFunction;
-            return compiledFunction != null ? compiledFunction(null) : new TResult();
+            return compiledFunction != null ? compiledFunction(null) : default!;
         };
 
         /// <summary>
@@ -102,7 +101,7 @@ namespace Gemstone.Expressions.Evaluator
     /// </summary>
     /// <typeparam name="TResult">Return value <see cref="Type"/> for function based expressions.</typeparam>
     /// <typeparam name="TInstanceParameter">Instance parameter <see cref="Type"/> used to define expression accessible field values.</typeparam>
-    public class ExpressionCompiler<TResult, TInstanceParameter> where TResult : new() where TInstanceParameter : class
+    public class ExpressionCompiler<TResult, TInstanceParameter> where TInstanceParameter : class
     {
         private TypeRegistry m_typeRegistry;
         private Action<TInstanceParameter?>? m_compiledAction;
@@ -234,7 +233,7 @@ namespace Gemstone.Expressions.Evaluator
         public TResult ExecuteFunction(TInstanceParameter? instance)
         {
             Func<TInstanceParameter?, TResult>? compiledFunction = CompiledFunction;
-            return compiledFunction != null ? compiledFunction(instance) : new TResult();
+            return compiledFunction != null ? compiledFunction(instance) : default!;
         }
 
         /// <summary>

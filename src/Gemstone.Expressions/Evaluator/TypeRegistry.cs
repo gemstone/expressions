@@ -134,7 +134,7 @@ namespace Gemstone.Expressions.Evaluator
 
                 void addAssembly(string name)
                 {
-                    Assembly loadedAssembly = AppDomain.CurrentDomain.GetAssemblies().
+                    Assembly? loadedAssembly = AppDomain.CurrentDomain.GetAssemblies().
                         SingleOrDefault(assembly => assembly.GetName().Name == name);
 
                     if (loadedAssembly is object)
@@ -282,10 +282,7 @@ namespace Gemstone.Expressions.Evaluator
         /// assemblies cannot be unloaded, this property should only be called after all the
         /// desired types and symbols have been registered.
         /// </remarks>
-        public object GetNewContext<TResult, TInstanceParameter>()
-        {
-            return GetNewContext(typeof(TResult), typeof(TInstanceParameter));
-        }
+        public object GetNewContext<TResult, TInstanceParameter>() => GetNewContext(typeof(TResult), typeof(TInstanceParameter));
 
         /// <summary>
         /// Gets a compiled context type based on registered types and symbols.
@@ -300,10 +297,7 @@ namespace Gemstone.Expressions.Evaluator
         /// assemblies cannot be unloaded, this property should only be called after all the
         /// desired types and symbols have been registered.
         /// </remarks>
-        public Type GetContextType(Type resultType, Type instanceParameterType)
-        {
-            return m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), GenerateContextType).contextType;
-        }
+        public Type GetContextType(Type resultType, Type instanceParameterType) => m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), GenerateContextType).contextType;
 
         /// <summary>
         /// Gets a compiled context type based on registered types and symbols.
@@ -318,10 +312,7 @@ namespace Gemstone.Expressions.Evaluator
         /// assemblies cannot be unloaded, this property should only be called after all the
         /// desired types and symbols have been registered.
         /// </remarks>
-        public Type GetContextType<TResult, TInstanceParameter>()
-        {
-            return GetContextType(typeof(TResult), typeof(TInstanceParameter));
-        }
+        public Type GetContextType<TResult, TInstanceParameter>() => GetContextType(typeof(TResult), typeof(TInstanceParameter));
 
         private (Type, PropertyInfo[], FieldInfo[]) GenerateContextType((Type, Type) expressionTypes)
         {
