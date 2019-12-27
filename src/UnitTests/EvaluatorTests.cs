@@ -24,8 +24,8 @@
 using System;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using gemstone.expressions;
-using gemstone.expressions.evaluator;
+using Gemstone.Expressions;
+using Gemstone.Expressions.Evaluator;
 
 namespace UnitTests
 {
