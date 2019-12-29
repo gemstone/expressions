@@ -1,7 +1,9 @@
 theme: jekyll-theme-cayman
-title: gemstone.expressions
+title: Gemstone.Expressions
 description: GPA Gemstone Expressions Library
 github:
-  repository_name: gemstone.expressions
+  repository_name: Gemstone.Expressions
   owner_url: https://www.gridprotectionalliance.org
   owner_name: Grid Protection Alliance
+plugins:
+  - jemoji
