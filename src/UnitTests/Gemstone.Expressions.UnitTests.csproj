@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\gemstone.expressions\gemstone.expressions.csproj" />
+    <ProjectReference Include="..\Gemstone.Expressions\Gemstone.Expressions.csproj" />
   </ItemGroup>
 
 </Project>
