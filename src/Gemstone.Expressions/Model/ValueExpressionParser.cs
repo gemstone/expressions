@@ -216,6 +216,7 @@ namespace Gemstone.Expressions.Model
                 TypeRegistry = typeRegistry;
 
             InstanceParameterType = scope.Type;
+            
             Compile(isCall);
         }
 
@@ -1097,7 +1098,7 @@ namespace Gemstone.Expressions.Model
             if (expressionParser.CompiledExpression == null)
                 throw new InvalidOperationException("Failed to compile");
 
-            UnaryExpression getParsedValue = LinqExpression.Convert(expressionParser.CompiledExpression, property.PropertyType);
+            UnaryExpression getParsedValue = LinqExpression.Convert(LinqExpression.Invoke(expressionParser.CompiledExpression, scopeParameter), property.PropertyType);
 
             if (valueExpressionAttribute.Cached)
             {
