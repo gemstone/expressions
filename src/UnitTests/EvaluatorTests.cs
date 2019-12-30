@@ -23,11 +23,10 @@
 
 using System;
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Gemstone.Expressions;
 using Gemstone.Expressions.Evaluator;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTests
+namespace Gemstone.Expressions.UnitTests
 {
     public static class StringExtensions
     {
@@ -69,13 +68,13 @@ namespace UnitTests
             Assert.IsTrue(boolTrue.ExecuteFunction());
             Assert.IsFalse(boolFalse.ExecuteFunction());
 
-            Console.WriteLine($"Context Type for '{nameof(boolTrue)}': {boolTrue.TypeRegistry.GetContextType<bool, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(boolTrue)}': {boolTrue}");
+            System.Console.WriteLine($"Context Type for '{nameof(boolTrue)}': {boolTrue.TypeRegistry.GetContextType<bool, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(boolTrue)}': {boolTrue}");
 
-            Console.WriteLine($"Context Type for '{nameof(boolFalse)}': {boolFalse.TypeRegistry.GetContextType<bool, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(boolFalse)}': {boolFalse}");
+            System.Console.WriteLine($"Context Type for '{nameof(boolFalse)}': {boolFalse.TypeRegistry.GetContextType<bool, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(boolFalse)}': {boolFalse}");
             
-            Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
+            System.Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
         }
 
         [TestMethod]
@@ -87,13 +86,13 @@ namespace UnitTests
             Assert.IsTrue(piConst.ExecuteFunction() == Math.PI);
             Assert.IsTrue(cosExpr.ExecuteFunction() == -1.0D);
 
-            Console.WriteLine($"Context Type for '{nameof(piConst)}': {piConst.TypeRegistry.GetContextType<double, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(piConst)}': {piConst}");
+            System.Console.WriteLine($"Context Type for '{nameof(piConst)}': {piConst.TypeRegistry.GetContextType<double, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(piConst)}': {piConst}");
 
-            Console.WriteLine($"Context Type for '{nameof(cosExpr)}': {cosExpr.TypeRegistry.GetContextType<double, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(cosExpr)}': {cosExpr}");
+            System.Console.WriteLine($"Context Type for '{nameof(cosExpr)}': {cosExpr.TypeRegistry.GetContextType<double, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(cosExpr)}': {cosExpr}");
 
-            Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
+            System.Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
         }
 
         [TestMethod]
@@ -108,13 +107,13 @@ namespace UnitTests
             Assert.IsTrue((bool)regPropTest.ExecuteFunction());
             Assert.IsTrue((bool)regMethodTest.ExecuteFunction());
 
-            Console.WriteLine($"Context Type for '{nameof(regPropTest)}': {regPropTest.TypeRegistry.GetContextType<object, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regPropTest)}': {regPropTest}");
+            System.Console.WriteLine($"Context Type for '{nameof(regPropTest)}': {regPropTest.TypeRegistry.GetContextType<object, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regPropTest)}': {regPropTest}");
 
-            Console.WriteLine($"Context Type for '{nameof(regMethodTest)}': {regMethodTest.TypeRegistry.GetContextType<object, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regMethodTest)}': {regMethodTest}");
+            System.Console.WriteLine($"Context Type for '{nameof(regMethodTest)}': {regMethodTest.TypeRegistry.GetContextType<object, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regMethodTest)}': {regMethodTest}");
 
-            Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
+            System.Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
         }
 
         [TestMethod]
@@ -138,19 +137,19 @@ namespace UnitTests
             Assert.IsTrue((bool)regStaticPropText.ExecuteFunction());
             Assert.IsTrue((bool)regStaticMethodTest.ExecuteFunction());
 
-            Console.WriteLine($"Context Type for '{nameof(regConstText)}': {regConstText.TypeRegistry.GetContextType<object, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regConstText)}': {regConstText}");
+            System.Console.WriteLine($"Context Type for '{nameof(regConstText)}': {regConstText.TypeRegistry.GetContextType<object, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regConstText)}': {regConstText}");
 
-            Console.WriteLine($"Context Type for '{nameof(regStaticFieldText)}': {regStaticFieldText.TypeRegistry.GetContextType<object, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regStaticFieldText)}': {regStaticFieldText}");
+            System.Console.WriteLine($"Context Type for '{nameof(regStaticFieldText)}': {regStaticFieldText.TypeRegistry.GetContextType<object, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regStaticFieldText)}': {regStaticFieldText}");
 
-            Console.WriteLine($"Context Type for '{nameof(regStaticPropText)}': {regStaticPropText.TypeRegistry.GetContextType<object, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regStaticPropText)}': {regStaticPropText}");
+            System.Console.WriteLine($"Context Type for '{nameof(regStaticPropText)}': {regStaticPropText.TypeRegistry.GetContextType<object, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regStaticPropText)}': {regStaticPropText}");
 
-            Console.WriteLine($"Context Type for '{nameof(regStaticMethodTest)}': {regStaticMethodTest.TypeRegistry.GetContextType<object, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regStaticMethodTest)}': {regStaticMethodTest}");
+            System.Console.WriteLine($"Context Type for '{nameof(regStaticMethodTest)}': {regStaticMethodTest.TypeRegistry.GetContextType<object, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regStaticMethodTest)}': {regStaticMethodTest}");
 
-            Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
+            System.Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
         }
 
         [TestMethod]
@@ -162,10 +161,10 @@ namespace UnitTests
 
             Assert.IsTrue(regExtTest.ExecuteFunction().Trim().Equals(RadarConst));
 
-            Console.WriteLine($"Context Type for '{nameof(regExtTest)}': {regExtTest.TypeRegistry.GetContextType<string, object>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(regExtTest)}': {regExtTest}");
+            System.Console.WriteLine($"Context Type for '{nameof(regExtTest)}': {regExtTest.TypeRegistry.GetContextType<string, object>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(regExtTest)}': {regExtTest}");
 
-            Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
+            System.Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
         }
 
         public class TestParams
@@ -175,7 +174,7 @@ namespace UnitTests
 
         public void ShowData()
         {
-            Console.WriteLine("Text from EvalutatorTests class");
+            System.Console.WriteLine("Text from EvalutatorTests class");
         }
 
         [TestMethod]
@@ -194,13 +193,13 @@ namespace UnitTests
             // When instance parameter type is defined, expressions expecting parameter should fail:
             Assert.ThrowsException<TargetException>(() => instMethodTest.ExecuteAction()); // This creates a new context type
 
-            Console.WriteLine($"Context Type for '{nameof(instPropTest)}': {instPropTest.TypeRegistry.GetContextType<string, TestParams>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(instPropTest)}': {instPropTest}");
+            System.Console.WriteLine($"Context Type for '{nameof(instPropTest)}': {instPropTest.TypeRegistry.GetContextType<string, TestParams>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(instPropTest)}': {instPropTest}");
 
-            Console.WriteLine($"Context Type for '{nameof(instMethodTest)}': {instMethodTest.TypeRegistry.GetContextType<object, TestParams>()?.FullName}");
-            Console.WriteLine($"Expression for '{nameof(instMethodTest)}': {instMethodTest}");
+            System.Console.WriteLine($"Context Type for '{nameof(instMethodTest)}': {instMethodTest.TypeRegistry.GetContextType<object, TestParams>()?.FullName}");
+            System.Console.WriteLine($"Expression for '{nameof(instMethodTest)}': {instMethodTest}");
 
-            Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
+            System.Console.WriteLine($"Generated Context Type Count = {TypeRegistry.GeneratedContextTypeCount:N0}");
         }
     }
 }
