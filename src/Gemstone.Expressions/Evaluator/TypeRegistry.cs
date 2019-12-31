@@ -30,7 +30,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using Gemstone.Security.Cryptography;
 
 namespace Gemstone.Expressions.Evaluator
 {
@@ -466,8 +465,7 @@ namespace Gemstone.Expressions.Evaluator
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
 
-            using SHA256 sha = Cipher.CreateSHA256();
-
+            using SHA256 sha = new SHA256Managed();
             byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(text));
             return BitConverter.ToString(hash).Replace("-", string.Empty);
         }
