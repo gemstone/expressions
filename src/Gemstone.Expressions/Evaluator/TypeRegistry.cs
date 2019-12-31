@@ -338,8 +338,14 @@ namespace Gemstone.Expressions.Evaluator
                     fieldNames.Add(symbol.Name);
                 }
 
-                // Add field definitions for instance parameter properties to context type
                 checkForDuplicate(InstanceProperties, $"Reserved name \"{InstanceProperties}\"");
+                checkForDuplicate(InstanceFields, $"Reserved name \"{InstanceFields}\"");
+                
+                // Add reserved instance names to field names so they can also be checked
+                fieldNames.Add(InstanceProperties);
+                fieldNames.Add(InstanceFields);
+
+                // Add field definitions for instance parameter properties to context type
                 fieldDefinitions.AppendFormat(FieldTemplate, instanceProperties.GetType().FullName, InstanceProperties);
 
                 foreach (PropertyInfo property in instanceProperties)
@@ -349,7 +355,6 @@ namespace Gemstone.Expressions.Evaluator
                 }
 
                 // Add field definitions for instance parameter fields to context type
-                checkForDuplicate(InstanceFields, $"Reserved name \"{InstanceFields}\"");
                 fieldDefinitions.AppendFormat(FieldTemplate, instanceFields.GetType().FullName, InstanceFields);
 
                 foreach (FieldInfo field in instanceFields)
