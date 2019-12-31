@@ -108,7 +108,7 @@ namespace Gemstone.Expressions.Evaluator
         /// Gets value for registered symbol with specified <paramref name="name"/>.
         /// </summary>
         /// <param name="name">Symbol name.</param>
-        /// <returns>Symbol value.</returns>
+        /// <returns>Symbol value or <c>null</c> if symbol <paramref name="name"/> does not exist.</returns>
         public object? this[string name] => m_registeredSymbols[name]?.Value;
 
         /// <summary>
@@ -322,28 +322,43 @@ namespace Gemstone.Expressions.Evaluator
             string generateFieldDefinitions()
             {
                 const string FieldTemplate = "\r\npublic {0} {1};";
-                StringBuilder fields = new StringBuilder();
-                
-                // Add field definitions for registered symbols to context type
-                foreach (Symbol symbol in m_registeredSymbols.Values.OrderBy(symbol => symbol.Name))
+                StringBuilder fieldDefinitions = new StringBuilder();
+                HashSet<string> fieldNames = new HashSet<string>(StringComparer.Ordinal);
+
+                void checkForDuplicate(string name, string exceptionPrefix)
                 {
-                   if (symbol.Type != typeof(Type)) 
-                       fields.AppendFormat(FieldTemplate, symbol.Type.FullName, symbol.Name);
+                    if (fieldNames.Contains(name))
+                        throw new AmbiguousMatchException($"{exceptionPrefix} is defined in registered symbols. Names must be unique in order to compile expression context type.");
+                }
+
+                // Add field definitions for registered symbols to context type
+                foreach (Symbol symbol in m_registeredSymbols.Values.Where(symbol => symbol.Type != typeof(Type)).OrderBy(symbol => symbol.Name))
+                {
+                    fieldDefinitions.AppendFormat(FieldTemplate, symbol.Type.FullName, symbol.Name);
+                    fieldNames.Add(symbol.Name);
                 }
 
                 // Add field definitions for instance parameter properties to context type
-                fields.AppendFormat(FieldTemplate, instanceProperties.GetType().FullName, InstanceProperties);
+                checkForDuplicate(InstanceProperties, $"Reserved name \"{InstanceProperties}\"");
+                fieldDefinitions.AppendFormat(FieldTemplate, instanceProperties.GetType().FullName, InstanceProperties);
 
                 foreach (PropertyInfo property in instanceProperties)
-                    fields.AppendFormat(FieldTemplate, property.PropertyType, property.Name);
+                {
+                    checkForDuplicate(property.Name, $"Property \"{property.Name}\" of \"{instanceParameterType.FullName}\"");
+                    fieldDefinitions.AppendFormat(FieldTemplate, property.PropertyType, property.Name);
+                }
 
                 // Add field definitions for instance parameter fields to context type
-                fields.AppendFormat(FieldTemplate, instanceFields.GetType().FullName, InstanceFields);
+                checkForDuplicate(InstanceFields, $"Reserved name \"{InstanceFields}\"");
+                fieldDefinitions.AppendFormat(FieldTemplate, instanceFields.GetType().FullName, InstanceFields);
 
                 foreach (FieldInfo field in instanceFields)
-                    fields.AppendFormat(FieldTemplate, field.FieldType, field.Name);
+                {
+                    checkForDuplicate(field.Name, $"Field \"{field.Name}\" of \"{instanceParameterType.FullName}\"");
+                    fieldDefinitions.AppendFormat(FieldTemplate, field.FieldType, field.Name);
+                }
 
-                return fields.ToString();
+                return fieldDefinitions.ToString();
             }
 
             string contextTypeCodeTemplate = $@"
@@ -439,8 +454,7 @@ namespace Gemstone.Expressions.Evaluator
 
             Type contextType = assembly.GetType($"{contextTypeNamespace}.{ContextTypeClassName}");
 
-            // Directly add context type, do not want to clear context type cache
-            m_registeredTypes.TryAdd(contextType, 0);
+            RegisterType(contextType);
 
             return (contextType, instanceProperties, instanceFields);
         }

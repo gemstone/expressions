@@ -29,6 +29,9 @@ namespace Gemstone.Expressions.Evaluator
     /// Represents a symbol consisting of a name, <see cref="Type"/> and value to be accessible for
     /// expressions used with the <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>.
     /// </summary>
+    /// <remarks>
+    /// A symbol is used define a local class field whose value is accessible to a compiled expression.
+    /// </remarks>
     public class Symbol
     {
         /// <summary>
