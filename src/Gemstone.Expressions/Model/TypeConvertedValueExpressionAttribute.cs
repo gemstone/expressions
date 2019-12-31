@@ -22,6 +22,7 @@
 //******************************************************************************************************
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Gemstone.Expressions.Evaluator;
 
@@ -127,6 +128,7 @@ namespace Gemstone.Expressions.Model
             return $"Convert.ChangeType(Instance.{property.Name}, typeof({returnType}))";
         }
 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types")]
         private void DeriveReturnType()
         {
             try
@@ -138,9 +140,10 @@ namespace Gemstone.Expressions.Model
 
                 ReturnType = parser.ExecuteFunction().GetType();
             }
-            catch
+            catch (Exception ex)
             {
                 ReturnType = typeof(object);
+                LibraryEvents.OnSuppressedException(this, ex);
             }
         }
     }
