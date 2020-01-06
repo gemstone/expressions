@@ -143,7 +143,7 @@ namespace Gemstone.Expressions.Model
             catch (Exception ex)
             {
                 ReturnType = typeof(object);
-                LibraryEvents.OnSuppressedException(this, ex);
+                LibraryEvents.OnSuppressedException(this, new Exception($"ValueExpressionParser exception attempting to derive return type: {ex.Message}", ex));
             }
         }
     }
