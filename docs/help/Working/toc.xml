@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topics>
+  <topic id="N:Gemstone.Expressions" project="_Namespaces" file="N_Gemstone_Expressions" sortOrder="1">
+    <topic id="T:Gemstone.Expressions.RuntimeCompiler" project="Gemstone.Expressions" file="T_Gemstone_Expressions_RuntimeCompiler">
+      <topic id="Methods.T:Gemstone.Expressions.RuntimeCompiler" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_RuntimeCompiler">
+        <topic id="M:Gemstone.Expressions.RuntimeCompiler.Compile(System.String,System.Collections.Generic.IEnumerable{System.Reflection.Assembly},Microsoft.CodeAnalysis.CSharp.CSharpCompilationOptions,System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_RuntimeCompiler_Compile" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.StaticDynamic" project="Gemstone.Expressions" file="T_Gemstone_Expressions_StaticDynamic">
+      <topic id="M:Gemstone.Expressions.StaticDynamic.#ctor(System.Type)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_StaticDynamic__ctor" />
+      <topic id="Methods.T:Gemstone.Expressions.StaticDynamic" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_StaticDynamic">
+        <topic id="M:Gemstone.Expressions.StaticDynamic.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_StaticDynamic_TryGetMember" />
+        <topic id="M:Gemstone.Expressions.StaticDynamic.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_StaticDynamic_TryInvokeMember" />
+      </topic>
+    </topic>
+  </topic>
+  <topic id="N:Gemstone.Expressions.Evaluator" project="_Namespaces" file="N_Gemstone_Expressions_Evaluator">
+    <topic id="T:Gemstone.Expressions.Evaluator.ExpressionCompiler" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Evaluator_ExpressionCompiler">
+      <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Evaluator.ExpressionCompiler" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler" />
+      <topic id="Methods.T:Gemstone.Expressions.Evaluator.ExpressionCompiler" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler" />
+    </topic>
+    <topic id="T:Gemstone.Expressions.Evaluator.ExpressionCompiler`1" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1">
+      <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_1__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Evaluator.ExpressionCompiler`1" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1">
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.CompiledAction" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_CompiledAction" />
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.CompiledFunction" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_CompiledFunction" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Evaluator.ExpressionCompiler`1" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1">
+        <topic id="Overload:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.ExecuteAction" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteAction">
+          <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.ExecuteAction" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteAction" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.ExecuteFunction" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteFunction">
+          <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.ExecuteFunction" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteFunction" />
+        </topic>
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Evaluator.ExpressionCompiler`2" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2">
+      <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Evaluator.ExpressionCompiler`2" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2">
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.CompiledAction" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_CompiledAction" />
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.CompiledExpression" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_CompiledExpression" />
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.CompiledFunction" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_CompiledFunction" />
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Expression" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_Expression" />
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.InstanceParameterType" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_InstanceParameterType" />
+        <topic id="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.TypeRegistry" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_TypeRegistry" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Evaluator.ExpressionCompiler`2" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2">
+        <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Compile(System.Boolean)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_Compile" />
+        <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.ExecuteAction(`1)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_ExecuteAction" />
+        <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.ExecuteFunction(`1)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_ExecuteFunction" />
+        <topic id="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.ToString" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_ToString" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Evaluator.Symbol" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Evaluator_Symbol">
+      <topic id="Overload:Gemstone.Expressions.Evaluator.Symbol.#ctor" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_Symbol__ctor">
+        <topic id="M:Gemstone.Expressions.Evaluator.Symbol.#ctor(System.String,System.Type)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_Symbol__ctor" />
+        <topic id="M:Gemstone.Expressions.Evaluator.Symbol.#ctor(System.String,System.Type,System.Object)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_Symbol__ctor_1" />
+      </topic>
+      <topic id="Properties.T:Gemstone.Expressions.Evaluator.Symbol" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Evaluator_Symbol">
+        <topic id="P:Gemstone.Expressions.Evaluator.Symbol.Name" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_Symbol_Name" />
+        <topic id="P:Gemstone.Expressions.Evaluator.Symbol.Type" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_Symbol_Type" />
+        <topic id="P:Gemstone.Expressions.Evaluator.Symbol.Value" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_Symbol_Value" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Evaluator.Symbol" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Evaluator_Symbol" />
+    </topic>
+    <topic id="T:Gemstone.Expressions.Evaluator.TypeRegistry" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Evaluator_TypeRegistry">
+      <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.#ctor" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Evaluator.TypeRegistry" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Evaluator_TypeRegistry">
+        <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.Assemblies" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_Assemblies" />
+        <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.GeneratedContextTypeCount" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_GeneratedContextTypeCount" />
+        <topic id="Overload:Gemstone.Expressions.Evaluator.TypeRegistry.Item" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_TypeRegistry_Item">
+          <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.Item(System.String)" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_Item" />
+          <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.Item(System.String,System.Type)" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_Item_1" />
+        </topic>
+        <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.Namespaces" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_Namespaces" />
+        <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.RegisteredSymbols" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_RegisteredSymbols" />
+        <topic id="P:Gemstone.Expressions.Evaluator.TypeRegistry.RegisteredTypes" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Evaluator_TypeRegistry_RegisteredTypes" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Evaluator.TypeRegistry" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Evaluator_TypeRegistry">
+        <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.Clone" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_Clone" />
+        <topic id="Overload:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType">
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType``2" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType__2" />
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType(System.Type,System.Type)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext">
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext``2" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext__2" />
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext(System.Type,System.Type)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterSymbol" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol">
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterSymbol(Gemstone.Expressions.Evaluator.Symbol)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol" />
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterSymbol``1(System.String,``0)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol__1" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterType" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType">
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterType``1" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType__1" />
+          <topic id="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterType(System.Type)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType" />
+        </topic>
+      </topic>
+    </topic>
+  </topic>
+  <topic id="N:Gemstone.Expressions.Model" project="_Namespaces" file="N_Gemstone_Expressions_Model">
+    <topic id="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute">
+      <topic id="M:Gemstone.Expressions.Model.DefaultValueExpressionAttribute.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_DefaultValueExpressionAttribute__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute" />
+      <topic id="Methods.T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute" />
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.EvaluationOrderException" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_EvaluationOrderException">
+      <topic id="M:Gemstone.Expressions.Model.EvaluationOrderException.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_EvaluationOrderException__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Model.EvaluationOrderException" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_EvaluationOrderException" />
+      <topic id="Methods.T:Gemstone.Expressions.Model.EvaluationOrderException" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_EvaluationOrderException" />
+      <topic id="Events.T:Gemstone.Expressions.Model.EvaluationOrderException" project="Gemstone.Expressions" file="Events_T_Gemstone_Expressions_Model_EvaluationOrderException" />
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.IValueExpressionAttribute" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_IValueExpressionAttribute">
+      <topic id="Properties.T:Gemstone.Expressions.Model.IValueExpressionAttribute" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_IValueExpressionAttribute">
+        <topic id="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Cached" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_IValueExpressionAttribute_Cached" />
+        <topic id="P:Gemstone.Expressions.Model.IValueExpressionAttribute.EvaluationOrder" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_IValueExpressionAttribute_EvaluationOrder" />
+        <topic id="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_IValueExpressionAttribute_Expression" />
+        <topic id="P:Gemstone.Expressions.Model.IValueExpressionAttribute.TypeRegistry" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_IValueExpressionAttribute_TypeRegistry" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Model.IValueExpressionAttribute" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_IValueExpressionAttribute">
+        <topic id="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetExpressionUpdateValue(System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_IValueExpressionAttribute_GetExpressionUpdateValue" />
+        <topic id="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_IValueExpressionAttribute_GetPropertyUpdateValue" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.IValueExpressionScope`1" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_IValueExpressionScope_1">
+      <topic id="Properties.T:Gemstone.Expressions.Model.IValueExpressionScope`1" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_IValueExpressionScope_1">
+        <topic id="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_IValueExpressionScope_1_Instance" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute">
+      <topic id="M:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.#ctor(System.String,System.Type)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute">
+        <topic id="P:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.ReturnType" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute_ReturnType" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute">
+        <topic id="M:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.GetExpressionUpdateValue(System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute_GetExpressionUpdateValue" />
+        <topic id="M:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute_GetPropertyUpdateValue" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute">
+      <topic id="M:Gemstone.Expressions.Model.UpdateValueExpressionAttribute.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_UpdateValueExpressionAttribute__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute" />
+      <topic id="Methods.T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute" />
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_ValueExpressionAttributeBase">
+      <topic id="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionAttributeBase__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_ValueExpressionAttributeBase">
+        <topic id="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Cached" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_Cached" />
+        <topic id="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.EvaluationOrder" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_EvaluationOrder" />
+        <topic id="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_Expression" />
+        <topic id="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.TypeRegistry" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_TypeRegistry" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_ValueExpressionAttributeBase">
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetExpressionUpdateValue(System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionAttributeBase_GetExpressionUpdateValue" />
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionAttributeBase_GetPropertyUpdateValue" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.ValueExpressionParser" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_ValueExpressionParser">
+      <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser.#ctor" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser__ctor">
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser__ctor_1" />
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser.#ctor(Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser__ctor" />
+      </topic>
+      <topic id="Properties.T:Gemstone.Expressions.Model.ValueExpressionParser" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_ValueExpressionParser">
+        <topic id="P:Gemstone.Expressions.Model.ValueExpressionParser.DefaultTypeRegistry" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_ValueExpressionParser_DefaultTypeRegistry" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Model.ValueExpressionParser" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_ValueExpressionParser">
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser.DeriveExpression(System.String,Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.MemberInfo,System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_DeriveExpression" />
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser.HasThisKeywords(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_HasThisKeywords" />
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser.ReplaceThisKeywords(System.String,System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_ReplaceThisKeywords" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.ValueExpressionParser`1" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_ValueExpressionParser_1">
+      <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.#ctor" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor">
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.#ctor(System.String)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor_1" />
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.#ctor(Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.PropertyInfo)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor" />
+      </topic>
+      <topic id="Properties.T:Gemstone.Expressions.Model.ValueExpressionParser`1" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_ValueExpressionParser_1" />
+      <topic id="Methods.T:Gemstone.Expressions.Model.ValueExpressionParser`1" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_ValueExpressionParser_1">
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaults" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaults(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaults``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults__1" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaultsForType" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaultsForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType__1" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaultsForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType__2" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance__1" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstanceForType" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstanceForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType__1" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstanceForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType__2" />
+        </topic>
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.InitializeType" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_InitializeType" />
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.Parse(System.Linq.Expressions.ParameterExpression,Gemstone.Expressions.Evaluator.TypeRegistry,System.Boolean)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_Parse" />
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressions" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressions(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressions``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions__1" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressionsForType" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressionsForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType__1" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressionsForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType__2" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstance" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstance(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance__1" />
+        </topic>
+        <topic id="Overload:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstanceForType" project="Gemstone.Expressions" file="Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType">
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstanceForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType__1" />
+          <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstanceForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType__2" />
+        </topic>
+        <topic id="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateProperties(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateProperties" />
+      </topic>
+    </topic>
+    <topic id="T:Gemstone.Expressions.Model.ValueExpressionScopeBase`1" project="Gemstone.Expressions" file="T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1">
+      <topic id="M:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.#ctor" project="Gemstone.Expressions" file="M_Gemstone_Expressions_Model_ValueExpressionScopeBase_1__ctor" />
+      <topic id="Properties.T:Gemstone.Expressions.Model.ValueExpressionScopeBase`1" project="Gemstone.Expressions" file="Properties_T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1">
+        <topic id="P:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.Instance" project="Gemstone.Expressions" file="P_Gemstone_Expressions_Model_ValueExpressionScopeBase_1_Instance" />
+      </topic>
+      <topic id="Methods.T:Gemstone.Expressions.Model.ValueExpressionScopeBase`1" project="Gemstone.Expressions" file="Methods_T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1" />
+    </topic>
+  </topic>
+</topics>
