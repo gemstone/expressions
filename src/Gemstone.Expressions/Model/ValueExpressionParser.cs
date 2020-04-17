@@ -31,6 +31,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Gemstone.Collections.CollectionExtensions;
 using Gemstone.Expressions.Evaluator;
+using Gemstone.Identity;
 using Gemstone.Reflection.MemberInfoExtensions;
 using LinqExpression = System.Linq.Expressions.Expression;
 
@@ -78,11 +79,8 @@ namespace Gemstone.Expressions.Model
         {
             // Setup default type registry for parsing value expression attributes
             DefaultTypeRegistry = new TypeRegistry();
-            DefaultTypeRegistry.RegisterType<Guid>();
-
-            // TODO: Add UserInfo type when added to gemstone.common
-            //s_defaultTypeRegistry.RegisterType<UserInfo>();
-
+            DefaultTypeRegistry.RegisterType<Guid>();            
+            DefaultTypeRegistry.RegisterType(typeof(UserInfo));
             DefaultTypeRegistry.RegisterType(typeof(Common));
             DefaultTypeRegistry.RegisterType(typeof(StringExtensions.StringExtensions));
 
