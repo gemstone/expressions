@@ -136,7 +136,7 @@ namespace Gemstone.Expressions.Evaluator
                     Assembly? loadedAssembly = AppDomain.CurrentDomain.GetAssemblies().
                         SingleOrDefault(assembly => assembly.GetName().Name == name);
 
-                    if (loadedAssembly is object)
+                    if (loadedAssembly != null)
                         assemblies.Add(loadedAssembly);
                 }
 
@@ -261,7 +261,7 @@ namespace Gemstone.Expressions.Evaluator
                 if (field is null)
                     continue;
 
-                if (symbol.Type != typeof(Type) && symbol.Value is object)
+                if (symbol.Type != typeof(Type) && symbol.Value != null)
                     field.SetValue(instance, symbol.Value);
             }
 
@@ -401,7 +401,7 @@ namespace Gemstone.Expressions.Evaluator
                     }}}}
                 }}}}";
 
-            string codeHash = GetSHA256(contextTypeCodeTemplate);
+            string codeHash = GetSha256(contextTypeCodeTemplate);
             string contextTypeNamespace = $"{nameof(Evaluator)}{codeHash}";
 
             // For now, we must write assembly to a file in order for Roslyn to use it :-p
@@ -479,7 +479,7 @@ namespace Gemstone.Expressions.Evaluator
         public static int GeneratedContextTypeCount => s_codeAssemblies.Count;
 
         // Static Methods
-        private static string GetSHA256(string text)
+        private static string GetSha256(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
