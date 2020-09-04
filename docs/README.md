@@ -7,6 +7,7 @@ The Gemstone Expressions Library organizes all Gemstone functionality related to
 
 [![GitHub license](https://img.shields.io/github/license/gemstone/expressions?color=4CC61E)](https://github.com/gemstone/expressions/blob/master/LICENSE)
 [![Build status](https://ci.appveyor.com/api/projects/status/5p90y9pujit72lfl?svg=true)](https://ci.appveyor.com/project/ritchiecarroll/expressions)
+![CodeQL](https://github.com/gemstone/expressions/workflows/CodeQL/badge.svg)
 
 This library includes helpful expression related classes like the following:
 
