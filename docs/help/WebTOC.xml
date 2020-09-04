@@ -2,44 +2,44 @@
 <HelpTOC>
 
   <HelpTOCNode Title="About" Url="html/About.htm" />
-  <HelpTOCNode Id="494c47a2-d144-4a90-b189-5115c79933d9" Title="Gemstone.Expressions" Url="html/N_Gemstone_Expressions.htm">
-    <HelpTOCNode Id="2b048818-7a75-4373-a54c-35db6abcf7dd" Title="RuntimeCompiler Class" Url="html/T_Gemstone_Expressions_RuntimeCompiler.htm">
-      <HelpTOCNode Id="dcd5a496-7268-402e-abdb-52a64f30affb" Title="RuntimeCompiler Methods" Url="html/Methods_T_Gemstone_Expressions_RuntimeCompiler.htm">
+  <HelpTOCNode Id="02dbc2f0-6bbe-4291-ac27-e360e523a2b8" Title="Gemstone.Expressions" Url="html/N_Gemstone_Expressions.htm">
+    <HelpTOCNode Id="438959f5-f0cd-49a7-9b24-c1fbf1f90a7b" Title="RuntimeCompiler Class" Url="html/T_Gemstone_Expressions_RuntimeCompiler.htm">
+      <HelpTOCNode Id="eeb74cb0-dece-4000-aac5-bbf208e10d61" Title="RuntimeCompiler Methods" Url="html/Methods_T_Gemstone_Expressions_RuntimeCompiler.htm">
         <HelpTOCNode Title="Compile Method " Url="html/M_Gemstone_Expressions_RuntimeCompiler_Compile.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="1cfce006-a994-484e-bd47-10e2f11b7d46" Title="StaticDynamic Class" Url="html/T_Gemstone_Expressions_StaticDynamic.htm">
+    <HelpTOCNode Id="a790e30e-2b4e-483c-adf1-484418561bc2" Title="StaticDynamic Class" Url="html/T_Gemstone_Expressions_StaticDynamic.htm">
       <HelpTOCNode Title="StaticDynamic Constructor " Url="html/M_Gemstone_Expressions_StaticDynamic__ctor.htm" />
-      <HelpTOCNode Id="5d89f61f-5e7a-488f-b871-e1700f45d1b4" Title="StaticDynamic Methods" Url="html/Methods_T_Gemstone_Expressions_StaticDynamic.htm">
+      <HelpTOCNode Id="22dbfe67-cd47-41cc-9298-0296c2f06ebe" Title="StaticDynamic Methods" Url="html/Methods_T_Gemstone_Expressions_StaticDynamic.htm">
         <HelpTOCNode Title="TryGetMember Method " Url="html/M_Gemstone_Expressions_StaticDynamic_TryGetMember.htm" />
         <HelpTOCNode Title="TryInvokeMember Method " Url="html/M_Gemstone_Expressions_StaticDynamic_TryInvokeMember.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="f37f55ab-a622-48be-8ad2-6b39a28243de" Title="Gemstone.Expressions.Evaluator" Url="html/N_Gemstone_Expressions_Evaluator.htm">
-    <HelpTOCNode Id="f37cff84-bcef-4b97-8538-8ed86d6135e7" Title="ExpressionCompiler Class" Url="html/T_Gemstone_Expressions_Evaluator_ExpressionCompiler.htm">
+  <HelpTOCNode Id="938edb04-a566-47ff-adfd-b141aff3bc39" Title="Gemstone.Expressions.Evaluator" Url="html/N_Gemstone_Expressions_Evaluator.htm">
+    <HelpTOCNode Id="aa93c60e-03c7-4860-9465-fc60e93df4cb" Title="ExpressionCompiler Class" Url="html/T_Gemstone_Expressions_Evaluator_ExpressionCompiler.htm">
       <HelpTOCNode Title="ExpressionCompiler Constructor " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler__ctor.htm" />
       <HelpTOCNode Title="ExpressionCompiler Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler.htm" />
       <HelpTOCNode Title="ExpressionCompiler Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="1a48eafc-58b8-408c-8d5b-97e6a511f4e2" Title="ExpressionCompiler(TResult) Class" Url="html/T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1.htm">
+    <HelpTOCNode Id="56a3364e-76c3-470b-863d-7e3d21910531" Title="ExpressionCompiler(TResult) Class" Url="html/T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1.htm">
       <HelpTOCNode Title="ExpressionCompiler(TResult) Constructor " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_1__ctor.htm" />
-      <HelpTOCNode Id="a7a0efdb-44a5-442d-8180-5c37a584fb3c" Title="ExpressionCompiler(TResult) Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1.htm">
+      <HelpTOCNode Id="ff462d3f-fb08-4b19-a2ff-321b4250709e" Title="ExpressionCompiler(TResult) Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1.htm">
         <HelpTOCNode Title="CompiledAction Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_CompiledAction.htm" />
         <HelpTOCNode Title="CompiledFunction Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_CompiledFunction.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7da14972-cf17-4609-99c0-4c0fcaca8d80" Title="ExpressionCompiler(TResult) Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1.htm">
-        <HelpTOCNode Id="9bfbf8f6-3c96-4fd9-a5ba-5a0342523da0" Title="ExecuteAction Method " Url="html/Overload_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteAction.htm">
+      <HelpTOCNode Id="dd86785c-ce0d-48d2-920d-228149010d4d" Title="ExpressionCompiler(TResult) Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_1.htm">
+        <HelpTOCNode Id="0d88e44c-7d0c-494c-b510-812d913164ed" Title="ExecuteAction Method " Url="html/Overload_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteAction.htm">
           <HelpTOCNode Title="ExecuteAction Method " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteAction.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="0479d94b-5814-43d1-92e4-3d3a3091321b" Title="ExecuteFunction Method " Url="html/Overload_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteFunction.htm">
+        <HelpTOCNode Id="a96655f9-eed1-4bc6-bf19-f5832528b143" Title="ExecuteFunction Method " Url="html/Overload_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteFunction.htm">
           <HelpTOCNode Title="ExecuteFunction Method " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_1_ExecuteFunction.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="945f025e-d4de-4e19-a34b-7b928830207a" Title="ExpressionCompiler(TResult, TInstanceParameter) Class" Url="html/T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2.htm">
+    <HelpTOCNode Id="0640845c-dd90-4c15-94a7-ef04fe8421c9" Title="ExpressionCompiler(TResult, TInstanceParameter) Class" Url="html/T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2.htm">
       <HelpTOCNode Title="ExpressionCompiler(TResult, TInstanceParameter) Constructor " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2__ctor.htm" />
-      <HelpTOCNode Id="292c9c3f-fb93-4b19-8ab5-c9f42b8450c1" Title="ExpressionCompiler(TResult, TInstanceParameter) Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2.htm">
+      <HelpTOCNode Id="4292dadc-bb9f-4601-8d33-1dbbbbd44386" Title="ExpressionCompiler(TResult, TInstanceParameter) Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2.htm">
         <HelpTOCNode Title="CompiledAction Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_CompiledAction.htm" />
         <HelpTOCNode Title="CompiledExpression Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_CompiledExpression.htm" />
         <HelpTOCNode Title="CompiledFunction Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_CompiledFunction.htm" />
@@ -47,31 +47,31 @@
         <HelpTOCNode Title="InstanceParameterType Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_InstanceParameterType.htm" />
         <HelpTOCNode Title="TypeRegistry Property " Url="html/P_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_TypeRegistry.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3124f0a7-8f49-4b1b-b1a3-5395bb60d217" Title="ExpressionCompiler(TResult, TInstanceParameter) Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2.htm">
+      <HelpTOCNode Id="2a569798-31e0-4e59-9d3d-ad462fd8e95c" Title="ExpressionCompiler(TResult, TInstanceParameter) Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_ExpressionCompiler_2.htm">
         <HelpTOCNode Title="Compile Method " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_Compile.htm" />
         <HelpTOCNode Title="ExecuteAction Method " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_ExecuteAction.htm" />
         <HelpTOCNode Title="ExecuteFunction Method " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_ExecuteFunction.htm" />
         <HelpTOCNode Title="ToString Method " Url="html/M_Gemstone_Expressions_Evaluator_ExpressionCompiler_2_ToString.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="1fa0e755-a69e-4a19-b3cf-54dd87f9db02" Title="Symbol Class" Url="html/T_Gemstone_Expressions_Evaluator_Symbol.htm">
-      <HelpTOCNode Id="b0f352e1-72c6-4662-abda-ef9b789b151b" Title="Symbol Constructor " Url="html/Overload_Gemstone_Expressions_Evaluator_Symbol__ctor.htm">
+    <HelpTOCNode Id="77296cff-f27c-4379-940c-9a42bc9638a5" Title="Symbol Class" Url="html/T_Gemstone_Expressions_Evaluator_Symbol.htm">
+      <HelpTOCNode Id="732dfea5-53fa-40c5-938e-7f756d0480ba" Title="Symbol Constructor " Url="html/Overload_Gemstone_Expressions_Evaluator_Symbol__ctor.htm">
         <HelpTOCNode Title="Symbol Constructor (String, Type)" Url="html/M_Gemstone_Expressions_Evaluator_Symbol__ctor.htm" />
         <HelpTOCNode Title="Symbol Constructor (String, Type, Object)" Url="html/M_Gemstone_Expressions_Evaluator_Symbol__ctor_1.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f155d6b2-d137-4fc4-b741-7959f32ecd13" Title="Symbol Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_Symbol.htm">
+      <HelpTOCNode Id="8b63d180-80b6-4da5-a340-3709c840c875" Title="Symbol Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_Symbol.htm">
         <HelpTOCNode Title="Name Property " Url="html/P_Gemstone_Expressions_Evaluator_Symbol_Name.htm" />
         <HelpTOCNode Title="Type Property " Url="html/P_Gemstone_Expressions_Evaluator_Symbol_Type.htm" />
         <HelpTOCNode Title="Value Property " Url="html/P_Gemstone_Expressions_Evaluator_Symbol_Value.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Symbol Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_Symbol.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="3aff7ea4-e28c-4e68-95d7-1f07fe850be1" Title="TypeRegistry Class" Url="html/T_Gemstone_Expressions_Evaluator_TypeRegistry.htm">
+    <HelpTOCNode Id="be0f8776-c0f6-45ba-8420-9835654af3ee" Title="TypeRegistry Class" Url="html/T_Gemstone_Expressions_Evaluator_TypeRegistry.htm">
       <HelpTOCNode Title="TypeRegistry Constructor " Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry__ctor.htm" />
-      <HelpTOCNode Id="6b64c599-50f5-4c39-a6a1-2f906d2f3481" Title="TypeRegistry Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_TypeRegistry.htm">
+      <HelpTOCNode Id="f552d4aa-51d0-4782-8f5a-9999a411624d" Title="TypeRegistry Properties" Url="html/Properties_T_Gemstone_Expressions_Evaluator_TypeRegistry.htm">
         <HelpTOCNode Title="Assemblies Property " Url="html/P_Gemstone_Expressions_Evaluator_TypeRegistry_Assemblies.htm" />
         <HelpTOCNode Title="GeneratedContextTypeCount Property " Url="html/P_Gemstone_Expressions_Evaluator_TypeRegistry_GeneratedContextTypeCount.htm" />
-        <HelpTOCNode Id="f70c48c7-34c3-4e09-977f-8c227bd92094" Title="Item Property " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_Item.htm">
+        <HelpTOCNode Id="70444489-b1f6-4e29-919d-c5f5079c49b8" Title="Item Property " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_Item.htm">
           <HelpTOCNode Title="Item Property (String)" Url="html/P_Gemstone_Expressions_Evaluator_TypeRegistry_Item.htm" />
           <HelpTOCNode Title="Item Property (String, Type)" Url="html/P_Gemstone_Expressions_Evaluator_TypeRegistry_Item_1.htm" />
         </HelpTOCNode>
@@ -79,145 +79,145 @@
         <HelpTOCNode Title="RegisteredSymbols Property " Url="html/P_Gemstone_Expressions_Evaluator_TypeRegistry_RegisteredSymbols.htm" />
         <HelpTOCNode Title="RegisteredTypes Property " Url="html/P_Gemstone_Expressions_Evaluator_TypeRegistry_RegisteredTypes.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5adac668-210f-4897-8b6f-a2cff050f828" Title="TypeRegistry Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_TypeRegistry.htm">
+      <HelpTOCNode Id="401df9f8-1c17-4e32-bbd6-7dafeda3cd6a" Title="TypeRegistry Methods" Url="html/Methods_T_Gemstone_Expressions_Evaluator_TypeRegistry.htm">
         <HelpTOCNode Title="Clone Method " Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_Clone.htm" />
-        <HelpTOCNode Id="fccac871-4b79-4b52-b1bd-76b6b51e0d6e" Title="GetContextType Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType.htm">
+        <HelpTOCNode Id="636d38f1-2334-4433-af3d-90e7399b6833" Title="GetContextType Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType.htm">
           <HelpTOCNode Title="GetContextType(TResult, TInstanceParameter) Method " Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType__2.htm" />
           <HelpTOCNode Title="GetContextType Method (Type, Type)" Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_GetContextType.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="6a5dfd03-0092-47c6-bad5-3b03799353df" Title="GetNewContext Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext.htm">
+        <HelpTOCNode Id="2d5be84d-5a1e-4c6f-9b55-e434557d6e68" Title="GetNewContext Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext.htm">
           <HelpTOCNode Title="GetNewContext(TResult, TInstanceParameter) Method " Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext__2.htm" />
           <HelpTOCNode Title="GetNewContext Method (Type, Type)" Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_GetNewContext.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="e28bac29-c08c-4163-9ac5-9818553ddb7c" Title="RegisterSymbol Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol.htm">
+        <HelpTOCNode Id="190e6e5a-da00-423e-96e3-b6500d2680e4" Title="RegisterSymbol Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol.htm">
           <HelpTOCNode Title="RegisterSymbol Method (Symbol)" Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol.htm" />
           <HelpTOCNode Title="RegisterSymbol(T) Method (String, T)" Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterSymbol__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="b1b4f208-76c8-4623-a352-3c98d99b9812" Title="RegisterType Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType.htm">
+        <HelpTOCNode Id="015d2547-8832-4500-95d4-d41e54d616f0" Title="RegisterType Method " Url="html/Overload_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType.htm">
           <HelpTOCNode Title="RegisterType(T) Method " Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType__1.htm" />
           <HelpTOCNode Title="RegisterType Method (Type)" Url="html/M_Gemstone_Expressions_Evaluator_TypeRegistry_RegisterType.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="4c9c7ef4-41bf-464e-978a-73ca938ff79d" Title="Gemstone.Expressions.Model" Url="html/N_Gemstone_Expressions_Model.htm">
-    <HelpTOCNode Id="a2ba9e56-e4cf-4249-9f9a-fc877fbc03b4" Title="DefaultValueExpressionAttribute Class" Url="html/T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute.htm">
+  <HelpTOCNode Id="65cfa779-1147-4094-99cd-14deca136b76" Title="Gemstone.Expressions.Model" Url="html/N_Gemstone_Expressions_Model.htm">
+    <HelpTOCNode Id="cef3d8a7-7147-48f1-aa8e-c9cf5a8bb6b9" Title="DefaultValueExpressionAttribute Class" Url="html/T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute.htm">
       <HelpTOCNode Title="DefaultValueExpressionAttribute Constructor " Url="html/M_Gemstone_Expressions_Model_DefaultValueExpressionAttribute__ctor.htm" />
       <HelpTOCNode Title="DefaultValueExpressionAttribute Properties" Url="html/Properties_T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute.htm" />
       <HelpTOCNode Title="DefaultValueExpressionAttribute Methods" Url="html/Methods_T_Gemstone_Expressions_Model_DefaultValueExpressionAttribute.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="23757701-940c-419b-8405-fcd47b0bdb16" Title="EvaluationOrderException Class" Url="html/T_Gemstone_Expressions_Model_EvaluationOrderException.htm">
+    <HelpTOCNode Id="1e94f3b6-53ae-4e8e-acff-bad64996b300" Title="EvaluationOrderException Class" Url="html/T_Gemstone_Expressions_Model_EvaluationOrderException.htm">
       <HelpTOCNode Title="EvaluationOrderException Constructor " Url="html/M_Gemstone_Expressions_Model_EvaluationOrderException__ctor.htm" />
       <HelpTOCNode Title="EvaluationOrderException Properties" Url="html/Properties_T_Gemstone_Expressions_Model_EvaluationOrderException.htm" />
       <HelpTOCNode Title="EvaluationOrderException Methods" Url="html/Methods_T_Gemstone_Expressions_Model_EvaluationOrderException.htm" />
       <HelpTOCNode Title="EvaluationOrderException Events" Url="html/Events_T_Gemstone_Expressions_Model_EvaluationOrderException.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="38b711ae-8e63-470a-93c3-d405176cec47" Title="IValueExpressionAttribute Interface" Url="html/T_Gemstone_Expressions_Model_IValueExpressionAttribute.htm">
-      <HelpTOCNode Id="e87306fa-f1a5-4ed5-95b0-507526ebfd53" Title="IValueExpressionAttribute Properties" Url="html/Properties_T_Gemstone_Expressions_Model_IValueExpressionAttribute.htm">
+    <HelpTOCNode Id="96141ef6-3142-47e8-9093-0350b4e20717" Title="IValueExpressionAttribute Interface" Url="html/T_Gemstone_Expressions_Model_IValueExpressionAttribute.htm">
+      <HelpTOCNode Id="9a77f05c-e56d-4e86-826b-87201beec599" Title="IValueExpressionAttribute Properties" Url="html/Properties_T_Gemstone_Expressions_Model_IValueExpressionAttribute.htm">
         <HelpTOCNode Title="Cached Property " Url="html/P_Gemstone_Expressions_Model_IValueExpressionAttribute_Cached.htm" />
         <HelpTOCNode Title="EvaluationOrder Property " Url="html/P_Gemstone_Expressions_Model_IValueExpressionAttribute_EvaluationOrder.htm" />
         <HelpTOCNode Title="Expression Property " Url="html/P_Gemstone_Expressions_Model_IValueExpressionAttribute_Expression.htm" />
         <HelpTOCNode Title="TypeRegistry Property " Url="html/P_Gemstone_Expressions_Model_IValueExpressionAttribute_TypeRegistry.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="635920a2-004c-4888-8bc7-bc1dd7380a7c" Title="IValueExpressionAttribute Methods" Url="html/Methods_T_Gemstone_Expressions_Model_IValueExpressionAttribute.htm">
+      <HelpTOCNode Id="605efc95-5c69-4acb-a8fa-d0aba70fbf70" Title="IValueExpressionAttribute Methods" Url="html/Methods_T_Gemstone_Expressions_Model_IValueExpressionAttribute.htm">
         <HelpTOCNode Title="GetExpressionUpdateValue Method " Url="html/M_Gemstone_Expressions_Model_IValueExpressionAttribute_GetExpressionUpdateValue.htm" />
         <HelpTOCNode Title="GetPropertyUpdateValue Method " Url="html/M_Gemstone_Expressions_Model_IValueExpressionAttribute_GetPropertyUpdateValue.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="5030185f-bddc-4dec-a58e-fd1dfced7565" Title="IValueExpressionScope(T) Interface" Url="html/T_Gemstone_Expressions_Model_IValueExpressionScope_1.htm">
-      <HelpTOCNode Id="15276307-e2f9-42ae-be59-b53bc8c2ad6a" Title="IValueExpressionScope(T) Properties" Url="html/Properties_T_Gemstone_Expressions_Model_IValueExpressionScope_1.htm">
+    <HelpTOCNode Id="1a049c85-7a9b-4e1d-ac13-69bf6c06bdef" Title="IValueExpressionScope(T) Interface" Url="html/T_Gemstone_Expressions_Model_IValueExpressionScope_1.htm">
+      <HelpTOCNode Id="6564dd73-3b08-4eaa-8e8b-add101b45743" Title="IValueExpressionScope(T) Properties" Url="html/Properties_T_Gemstone_Expressions_Model_IValueExpressionScope_1.htm">
         <HelpTOCNode Title="Instance Property " Url="html/P_Gemstone_Expressions_Model_IValueExpressionScope_1_Instance.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="fd68e571-ba2d-4bbc-90c0-720e263112aa" Title="TypeConvertedValueExpressionAttribute Class" Url="html/T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute.htm">
+    <HelpTOCNode Id="8c9271e7-4e0b-49a5-81f1-cbeef483e4ac" Title="TypeConvertedValueExpressionAttribute Class" Url="html/T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute.htm">
       <HelpTOCNode Title="TypeConvertedValueExpressionAttribute Constructor " Url="html/M_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute__ctor.htm" />
-      <HelpTOCNode Id="05262a62-d62b-4de3-b7ac-c5d1e986cf06" Title="TypeConvertedValueExpressionAttribute Properties" Url="html/Properties_T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute.htm">
+      <HelpTOCNode Id="753e8772-333e-4991-8b34-f13eb4a281e9" Title="TypeConvertedValueExpressionAttribute Properties" Url="html/Properties_T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute.htm">
         <HelpTOCNode Title="ReturnType Property " Url="html/P_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute_ReturnType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="49e36e16-2419-4e2e-9d63-1546b640a672" Title="TypeConvertedValueExpressionAttribute Methods" Url="html/Methods_T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute.htm">
+      <HelpTOCNode Id="13fc91d0-30af-4852-8798-356f19ae33db" Title="TypeConvertedValueExpressionAttribute Methods" Url="html/Methods_T_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute.htm">
         <HelpTOCNode Title="GetExpressionUpdateValue Method " Url="html/M_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute_GetExpressionUpdateValue.htm" />
         <HelpTOCNode Title="GetPropertyUpdateValue Method " Url="html/M_Gemstone_Expressions_Model_TypeConvertedValueExpressionAttribute_GetPropertyUpdateValue.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="12654640-a325-4f2b-9d10-611e8d92bc9c" Title="UpdateValueExpressionAttribute Class" Url="html/T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute.htm">
+    <HelpTOCNode Id="93c6b9aa-5c87-47b6-84f5-59da62d8ef56" Title="UpdateValueExpressionAttribute Class" Url="html/T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute.htm">
       <HelpTOCNode Title="UpdateValueExpressionAttribute Constructor " Url="html/M_Gemstone_Expressions_Model_UpdateValueExpressionAttribute__ctor.htm" />
       <HelpTOCNode Title="UpdateValueExpressionAttribute Properties" Url="html/Properties_T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute.htm" />
       <HelpTOCNode Title="UpdateValueExpressionAttribute Methods" Url="html/Methods_T_Gemstone_Expressions_Model_UpdateValueExpressionAttribute.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="851d1a2d-e19b-4c72-9088-8124589aefee" Title="ValueExpressionAttributeBase Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionAttributeBase.htm">
+    <HelpTOCNode Id="0d07f33d-c7fb-4d75-8d9d-7df1e707a4c3" Title="ValueExpressionAttributeBase Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionAttributeBase.htm">
       <HelpTOCNode Title="ValueExpressionAttributeBase Constructor " Url="html/M_Gemstone_Expressions_Model_ValueExpressionAttributeBase__ctor.htm" />
-      <HelpTOCNode Id="a3b185b6-773e-42f1-8188-5e0355094490" Title="ValueExpressionAttributeBase Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionAttributeBase.htm">
+      <HelpTOCNode Id="11637dae-aa91-4fa8-bcc2-09dbd4b766e5" Title="ValueExpressionAttributeBase Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionAttributeBase.htm">
         <HelpTOCNode Title="Cached Property " Url="html/P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_Cached.htm" />
         <HelpTOCNode Title="EvaluationOrder Property " Url="html/P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_EvaluationOrder.htm" />
         <HelpTOCNode Title="Expression Property " Url="html/P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_Expression.htm" />
         <HelpTOCNode Title="TypeRegistry Property " Url="html/P_Gemstone_Expressions_Model_ValueExpressionAttributeBase_TypeRegistry.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8bbefcc2-2a61-49e8-a6fe-7279c17761c1" Title="ValueExpressionAttributeBase Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionAttributeBase.htm">
+      <HelpTOCNode Id="62a559df-5e64-4467-a919-44f92c53a665" Title="ValueExpressionAttributeBase Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionAttributeBase.htm">
         <HelpTOCNode Title="GetExpressionUpdateValue Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionAttributeBase_GetExpressionUpdateValue.htm" />
         <HelpTOCNode Title="GetPropertyUpdateValue Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionAttributeBase_GetPropertyUpdateValue.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="56453ce5-f254-4490-83f7-3be8a0070329" Title="ValueExpressionParser Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionParser.htm">
-      <HelpTOCNode Id="f826ee7f-3dc0-402b-b6e0-4639404e9af6" Title="ValueExpressionParser Constructor " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser__ctor.htm">
+    <HelpTOCNode Id="215ebc7d-7347-4b4f-ac18-22adbf94e02c" Title="ValueExpressionParser Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionParser.htm">
+      <HelpTOCNode Id="16a68f12-b801-47ea-a2ce-29988c223a06" Title="ValueExpressionParser Constructor " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser__ctor.htm">
         <HelpTOCNode Title="ValueExpressionParser Constructor (String)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser__ctor_1.htm" />
         <HelpTOCNode Title="ValueExpressionParser Constructor (IValueExpressionAttribute, PropertyInfo)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser__ctor.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="3a1fab07-c0b9-454b-bddc-0028c53093b4" Title="ValueExpressionParser Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionParser.htm">
+      <HelpTOCNode Id="16135604-78e9-4e0f-a22a-24a8e4b5381b" Title="ValueExpressionParser Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionParser.htm">
         <HelpTOCNode Title="DefaultTypeRegistry Property " Url="html/P_Gemstone_Expressions_Model_ValueExpressionParser_DefaultTypeRegistry.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8e2451c2-a19a-4995-969c-f58cd4c5b893" Title="ValueExpressionParser Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionParser.htm">
+      <HelpTOCNode Id="61444034-6051-418c-a970-10c2bf8bcd45" Title="ValueExpressionParser Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionParser.htm">
         <HelpTOCNode Title="DeriveExpression Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_DeriveExpression.htm" />
         <HelpTOCNode Title="HasThisKeywords Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_HasThisKeywords.htm" />
         <HelpTOCNode Title="ReplaceThisKeywords Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_ReplaceThisKeywords.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="8bc01cc8-8d1a-4f40-8ddf-f9698fae9d25" Title="ValueExpressionParser(T) Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionParser_1.htm">
-      <HelpTOCNode Id="f0dc9c48-f88f-44b2-bf1f-8b531da57272" Title="ValueExpressionParser(T) Constructor " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor.htm">
+    <HelpTOCNode Id="65bfd2db-b883-4a74-9e38-43d966f9f655" Title="ValueExpressionParser(T) Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionParser_1.htm">
+      <HelpTOCNode Id="978423d0-e3fe-4911-958b-c873c7c30104" Title="ValueExpressionParser(T) Constructor " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor.htm">
         <HelpTOCNode Title="ValueExpressionParser(T) Constructor (String)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor_1.htm" />
         <HelpTOCNode Title="ValueExpressionParser(T) Constructor (IValueExpressionAttribute, PropertyInfo)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1__ctor.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ValueExpressionParser(T) Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionParser_1.htm" />
-      <HelpTOCNode Id="c4fbe731-6f44-4c9e-92b9-5f883432f41a" Title="ValueExpressionParser(T) Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionParser_1.htm">
-        <HelpTOCNode Id="0611a13a-825f-4905-8f5d-21066cfd1ced" Title="ApplyDefaults Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults.htm">
+      <HelpTOCNode Id="80580c7c-6599-48c9-ad3d-b8c172c0630f" Title="ValueExpressionParser(T) Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionParser_1.htm">
+        <HelpTOCNode Id="41460c81-238c-4d53-b00d-6c757ea7da50" Title="ApplyDefaults Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults.htm">
           <HelpTOCNode Title="ApplyDefaults Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults.htm" />
           <HelpTOCNode Title="ApplyDefaults(TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaults__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="4976303e-dadd-4e2c-b376-41450fdad594" Title="ApplyDefaultsForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType.htm">
+        <HelpTOCNode Id="d57a2cfe-c8c1-4c4f-ad6d-cf0d61ceb877" Title="ApplyDefaultsForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType.htm">
           <HelpTOCNode Title="ApplyDefaultsForType(TValueExpressionAttribute) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType__1.htm" />
           <HelpTOCNode Title="ApplyDefaultsForType(TValueExpressionAttribute, TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_ApplyDefaultsForType__2.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="37aeeb19-aae3-458f-b1a1-b098feb0ba1e" Title="CreateInstance Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance.htm">
+        <HelpTOCNode Id="9a24f0d0-d726-481b-8fbc-f7ae8b909a0e" Title="CreateInstance Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance.htm">
           <HelpTOCNode Title="CreateInstance Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance.htm" />
           <HelpTOCNode Title="CreateInstance(TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstance__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="e21fbf03-1e0f-4915-8a41-70a37d2fe96d" Title="CreateInstanceForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType.htm">
+        <HelpTOCNode Id="2433545d-8d69-4b44-8f02-d8c339c2491b" Title="CreateInstanceForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType.htm">
           <HelpTOCNode Title="CreateInstanceForType(TValueExpressionAttribute) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType__1.htm" />
           <HelpTOCNode Title="CreateInstanceForType(TValueExpressionAttribute, TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_CreateInstanceForType__2.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="InitializeType Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_InitializeType.htm" />
         <HelpTOCNode Title="Parse Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_Parse.htm" />
-        <HelpTOCNode Id="cf37fd18-b111-4ea7-9e9a-0c15383fc1bf" Title="UpdateExpressions Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions.htm">
+        <HelpTOCNode Id="012c68b0-14fd-43af-8344-01ed5052ac69" Title="UpdateExpressions Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions.htm">
           <HelpTOCNode Title="UpdateExpressions Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions.htm" />
           <HelpTOCNode Title="UpdateExpressions(TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressions__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="07f23e13-e03c-441a-9930-ce2b838ae147" Title="UpdateExpressionsForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType.htm">
+        <HelpTOCNode Id="a71f9f1e-d77c-4a07-9f93-dd04a509cec0" Title="UpdateExpressionsForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType.htm">
           <HelpTOCNode Title="UpdateExpressionsForType(TValueExpressionAttribute) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType__1.htm" />
           <HelpTOCNode Title="UpdateExpressionsForType(TValueExpressionAttribute, TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateExpressionsForType__2.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="9196fd69-9fda-4e9e-a4b6-716cd084e3d5" Title="UpdateInstance Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance.htm">
+        <HelpTOCNode Id="f7b4d0b6-5800-4791-8634-5e21f188f771" Title="UpdateInstance Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance.htm">
           <HelpTOCNode Title="UpdateInstance Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance.htm" />
           <HelpTOCNode Title="UpdateInstance(TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstance__1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="538f46c1-00d3-4eba-b083-c1dad9d6d76f" Title="UpdateInstanceForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType.htm">
+        <HelpTOCNode Id="c849eb60-bc4c-43ed-b7ee-a10aea07f5ad" Title="UpdateInstanceForType Method " Url="html/Overload_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType.htm">
           <HelpTOCNode Title="UpdateInstanceForType(TValueExpressionAttribute) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType__1.htm" />
           <HelpTOCNode Title="UpdateInstanceForType(TValueExpressionAttribute, TExpressionScope) Method (IEnumerable(PropertyInfo), TypeRegistry)" Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateInstanceForType__2.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="UpdateProperties Method " Url="html/M_Gemstone_Expressions_Model_ValueExpressionParser_1_UpdateProperties.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="4c8f3b19-6396-4cbe-aa2b-8ed24c64918c" Title="ValueExpressionScopeBase(T) Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1.htm">
+    <HelpTOCNode Id="e3224026-1580-4cca-bc16-365c2e452381" Title="ValueExpressionScopeBase(T) Class" Url="html/T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1.htm">
       <HelpTOCNode Title="ValueExpressionScopeBase(T) Constructor " Url="html/M_Gemstone_Expressions_Model_ValueExpressionScopeBase_1__ctor.htm" />
-      <HelpTOCNode Id="0375a315-00d9-474b-88e5-ace7e6157358" Title="ValueExpressionScopeBase(T) Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1.htm">
+      <HelpTOCNode Id="0fe5eb3f-7b3c-48a2-b4f8-065db778ba9a" Title="ValueExpressionScopeBase(T) Properties" Url="html/Properties_T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1.htm">
         <HelpTOCNode Title="Instance Property " Url="html/P_Gemstone_Expressions_Model_ValueExpressionScopeBase_1_Instance.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ValueExpressionScopeBase(T) Methods" Url="html/Methods_T_Gemstone_Expressions_Model_ValueExpressionScopeBase_1.htm" />
