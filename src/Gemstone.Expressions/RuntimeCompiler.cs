@@ -57,7 +57,7 @@ namespace Gemstone.Expressions
                     OutputKind.DynamicallyLinkedLibrary,
                     optimizationLevel: OptimizationLevel.Release));
 
-            using MemoryStream stream = new MemoryStream();
+            using MemoryStream stream = new();
 
             EmitResult result = compilation.Emit(stream);
 

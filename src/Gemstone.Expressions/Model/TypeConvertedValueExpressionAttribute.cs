@@ -133,7 +133,7 @@ namespace Gemstone.Expressions.Model
         {
             try
             {
-                ValueExpressionParser parser = new ValueExpressionParser(Expression);
+                ValueExpressionParser parser = new(Expression);
 
                 if (TypeRegistry != null)
                     parser.TypeRegistry = TypeRegistry;

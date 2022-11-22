@@ -62,8 +62,8 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void BoolExpressionTests()
         {
-            ExpressionCompiler<bool> boolTrue = new ExpressionCompiler<bool>("true");
-            ExpressionCompiler<bool> boolFalse = new ExpressionCompiler<bool>("false");
+            ExpressionCompiler<bool> boolTrue = new("true");
+            ExpressionCompiler<bool> boolFalse = new("false");
 
             Assert.IsTrue(boolTrue.ExecuteFunction());
             Assert.IsFalse(boolFalse.ExecuteFunction());
@@ -80,8 +80,8 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void DoubleExpressionTests()
         {
-            ExpressionCompiler<double> piConst = new ExpressionCompiler<double>("Math.PI");
-            ExpressionCompiler<double> cosExpr = new ExpressionCompiler<double>("Math.Cos(Math.PI)");
+            ExpressionCompiler<double> piConst = new("Math.PI");
+            ExpressionCompiler<double> cosExpr = new("Math.Cos(Math.PI)");
 
             Assert.IsTrue(piConst.ExecuteFunction() == Math.PI);
             Assert.IsTrue(cosExpr.ExecuteFunction() == -1.0D);
@@ -98,8 +98,8 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void RegisteredSymbolInstanceAccessTests()
         {
-            ExpressionCompiler regPropTest = new ExpressionCompiler($"Testing.RadarProperty == \"{RadarConst}\"");
-            ExpressionCompiler regMethodTest = new ExpressionCompiler($"Testing.RadarMethod() == \"{RadarConst}\"");
+            ExpressionCompiler regPropTest = new($"Testing.RadarProperty == \"{RadarConst}\"");
+            ExpressionCompiler regMethodTest = new($"Testing.RadarMethod() == \"{RadarConst}\"");
             
             regPropTest.TypeRegistry.RegisterSymbol("Testing", this);
             regMethodTest.TypeRegistry.RegisterSymbol("Testing", this);
@@ -119,10 +119,10 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void RegisteredTypeStaticAccessTests()
         {
-            ExpressionCompiler regConstText = new ExpressionCompiler($"EvalutatorTests.RadarConst == \"{RadarConst}\"");
-            ExpressionCompiler regStaticFieldText = new ExpressionCompiler($"EvalutatorTests.StaticRadarField == \"{RadarConst}\"");
-            ExpressionCompiler regStaticPropText = new ExpressionCompiler($"EvalutatorTests.StaticRadarProperty == \"{RadarConst}\"");
-            ExpressionCompiler regStaticMethodTest = new ExpressionCompiler($"EvalutatorTests.StaticRadarMethod() == \"{RadarConst}\"");
+            ExpressionCompiler regConstText = new($"EvalutatorTests.RadarConst == \"{RadarConst}\"");
+            ExpressionCompiler regStaticFieldText = new($"EvalutatorTests.StaticRadarField == \"{RadarConst}\"");
+            ExpressionCompiler regStaticPropText = new($"EvalutatorTests.StaticRadarProperty == \"{RadarConst}\"");
+            ExpressionCompiler regStaticMethodTest = new($"EvalutatorTests.StaticRadarMethod() == \"{RadarConst}\"");
 
             regConstText.TypeRegistry.RegisterType(typeof(EvalutatorTests));
             regStaticFieldText.TypeRegistry.RegisterType(typeof(EvalutatorTests));
@@ -155,7 +155,7 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void RegisteredTypeExtensionMethodTests()
         {
-            ExpressionCompiler<string> regExtTest = new ExpressionCompiler<string>($"\"{RadarConst}\".PadLeft(12)");
+            ExpressionCompiler<string> regExtTest = new($"\"{RadarConst}\".PadLeft(12)");
 
             regExtTest.TypeRegistry.RegisterType(typeof(StringExtensions));
 
@@ -180,10 +180,10 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void InstanceParameterTests()
         {
-            ExpressionCompiler<string, TestParams> instPropTest = new ExpressionCompiler<string, TestParams>("Instance.RadarProperty.Substring(0, 5)");
-            ExpressionCompiler instMethodTest = new ExpressionCompiler("Instance.ShowData()");
+            ExpressionCompiler<string, TestParams> instPropTest = new("Instance.RadarProperty.Substring(0, 5)");
+            ExpressionCompiler instMethodTest = new("Instance.ShowData()");
 
-            TestParams testParams = new TestParams { Instance = this };
+            TestParams testParams = new() { Instance = this };
 
             Assert.IsTrue(instPropTest.ExecuteFunction(testParams).Equals("RADAR"));
 

@@ -90,7 +90,7 @@ namespace Gemstone.Expressions.Evaluator
             get
             {
                 // Get explicitly registered types
-                HashSet<Type> registeredTypes = new HashSet<Type>(m_registeredTypes.Keys);
+                HashSet<Type> registeredTypes = new(m_registeredTypes.Keys);
 
                 // Append types for registered symbols
                 registeredTypes.UnionWith(m_registeredSymbols.Select(symbol => symbol.Value.Type));
@@ -129,7 +129,7 @@ namespace Gemstone.Expressions.Evaluator
         {
             get
             {
-                HashSet<Assembly> assemblies = new HashSet<Assembly>();
+                HashSet<Assembly> assemblies = new();
 
                 void addAssembly(string name)
                 {
@@ -160,7 +160,7 @@ namespace Gemstone.Expressions.Evaluator
         {
             get
             {
-                HashSet<string> namespaces = new HashSet<string>();
+                HashSet<string> namespaces = new();
 
                 foreach (Type type in RegisteredTypes)
                     namespaces.Add(type.Namespace);
@@ -177,7 +177,7 @@ namespace Gemstone.Expressions.Evaluator
         /// Creates a cloned instance of this <see cref="TypeRegistry"/>.
         /// </summary>
         /// <returns>Cloned instance of this <see cref="TypeRegistry"/>.</returns>
-        public TypeRegistry Clone() => new TypeRegistry(m_registeredTypes, m_registeredSymbols);
+        public TypeRegistry Clone() => new(m_registeredTypes, m_registeredSymbols);
 
         /// <summary>
         /// Registers a new <see cref="Type"/>.
@@ -322,8 +322,8 @@ namespace Gemstone.Expressions.Evaluator
             string generateFieldDefinitions()
             {
                 const string FieldTemplate = "\r\npublic {0} {1};";
-                StringBuilder fieldDefinitions = new StringBuilder();
-                HashSet<string> fieldNames = new HashSet<string>(StringComparer.Ordinal);
+                StringBuilder fieldDefinitions = new();
+                HashSet<string> fieldNames = new(StringComparer.Ordinal);
 
                 void checkForDuplicate(string name, string exceptionPrefix)
                 {
@@ -430,7 +430,7 @@ namespace Gemstone.Expressions.Evaluator
                     string contextTypeCode = string.Format(contextTypeCodeTemplate, contextTypeNamespace);
 
                     // Add assemblies for registered types, symbols and expression types
-                    HashSet<Assembly> assemblies = new HashSet<Assembly>(Assemblies) { resultType.Assembly, instanceParameterType.Assembly };
+                    HashSet<Assembly> assemblies = new(Assemblies) { resultType.Assembly, instanceParameterType.Assembly };
 
                     // Also add assemblies for instance properties and fields
                     foreach (Type type in instanceProperties.Select(property => property.PropertyType))
@@ -469,7 +469,7 @@ namespace Gemstone.Expressions.Evaluator
         #region [ Static ]
 
         // Static Fields
-        private static readonly ConcurrentDictionary<string, Assembly> s_codeAssemblies = new ConcurrentDictionary<string, Assembly>(StringComparer.Ordinal);
+        private static readonly ConcurrentDictionary<string, Assembly> s_codeAssemblies = new(StringComparer.Ordinal);
 
         // Static Properties
 

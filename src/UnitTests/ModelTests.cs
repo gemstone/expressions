@@ -129,7 +129,7 @@ namespace Gemstone.Expressions.UnitTests
             Assert.AreEqual(simple1.CreatedOn, simple1.UpdatedOn);
 
             // Apply attribute defaults to an existing model
-            SimpleModel simple2 = new SimpleModel();
+            SimpleModel simple2 = new();
             s_applyDefaultsToSimpleModel(simple2);
 
             Assert.IsTrue(simple2.ID != Guid.Empty);
@@ -154,7 +154,7 @@ namespace Gemstone.Expressions.UnitTests
         [TestMethod]
         public void TestAdvancedModel()
         {
-            AdvancedModelContext context = new AdvancedModelContext();
+            AdvancedModelContext context = new();
 
             // Create a new model with attributes applied
             AdvancedModel advanced1 = s_createAdvancedModel(context);
@@ -171,7 +171,7 @@ namespace Gemstone.Expressions.UnitTests
             Assert.IsTrue(advanced1.Ticks > 0L);
 
             // Apply attribute defaults to an existing model
-            AdvancedModel advanced2 = new AdvancedModel();
+            AdvancedModel advanced2 = new();
             context.Instance = advanced2;
             s_applyDefaultsToAdvancedModel(context);
 

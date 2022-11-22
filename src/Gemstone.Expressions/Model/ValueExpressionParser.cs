@@ -643,7 +643,7 @@ namespace Gemstone.Expressions.Model
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
 
-            List<LinqExpression> expressions = new List<LinqExpression>();
+            List<LinqExpression> expressions = new();
             ParameterExpression newInstance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
@@ -781,7 +781,7 @@ namespace Gemstone.Expressions.Model
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
 
-            List<LinqExpression> expressions = new List<LinqExpression>();
+            List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
@@ -911,7 +911,7 @@ namespace Gemstone.Expressions.Model
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
 
-            List<LinqExpression> expressions = new List<LinqExpression>();
+            List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
@@ -1034,7 +1034,7 @@ namespace Gemstone.Expressions.Model
             if (properties == null)
                 properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead);
 
-            List<LinqExpression> expressions = new List<LinqExpression>();
+            List<LinqExpression> expressions = new();
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute valueExpressionAttribute;
 
@@ -1060,7 +1060,7 @@ namespace Gemstone.Expressions.Model
 
                     // Parse expression update expression
                     expression = $"{leftOperand} = {rightOperand}";
-                    ValueExpressionParser expressionParser = new ValueExpressionParser(expression);
+                    ValueExpressionParser expressionParser = new(expression);
                     expressionParser.Parse(scopeParameter, typeRegistry, true);
 
                     if (expressionParser.CompiledExpression == null)
@@ -1090,7 +1090,7 @@ namespace Gemstone.Expressions.Model
         {
             // Parse value expression
             expression = DeriveExpression(null, valueExpressionAttribute, property);
-            ValueExpressionParser expressionParser = new ValueExpressionParser(expression);
+            ValueExpressionParser expressionParser = new(expression);
             expressionParser.Parse(scopeParameter, typeRegistry);
 
             if (expressionParser.CompiledExpression == null)
