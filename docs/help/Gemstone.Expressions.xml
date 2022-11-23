@@ -76,22 +76,34 @@
       <summary>
             Gets <see cref="T:System.Action" /> delegate for compiled expression.
             </summary>
+      <remarks>
+            Calling this property will automatically compile <see cref="T:System.Linq.Expressions.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.CompiledFunction">
       <summary>
             Gets <see cref="T:System.Func`1" /> delegate for compiled expression.
             </summary>
+      <remarks>
+            Calling this property will automatically compile <see cref="T:System.Linq.Expressions.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.ExecuteAction">
       <summary>
             Executes compiled <see cref="T:System.Action" /> based expression.
             </summary>
+      <remarks>
+            Calling this method will automatically compile <see cref="T:System.Linq.Expressions.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`1.ExecuteFunction">
       <summary>
             Executes compiled <see cref="T:System.Func`1" /> based expression.
             </summary>
       <returns>Evaluated expression result.</returns>
+      <remarks>
+            Calling this method will automatically compile <see cref="T:System.Linq.Expressions.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="T:Gemstone.Expressions.Evaluator.ExpressionCompiler`2">
       <summary>
@@ -120,6 +132,9 @@
       <summary>
             Gets <see cref="T:System.Action`1" /> delegate for compiled expression.
             </summary>
+      <remarks>
+            Calling this property will automatically compile <see cref="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.CompiledExpression">
       <summary>
@@ -130,12 +145,18 @@
       <summary>
             Gets <see cref="T:System.Func`2" /> delegate for compiled expression.
             </summary>
+      <remarks>
+            Calling this property will automatically compile <see cref="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.ExecuteAction(`1)">
       <summary>
             Executes compiled <see cref="T:System.Action`1" /> based expression.
             </summary>
       <param name="instance">Instance parameter with current field values as needed by expression.</param>
+      <remarks>
+            Calling this method will automatically compile <see cref="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.ExecuteFunction(`1)">
       <summary>
@@ -143,6 +164,9 @@
             </summary>
       <param name="instance">Instance parameter with current field values as needed by expression.</param>
       <returns>Evaluated expression result.</returns>
+      <remarks>
+            Calling this method will automatically compile <see cref="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Expression" />, if not already compiled.
+            </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.Expression">
       <summary>
@@ -171,6 +195,9 @@
             Represents a symbol consisting of a name, <see cref="P:Gemstone.Expressions.Evaluator.Symbol.Type" /> and value to be accessible for
             expressions used with the <see cref="T:Gemstone.Expressions.Evaluator.ExpressionCompiler`2" />.
             </summary>
+      <remarks>
+            A symbol is used define a local class field whose value is accessible to a compiled expression.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.Symbol.#ctor(System.String,System.Type)">
       <summary>
@@ -237,6 +264,13 @@
       <typeparam name="TResult">Return value <see cref="T:System.Type" /> used for generated context type functions.</typeparam>
       <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</typeparam>
       <returns>Compiled context type based on registered types and symbols.</returns>
+      <remarks>
+            This method may generate a new runtime type based on registered types and symbols
+            that is compiled into its own assembly and loaded into memory. The same cached type
+            will be returned unless the registered types or symbols change. Since prior compiled
+            assemblies cannot be unloaded, this property should only be called after all the
+            desired types and symbols have been registered.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType(System.Type,System.Type)">
       <summary>
@@ -245,6 +279,13 @@
       <param name="resultType">Return value <see cref="T:System.Type" /> used for generated context type functions.</param>
       <param name="instanceParameterType">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</param>
       <returns>Compiled context type based on registered types and symbols.</returns>
+      <remarks>
+            This method may generate a new runtime type based on registered types and symbols
+            that is compiled into its own assembly and loaded into memory. The same cached type
+            will be returned unless the registered types or symbols change. Since prior compiled
+            assemblies cannot be unloaded, this property should only be called after all the
+            desired types and symbols have been registered.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext``2">
       <summary>
@@ -253,6 +294,13 @@
       <typeparam name="TResult">Return value used <see cref="T:System.Type" /> for generated context type functions.</typeparam>
       <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</typeparam>
       <returns>New context instance.</returns>
+      <remarks>
+            This method may generate a new runtime type based on registered types and symbols
+            that is compiled into its own assembly and loaded into memory. The same cached type
+            will be returned unless the registered types or symbols change. Since prior compiled
+            assemblies cannot be unloaded, this property should only be called after all the
+            desired types and symbols have been registered.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext(System.Type,System.Type)">
       <summary>
@@ -261,6 +309,13 @@
       <param name="resultType">Return value used <see cref="T:System.Type" /> for generated context type functions.</param>
       <param name="instanceParameterType">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</param>
       <returns>New context instance.</returns>
+      <remarks>
+            This method may generate a new runtime type based on registered types and symbols
+            that is compiled into its own assembly and loaded into memory. The same cached type
+            will be returned unless the registered types or symbols change. Since prior compiled
+            assemblies cannot be unloaded, this property should only be called after all the
+            desired types and symbols have been registered.
+            </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Evaluator.TypeRegistry.Item(System.String)">
       <summary>
@@ -368,11 +423,38 @@
       <summary>
             Gets or sets the numeric evaluation order for this expression. Defaults to zero.
             </summary>
+      <remarks>
+        <para>
+            This is useful for providing an order of operations to evaluations of
+            <see cref="T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" /> attributes where one expression may
+            be dependent on another. Note that properties are normally evaluated in the order
+            in which they are defined in the class, but this is not guaranteed, using this
+            attribute allows the order of evaluation to be changed. 
+            </para>
+        <para>
+            When no <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.EvaluationOrder" /> is specified, the sort order for a property
+            will be zero. Properties will be ordered numerically based on this value.
+            </para>
+        <para>
+            For any <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression" /> value that references the <c>this</c> keyword,
+            a positive evaluation order will be required.
+            </para>
+        <para>
+            See <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </para>
+      </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression">
       <summary>
             Gets C# expression that will evaluate to the desired value.
             </summary>
+      <remarks>
+            Use the <see cref="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" /> method to get a per-property
+            based value for use with the <see cref="T:Gemstone.Expressions.Model.ValueExpressionParser" />. Use
+            <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser.DeriveExpression(System.String,Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.MemberInfo,System.String)" /> to automatically
+            replace any <c>this</c> keywords with <c>Instance</c> so as to properly
+            reference the modeled <see cref="P:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.Instance" />.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetExpressionUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
@@ -380,6 +462,20 @@
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Assignment expression based on source property.</returns>
+      <remarks>
+        <para>
+            This function allows derived attribute implementations to adjust the update value
+            based on property information, e.g., property type.
+            </para>
+        <para>
+            The expression update value is typically used to assign modeled property values back
+            to expressions allowing synchronization of a model with an external source, e.g., a
+            user interface element.
+            </para>
+        <para>
+            Default implementation should return <c>$"Instance.{property.Name}"</c>.
+            </para>
+      </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
@@ -387,6 +483,18 @@
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Expression based on source property.</returns>
+      <remarks>
+        <para>
+            This function allows derived attribute implementations to adjust the expression based
+            on property information, e.g., property type.
+            </para>
+        <para>
+            The property update value is typically used to assign expression values to a modeled type.
+            </para>
+        <para>
+            Default implementation should return <c>Expression</c>.
+            </para>
+      </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Model.IValueExpressionAttribute.TypeRegistry">
       <summary>
@@ -405,11 +513,20 @@
       <summary>
             Gets or sets the current <typeparamref name="T" /> instance.
             </summary>
+      <remarks>
+            By using the <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser.ReplaceThisKeywords(System.String,System.String)" /> function, expressions
+            can reference the current <typeparamref name="T" /> instance using the <c>this</c> keyword.
+            See <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </remarks>
     </member>
     <member name="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute">
       <summary>
             Defines a C# expression attribute that when evaluated will type convert its value for a property.
             </summary>
+      <remarks>
+            This attribute is typically used when synchronizing modeled values to an external sources, e.g.,
+            user interface elements.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.#ctor(System.String,System.Type)">
       <summary>
@@ -419,6 +536,9 @@
             Return type for specified C# <paramref name="expression" />; defaults to <c>null</c> to auto-derive
             the <paramref name="expression" /> return type by pre-parsing expression.
             </param>
+      <remarks>
+            When the <paramref name="returnType" /> is known in advance, it is optimal to provide it.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.GetExpressionUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
@@ -426,6 +546,19 @@
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Expression based on source property.</returns>
+      <remarks>
+            The expression update value is typically used to assign modeled property values back
+            to expressions allowing synchronization of a model with an external source, e.g., a
+            user interface element. For example:
+            <code language="cs">
+            [TypeConvertedValueExpression("Form.maskedTextBoxMessageInterval.Text", typeof(string))]
+            public int MessageInterval { get; set; }
+            </code>
+            Would generate an update expression of "Common.TypeConvertToString(Instance.MessageInterval)"
+            which would be executed as part of an overall expression that looked like
+            <c>Form.maskedTextBoxMessageInterval.Text = Common.TypeConvertToString(Instance.MessageInterval)</c>
+            when called from <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressions(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
@@ -433,11 +566,29 @@
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Expression based on source property.</returns>
+      <remarks>
+            The property update value is typically used to assign expression values to a modeled type. For example:
+            <code language="cs">
+            [TypeConvertedValueExpression("Form.maskedTextBoxMessageInterval.Text", typeof(string))]
+            public int MessageInterval { get; set; }
+            </code>
+            Would generate an expression of "Common.TypeConvertFromString(Form.maskedTextBoxMessageInterval.Text, typeof(int))"
+            which would be executed as part of an overall expression that looked like
+            <c>Instance.MessageInterval = Common.TypeConvertFromString(Form.maskedTextBoxMessageInterval.Text, typeof(int))</c>
+            when called from <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateProperties(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute.ReturnType">
       <summary>
             Gets the return <see cref="T:System.Type" /> for this <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" />.
             </summary>
+      <remarks>
+            When value is <c>null</c>, the <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" /> will be
+            pre-parsed in an attempt to auto-derive the return type. Note that when using this attribute,
+            it often will be necessary to assign the current <see cref="T:Gemstone.Expressions.Evaluator.TypeRegistry" /> so that the parser
+            will have access to needed symbols. If the expression's return type is known in advance, it
+            is optimal to provide it in the attribute constructor.
+            </remarks>
     </member>
     <member name="T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute">
       <summary>
@@ -470,11 +621,38 @@
       <summary>
             Gets or sets the numeric evaluation order for this expression. Defaults to zero.
             </summary>
+      <remarks>
+        <para>
+            This is useful for providing an order of operations to evaluations of
+            <see cref="T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" /> attributes where one expression may
+            be dependent on another. Note that properties are normally evaluated in the order
+            in which they are defined in the class, but this is not guaranteed, using this
+            attribute allows the order of evaluation to be changed. 
+            </para>
+        <para>
+            When no <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.EvaluationOrder" /> is specified, the sort order for a property
+            will be zero. Properties will be ordered numerically based on this value.
+            </para>
+        <para>
+            For any <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" /> value that references the <c>this</c> keyword,
+            a positive evaluation order will be required.
+            </para>
+        <para>
+            See <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </para>
+      </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression">
       <summary>
             Gets C# expression that will evaluate to the desired value.
             </summary>
+      <remarks>
+            Use the <see cref="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" /> method to get a per-property
+            based value for use with the <see cref="T:Gemstone.Expressions.Model.ValueExpressionParser" />. Use
+            <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser.DeriveExpression(System.String,Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.MemberInfo,System.String)" /> to automatically
+            replace any <c>this</c> keywords with <c>Instance</c> so as to properly
+            reference the modeled <see cref="P:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.Instance" />.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetExpressionUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
@@ -482,6 +660,17 @@
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Assignment expression based on source property.</returns>
+      <remarks>
+        <para>
+            This function allows derived attribute implementations to adjust the update value
+            based on property information, e.g., property type.
+            </para>
+        <para>
+            The expression update value is typically used to assign modeled property values back
+            to expressions allowing synchronization of a model with an external source, e.g., a
+            user interface element.
+            </para>
+      </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetPropertyUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
@@ -489,6 +678,15 @@
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Expression based on source property.</returns>
+      <remarks>
+        <para>
+            This function allows derived attribute implementations to adjust the expression based
+            on property information, e.g., property type.
+            </para>
+        <para>
+            The property update value is typically used to assign expression values to a modeled type.
+            </para>
+      </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.TypeRegistry">
       <summary>
@@ -590,6 +788,15 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with default values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes.
+            The updated object will automatically have applied any defined default values as specified by
+            the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaults``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -610,6 +817,21 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes.
+            The updated object will automatically have applied any defined default values as specified by
+            the encountered attributes. The generated delegate takes a parameter to a contextual object useful
+            for providing extra runtime data to <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes; the
+            parameter must be derived from <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields,
+            methods or properties defined in the derived class will be automatically accessible from the
+            expressions declared in the <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes. By default,
+            the expressions will have access to the current <typeparamref name="T" /> instance by referencing the
+            <c>this</c> keyword, which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaultsForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -628,6 +850,15 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with default values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <typeparamref name="TValueExpressionAttribute" /> attributes.
+            The updated object will automatically have applied any defined default values as specified by
+            the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.ApplyDefaultsForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -650,6 +881,21 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <typeparamref name="TValueExpressionAttribute" /> attributes.
+            The updated object will automatically have applied any defined default values as specified by
+            the encountered attributes. The generated delegate takes a parameter to a contextual object useful
+            for providing extra runtime data to <typeparamref name="TValueExpressionAttribute" /> attributes; the
+            parameter must be derived from <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields,
+            methods or properties defined in the derived class will be automatically accessible from the
+            expressions declared in the <typeparamref name="TValueExpressionAttribute" /> attributes. By default,
+            the expressions will have access to the current <typeparamref name="T" /> instance by referencing the
+            <c>this</c> keyword, which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -665,6 +911,15 @@
       <returns>
             Generated delegate that will create new <typeparamref name="T" /> instances with default values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will create new
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes.
+            The newly created object will automatically have applied any defined default values as specified by
+            the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in a newly created model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -683,6 +938,21 @@
       <returns>
             Generated delegate that will create new <typeparamref name="T" /> instances with default values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will create new
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes.
+            The newly created object will automatically have applied any defined default values as specified by
+            the encountered attributes. The generated delegate takes a parameter to a contextual object useful
+            for providing extra runtime data to <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes; the
+            parameter must be derived from <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields,
+            methods or properties defined in the derived class will be automatically accessible from the
+            expressions declared in the <see cref="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute" /> attributes. By default,
+            the expressions will have access to the current <typeparamref name="T" /> instance by referencing the
+            <c>this</c> keyword, which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />.
+            <note type="note">
+            This function will assign evaluated expression values to properties in a newly created model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstanceForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -700,6 +970,15 @@
       <returns>
             Generated delegate that will create new <typeparamref name="T" /> instances with default values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will create new
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <typeparamref name="TValueExpressionAttribute" /> attributes.
+            The newly created object will automatically have applied any defined default values as specified by
+            the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in a newly created model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstanceForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -720,6 +999,21 @@
       <returns>
             Generated delegate that will create new <typeparamref name="T" /> instances with expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will create new
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:System.ComponentModel.DefaultValueAttribute" /> or <typeparamref name="TValueExpressionAttribute" /> attributes.
+            The newly created object will automatically have applied any defined default values as specified by
+            the encountered attributes. The generated delegate takes a parameter to a contextual object useful
+            for providing extra runtime data to <typeparamref name="TValueExpressionAttribute" /> attributes; the
+            parameter must be derived from <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields,
+            methods or properties defined in the derived class will be automatically accessible from the
+            expressions declared in the <typeparamref name="TValueExpressionAttribute" /> attributes. By default,
+            the expressions will have access to the current <typeparamref name="T" /> instance by referencing the
+            <c>this</c> keyword, which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />.
+            <note type="note">
+            This function will assign evaluated expression values to properties in a newly created model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.InitializeType">
       <summary>
@@ -729,6 +1023,18 @@
         <c>true</c> if type <typeparamref name="T" /> supports a parameterless constructor and was
             successfully initialized; otherwise, <c>false</c>.
             </returns>
+      <remarks>
+            As long as type <typeparamref name="T" /> defines a parameterless constructor, this method
+            will create an instance of the modeled class so that any defined static functionality will
+            be initialized. Calling this method in advance of any of the static create or update delegate
+            generation functions will allow modeled types to self-register any custom symbols and types
+            that may be used during evaluation of value expressions attributes, e.g.:
+            <code language="cs">
+            static MyModel()
+            {
+                TableOperations&lt;MyModel&gt;.TypeRegistry.RegisterType&lt;MyType&gt;();
+            }
+            </code></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.Parse(System.Linq.Expressions.ParameterExpression,Gemstone.Expressions.Evaluator.TypeRegistry,System.Boolean)">
       <summary>
@@ -757,6 +1063,21 @@
       <returns>
             Generated delegate that will execute expression assignments on <typeparamref name="T" /> instances.
             </returns>
+      <remarks>
+        <para>
+            This function is useful for generating a delegate to a compiled function that will execute expression
+            assignments on objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" /> attributes. Note that the expression in the
+            <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" /> attribute is expected to evaluate to a property
+            such that it can be assigned the target type <typeparamref name="T" /> property value.
+            <note type="note">
+            This function will assign current modeled property values back to expressions, this is often useful
+            when a model is being synchronized to an external source, e.g., user interface elements.
+            </note></para>
+        <para>
+            This method is the inverse call for <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateProperties(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </para>
+      </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressions``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -776,6 +1097,23 @@
       <returns>
             Generated delegate that will execute expression assignments on <typeparamref name="T" /> instances.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will execute expression
+            assignments on objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" /> attributes. The generated delegate takes a parameter
+            to a contextual object useful for providing extra runtime data to the expressions defined in attributes
+            of type <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" />; the contextual parameter must be derived
+            from <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields, methods or properties defined in the
+            derived class will be automatically accessible from the expressions declared in the
+            <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" /> attributes. By default, the expressions will have
+            access to the current <typeparamref name="T" /> instance by referencing the <c>this</c> keyword,
+            which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />. Note that the expression in
+            the <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" /> attribute is expected to evaluate to a property
+            such that it can be assigned the target type <typeparamref name="T" /> property value.
+            <note type="note">
+            This function will assign current modeled property values back to expressions, this is often useful
+            when a model is being synchronized to an external source, e.g., user interface elements.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressionsForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -794,6 +1132,16 @@
       <returns>
             Generated delegate that will execute expression assignments on <typeparamref name="T" /> instances.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will execute expression
+            assignments on objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <typeparamref name="TValueExpressionAttribute" /> attributes. Note that the expression in the
+            <typeparamref name="TValueExpressionAttribute" /> attribute is expected to evaluate to a property
+            such that it can be assigned the target type <typeparamref name="T" /> property value.
+            <note type="note">
+            This function will assign current modeled property values back to expressions, this is often useful
+            when a model is being synchronized to an external source, e.g., user interface elements.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressionsForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -815,6 +1163,23 @@
       <returns>
             Generated delegate that will execute expression assignments on <typeparamref name="T" /> instances.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will execute expression
+            assignments on objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <typeparamref name="TValueExpressionAttribute" /> attributes. The generated delegate takes a parameter
+            to a contextual object useful for providing extra runtime data to the expressions defined in attributes
+            of type <typeparamref name="TValueExpressionAttribute" />; the contextual parameter must be derived from
+            <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields, methods or properties defined in the
+            derived class will be automatically accessible from the expressions declared in the
+            <typeparamref name="TValueExpressionAttribute" /> attributes. By default, the expressions will have
+            access to the current <typeparamref name="T" /> instance by referencing the <c>this</c> keyword,
+            which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />. Note that the expression in
+            the <typeparamref name="TValueExpressionAttribute" /> attribute is expected to evaluate to a property
+            such that it can be assigned the target type <typeparamref name="T" /> property value.
+            <note type="note">
+            This function will assign current modeled property values back to expressions, this is often useful
+            when a model is being synchronized to an external source, e.g., user interface elements.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstance(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -831,6 +1196,14 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with update expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <see cref="T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" /> attributes. The updated object will automatically
+            have applied any defined update values as specified by the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -850,6 +1223,21 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with update expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <see cref="T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" /> attributes. The updated object will automatically
+            have applied any defined update values as specified by the encountered attributes. The generated
+            delegate takes a parameter to a contextual object useful for providing extra runtime data to
+            <see cref="T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" /> attributes; the parameter must be derived from
+            <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields, methods or properties defined in the
+            derived class will be automatically accessible from the expressions declared in the
+            <see cref="T:Gemstone.Expressions.Model.UpdateValueExpressionAttribute" /> attributes. By default, the expressions will have
+            access to the current <typeparamref name="T" /> instance by referencing the <c>this</c> keyword,
+            which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstanceForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -868,6 +1256,14 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with update expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <typeparamref name="TValueExpressionAttribute" /> attributes. The updated object will automatically
+            have applied any defined update values as specified by the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstanceForType``2(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -889,6 +1285,21 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with expression values applied.
             </returns>
+      <remarks>
+            This function is useful for generating a delegate to a compiled function that will update
+            objects of type <typeparamref name="T" /> where properties of the type of have been decorated
+            with <typeparamref name="TValueExpressionAttribute" /> attributes. The updated object will automatically
+            have applied any defined update values as specified by the encountered attributes. The generated
+            delegate takes a parameter to a contextual object useful for providing extra runtime data to
+            <typeparamref name="TValueExpressionAttribute" /> attributes; the parameter must be derived from
+            <see cref="T:Gemstone.Expressions.Model.IValueExpressionScope`1" />. Any public fields, methods or properties defined in the
+            derived class will be automatically accessible from the expressions declared in the
+            <typeparamref name="TValueExpressionAttribute" /> attributes. By default, the expressions will have
+            access to the current <typeparamref name="T" /> instance by referencing the <c>this</c> keyword,
+            which is an alias to <see cref="P:Gemstone.Expressions.Model.IValueExpressionScope`1.Instance" />.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateProperties(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)">
       <summary>
@@ -905,6 +1316,20 @@
       <returns>
             Generated delegate that will update <typeparamref name="T" /> instances with update expression values applied.
             </returns>
+      <remarks>
+        <para>
+            This function is useful for generating a delegate to a compiled function that will update objects
+            of type <typeparamref name="T" /> where properties of the type of have been decorated with
+            <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" /> attributes. The updated object will automatically
+            have applied any defined update values as specified by the encountered attributes.
+            <note type="note">
+            This function will assign evaluated expression values to properties in an existing model.
+            </note></para>
+        <para>
+            This method is the inverse call for <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateExpressions(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />. Internally the method simply calls
+            <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.UpdateInstanceForType``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" /> for type <see cref="T:Gemstone.Expressions.Model.TypeConvertedValueExpressionAttribute" />.
+            </para>
+      </remarks>
     </member>
     <member name="T:Gemstone.Expressions.Model.ValueExpressionScopeBase`1">
       <summary>
@@ -912,6 +1337,10 @@
             instances of the <see cref="T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" />.
             </summary>
       <typeparam name="T">Type of associated model.</typeparam>
+      <remarks>
+            This class should be extended with public instance fields that will be automatically
+            exposed to <see cref="T:Gemstone.Expressions.Model.ValueExpressionAttributeBase" /> expressions.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.#ctor">
       <summary>
@@ -926,6 +1355,11 @@
       <summary>
             Gets or sets the current <typeparamref name="T" /> instance.
             </summary>
+      <remarks>
+            By using the <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser.ReplaceThisKeywords(System.String,System.String)" /> function, expressions
+            can reference the current <typeparamref name="T" /> instance using the <c>this</c> keyword.
+            See <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser`1.CreateInstance``1(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo},Gemstone.Expressions.Evaluator.TypeRegistry)" />.
+            </remarks>
     </member>
   </members>
 </doc>
