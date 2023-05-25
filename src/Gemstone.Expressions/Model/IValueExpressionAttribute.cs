@@ -21,7 +21,6 @@
 //
 //******************************************************************************************************
 
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Gemstone.Expressions.Evaluator;
 
@@ -79,7 +78,6 @@ namespace Gemstone.Expressions.Model
         /// Gets or sets any <see cref="Gemstone.Expressions.Evaluator.TypeRegistry"/> to use if the attribute
         /// <see cref="Expression"/> needs to be pre-parsed.
         /// </summary>
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "TypeRegistry needs to be assigned when needed - default value is null")]
         TypeRegistry? TypeRegistry { get; set; }
 
         /// <summary>
