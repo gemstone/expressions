@@ -136,7 +136,7 @@ namespace Gemstone.Expressions.Evaluator
                     Assembly? loadedAssembly = AppDomain.CurrentDomain.GetAssemblies().
                         SingleOrDefault(assembly => assembly.GetName().Name == name);
 
-                    if (loadedAssembly != null)
+                    if (loadedAssembly is not null)
                         assemblies.Add(loadedAssembly);
                 }
 
@@ -261,7 +261,7 @@ namespace Gemstone.Expressions.Evaluator
                 if (field is null)
                     continue;
 
-                if (symbol.Type != typeof(Type) && symbol.Value != null)
+                if (symbol.Type != typeof(Type) && symbol.Value is not null)
                     field.SetValue(instance, symbol.Value);
             }
 

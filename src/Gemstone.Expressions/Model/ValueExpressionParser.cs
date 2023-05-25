@@ -135,7 +135,7 @@ namespace Gemstone.Expressions.Model
         /// <exception cref="ArgumentNullException">Parameter <paramref name="expression"/> cannot be <c>null</c>.</exception>
         public static string DeriveExpression(string expression, IValueExpressionAttribute valueExpressionAttribute, MemberInfo member, string typeName)
         {
-            if (expression == null)
+            if (expression is null)
                 throw new ArgumentNullException(nameof(expression));
 
             // Check for "this" keywords in expression
@@ -207,10 +207,10 @@ namespace Gemstone.Expressions.Model
         /// <param name="isCall"><c>true</c> if parsing an action; otherwise, <c>false</c> for a function.</param>
         public void Parse(ParameterExpression scope, TypeRegistry? typeRegistry = null, bool isCall = false)
         {
-            if (scope == null)
+            if (scope is null)
                 throw new ArgumentNullException(nameof(scope));
 
-            if (typeRegistry != null)
+            if (typeRegistry is not null)
                 TypeRegistry = typeRegistry;
 
             InstanceParameterType = scope.Type;
@@ -264,8 +264,8 @@ namespace Gemstone.Expressions.Model
         public static bool InitializeType()
         {
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (typeof(T).GetConstructor(Type.EmptyTypes) != null)
-                return Activator.CreateInstance<T>() != null;
+            if (typeof(T).GetConstructor(Type.EmptyTypes) is not null)
+                return Activator.CreateInstance<T>() is not null;
 
             return false;
         }
@@ -635,9 +635,9 @@ namespace Gemstone.Expressions.Model
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
         public static Func<TExpressionScope, T> CreateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
-            ConstructorInfo constructor = typeof(T).GetConstructor(Type.EmptyTypes);
+            ConstructorInfo? constructor = typeof(T).GetConstructor(Type.EmptyTypes);
 
-            if (constructor == null)
+            if (constructor is null)
                 return _ => throw new InvalidOperationException($"No parameterless constructor exists for type \"{typeof(T).FullName}\".");
 
             properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
@@ -1059,7 +1059,7 @@ namespace Gemstone.Expressions.Model
                     ValueExpressionParser expressionParser = new(expression);
                     expressionParser.Parse(scopeParameter, typeRegistry, true);
 
-                    if (expressionParser.CompiledExpression == null)
+                    if (expressionParser.CompiledExpression is null)
                         throw new InvalidOperationException("Failed to compile");
 
                     expressions.Add(expressionParser.CompiledExpression);
@@ -1089,7 +1089,7 @@ namespace Gemstone.Expressions.Model
             ValueExpressionParser expressionParser = new(expression);
             expressionParser.Parse(scopeParameter, typeRegistry);
 
-            if (expressionParser.CompiledExpression == null)
+            if (expressionParser.CompiledExpression is null)
                 throw new InvalidOperationException("Failed to compile");
 
             UnaryExpression getParsedValue = LinqExpression.Convert(LinqExpression.Invoke(expressionParser.CompiledExpression, scopeParameter), property.PropertyType);

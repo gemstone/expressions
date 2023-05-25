@@ -83,7 +83,7 @@ namespace Gemstone.Expressions.Model
         {
             Type sourceType = property.PropertyType;
 
-            if (ReturnType == null)
+            if (ReturnType is null)
                 DeriveReturnType();
 
             if (ReturnType == sourceType)
@@ -115,7 +115,7 @@ namespace Gemstone.Expressions.Model
         /// </remarks>
         public override string GetExpressionUpdateValue(PropertyInfo property)
         {
-            if (ReturnType == null)
+            if (ReturnType is null)
                 DeriveReturnType();
 
             if (ReturnType == property.PropertyType)
@@ -135,7 +135,7 @@ namespace Gemstone.Expressions.Model
             {
                 ValueExpressionParser parser = new(Expression);
 
-                if (TypeRegistry != null)
+                if (TypeRegistry is not null)
                     parser.TypeRegistry = TypeRegistry;
 
                 ReturnType = parser.ExecuteFunction().GetType();

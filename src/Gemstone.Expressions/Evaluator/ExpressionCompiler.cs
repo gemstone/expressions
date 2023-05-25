@@ -74,7 +74,7 @@ namespace Gemstone.Expressions.Evaluator
         public new Func<TResult> CompiledFunction => () =>
         {
             Func<object?, TResult>? compiledFunction = base.CompiledFunction;
-            return compiledFunction != null ? compiledFunction(null) : default!;
+            return compiledFunction is not null ? compiledFunction(null) : default!;
         };
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Gemstone.Expressions.Evaluator
             {
                 Action<TInstanceParameter?>? getCompiledAction()
                 {
-                    if (CompiledExpression == null)
+                    if (CompiledExpression is null)
                         Compile(true);
 
                     return (CompiledExpression as Expression<Action<TInstanceParameter?>>)?.Compile();
@@ -179,7 +179,7 @@ namespace Gemstone.Expressions.Evaluator
             {
                 Func<TInstanceParameter?, TResult>? getCompiledFunction()
                 {
-                    if (CompiledExpression == null)
+                    if (CompiledExpression is null)
                         Compile();
 
                     return (CompiledExpression as Expression<Func<TInstanceParameter?, TResult>>)?.Compile();
@@ -233,7 +233,7 @@ namespace Gemstone.Expressions.Evaluator
         public TResult ExecuteFunction(TInstanceParameter? instance)
         {
             Func<TInstanceParameter?, TResult>? compiledFunction = CompiledFunction;
-            return compiledFunction != null ? compiledFunction(instance) : default!;
+            return compiledFunction is not null ? compiledFunction(instance) : default!;
         }
 
         /// <summary>
