@@ -641,7 +641,7 @@ namespace Gemstone.Expressions.Model
                 return _ => throw new InvalidOperationException($"No parameterless constructor exists for type \"{typeof(T).FullName}\".");
 
             if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
+                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
             List<LinqExpression> expressions = new();
             ParameterExpression newInstance = LinqExpression.Variable(typeof(T));
@@ -779,7 +779,7 @@ namespace Gemstone.Expressions.Model
         public static Action<TExpressionScope> ApplyDefaultsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
             if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
+                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
             List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
@@ -909,7 +909,7 @@ namespace Gemstone.Expressions.Model
         public static Action<TExpressionScope> UpdateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
             if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead && property.CanWrite);
+                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
             List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
