@@ -235,8 +235,8 @@ namespace Gemstone.Expressions.Model
             // Define a table of cached default value expression values
             s_cachedExpressionValues = new Dictionary<PropertyInfo, object>();
             Type expressionParser = typeof(ValueExpressionParser<T>);
-            s_addCachedValueMethod = expressionParser.GetMethod("AddCachedValue", BindingFlags.Static | BindingFlags.NonPublic);
-            s_getCachedValueMethod = expressionParser.GetMethod("GetCachedValue", BindingFlags.Static | BindingFlags.NonPublic);
+            s_addCachedValueMethod = expressionParser.GetMethod("AddCachedValue", BindingFlags.Static | BindingFlags.NonPublic)!;
+            s_getCachedValueMethod = expressionParser.GetMethod("GetCachedValue", BindingFlags.Static | BindingFlags.NonPublic)!;
         }
 
         // Static Methods
@@ -640,8 +640,7 @@ namespace Gemstone.Expressions.Model
             if (constructor == null)
                 return _ => throw new InvalidOperationException($"No parameterless constructor exists for type \"{typeof(T).FullName}\".");
 
-            if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
+            properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
             List<LinqExpression> expressions = new();
             ParameterExpression newInstance = LinqExpression.Variable(typeof(T));
@@ -778,8 +777,7 @@ namespace Gemstone.Expressions.Model
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
         public static Action<TExpressionScope> ApplyDefaultsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
-            if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
+            properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
             List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
@@ -908,8 +906,7 @@ namespace Gemstone.Expressions.Model
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
         public static Action<TExpressionScope> UpdateInstanceForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
-            if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
+            properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
             List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
@@ -1031,8 +1028,7 @@ namespace Gemstone.Expressions.Model
         [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling")]
         public static Action<TExpressionScope> UpdateExpressionsForType<TValueExpressionAttribute, TExpressionScope>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute where TExpressionScope : IValueExpressionScope<T>
         {
-            if (properties == null)
-                properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead);
+            properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead);
 
             List<LinqExpression> expressions = new();
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
