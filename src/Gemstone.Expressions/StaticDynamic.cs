@@ -48,11 +48,11 @@ namespace Gemstone.Expressions
         /// <returns><c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of the language determines the behavior. (In most cases, a run-time exception is thrown.)</returns>
         public override bool TryGetMember(GetMemberBinder binder, out object? result)
         {
-            PropertyInfo property = m_type.GetProperty(binder.Name, BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
+            PropertyInfo? property = m_type.GetProperty(binder.Name, BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
             
             if (property is null)
             {
-                FieldInfo field = m_type.GetField(binder.Name, BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
+                FieldInfo? field = m_type.GetField(binder.Name, BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
 
                 if (field is null)
                 {
@@ -75,9 +75,9 @@ namespace Gemstone.Expressions
         /// <param name="args">The arguments that are passed to the object member during the invoke operation. For example, for the statement sampleObject.SampleMethod(100), where sampleObject is derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, args[0] is equal to 100.</param>
         /// <param name="result">The result of the member invocation.</param>
         /// <returns><c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)</returns>
-        public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object? result)
+        public override bool TryInvokeMember(InvokeMemberBinder binder, object?[]? args, out object? result)
         {
-            MethodInfo method = m_type.GetMethod(binder.Name, BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
+            MethodInfo? method = m_type.GetMethod(binder.Name, BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.Public);
             
             if (method is null)
             {

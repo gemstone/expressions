@@ -24,7 +24,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -265,6 +264,7 @@ namespace Gemstone.Expressions.Model
         {
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (typeof(T).GetConstructor(Type.EmptyTypes) is not null)
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
                 return Activator.CreateInstance<T>() is not null;
 
             return false;
@@ -639,26 +639,26 @@ namespace Gemstone.Expressions.Model
             List<LinqExpression> expressions = new();
             ParameterExpression newInstance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
-            TValueExpressionAttribute valueExpressionAttribute;
+            TValueExpressionAttribute? valueExpressionAttribute;
 
             // Sort properties by any specified evaluation order
-            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute.EvaluationOrder : 0);
+            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute!.EvaluationOrder : 0);
 
             // Create new instance and assign to local variable
             expressions.Add(LinqExpression.Assign(newInstance, LinqExpression.New(constructor)));
 
             // Assign new instance to "Instance" property of scope parameter
-            MethodInfo setInstance = typeof(TExpressionScope).GetProperty("Instance").SetMethod;
+            MethodInfo setInstance = typeof(TExpressionScope).GetProperty("Instance")!.SetMethod!;
             expressions.Add(LinqExpression.Call(scopeParameter, setInstance, newInstance));
 
             // Find any defined value attributes for properties and assign them to new instance
             foreach (PropertyInfo property in properties)
             {
-                if (property.TryGetAttribute(out DefaultValueAttribute defaultValueAttribute))
+                if (property.TryGetAttribute(out DefaultValueAttribute? defaultValueAttribute))
                 {
                     try
                     {
-                        expressions.Add(LinqExpression.Call(newInstance, property.SetMethod, LinqExpression.Constant(defaultValueAttribute.Value, property.PropertyType)));
+                        expressions.Add(LinqExpression.Call(newInstance, property.SetMethod!, LinqExpression.Constant(defaultValueAttribute!.Value, property.PropertyType)));
                     }
                     catch (Exception ex)
                     {
@@ -672,7 +672,7 @@ namespace Gemstone.Expressions.Model
                     try
                     {
                         // Pass along any provided type registry in case attribute needs to pre-parse expression
-                        valueExpressionAttribute.TypeRegistry = typeRegistry;
+                        valueExpressionAttribute!.TypeRegistry = typeRegistry;
 
                         expressions.Add(AssignParsedValueExpression(valueExpressionAttribute, typeRegistry, property, scopeParameter, newInstance, out expression));
                     }
@@ -774,23 +774,23 @@ namespace Gemstone.Expressions.Model
             List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
-            TValueExpressionAttribute valueExpressionAttribute;
+            TValueExpressionAttribute? valueExpressionAttribute;
 
             // Sort properties by any specified evaluation order
-            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute.EvaluationOrder : 0);
+            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute!.EvaluationOrder : 0);
 
             // Get "Instance" property of scope parameter and assign to local variable
-            MethodInfo getInstance = typeof(TExpressionScope).GetProperty("Instance").GetMethod;
-            expressions.Add(LinqExpression.Assign(instance, LinqExpression.Call(scopeParameter, getInstance)));
+            MethodInfo?getInstance = typeof(TExpressionScope).GetProperty("Instance")!.GetMethod;
+            expressions.Add(LinqExpression.Assign(instance, LinqExpression.Call(scopeParameter, getInstance!)));
 
             // Find any defined value attributes for properties and assign them to instance
             foreach (PropertyInfo property in properties)
             {
-                if (property.TryGetAttribute(out DefaultValueAttribute defaultValueAttribute))
+                if (property.TryGetAttribute(out DefaultValueAttribute? defaultValueAttribute))
                 {
                     try
                     {
-                        expressions.Add(LinqExpression.Call(instance, property.SetMethod, LinqExpression.Constant(defaultValueAttribute.Value, property.PropertyType)));
+                        expressions.Add(LinqExpression.Call(instance, property.SetMethod!, LinqExpression.Constant(defaultValueAttribute!.Value, property.PropertyType)));
                     }
                     catch (Exception ex)
                     {
@@ -804,7 +804,7 @@ namespace Gemstone.Expressions.Model
                     try
                     {
                         // Pass along any provided type registry in case attribute needs to pre-parse expression
-                        valueExpressionAttribute.TypeRegistry = typeRegistry;
+                        valueExpressionAttribute!.TypeRegistry = typeRegistry;
 
                         expressions.Add(AssignParsedValueExpression(valueExpressionAttribute, typeRegistry, property, scopeParameter, instance, out expression));
                     }
@@ -901,13 +901,13 @@ namespace Gemstone.Expressions.Model
             List<LinqExpression> expressions = new();
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
-            TValueExpressionAttribute valueExpressionAttribute;
+            TValueExpressionAttribute? valueExpressionAttribute;
 
             // Sort properties by any specified evaluation order
-            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute.EvaluationOrder : 0);
+            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute!.EvaluationOrder : 0);
 
             // Get "Instance" property of scope parameter and assign to local variable
-            MethodInfo getInstance = typeof(TExpressionScope).GetProperty("Instance").GetMethod;
+            MethodInfo getInstance = typeof(TExpressionScope).GetProperty("Instance")!.GetMethod!;
             expressions.Add(LinqExpression.Assign(instance, LinqExpression.Call(scopeParameter, getInstance)));
 
             // Find any defined value attributes for properties and assign them to instance
@@ -921,7 +921,7 @@ namespace Gemstone.Expressions.Model
                 try
                 {
                     // Pass along any provided type registry in case attribute needs to pre-parse expression
-                    valueExpressionAttribute.TypeRegistry = typeRegistry;
+                    valueExpressionAttribute!.TypeRegistry = typeRegistry;
 
                     expressions.Add(AssignParsedValueExpression(valueExpressionAttribute, typeRegistry, property, scopeParameter, instance, out expression));
                 }
@@ -1020,10 +1020,10 @@ namespace Gemstone.Expressions.Model
 
             List<LinqExpression> expressions = new();
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
-            TValueExpressionAttribute valueExpressionAttribute;
+            TValueExpressionAttribute? valueExpressionAttribute;
 
             // Sort properties by any specified evaluation order
-            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute.EvaluationOrder : 0);
+            properties = properties.OrderBy(property => property.TryGetAttribute(out valueExpressionAttribute) ? valueExpressionAttribute!.EvaluationOrder : 0);
 
             // Find any defined expression attributes for properties and execute them
             foreach (PropertyInfo property in properties)
@@ -1036,7 +1036,7 @@ namespace Gemstone.Expressions.Model
                 try
                 {
                     // Pass along any provided type registry in case attribute needs to pre-parse expression
-                    valueExpressionAttribute.TypeRegistry = typeRegistry;
+                    valueExpressionAttribute!.TypeRegistry = typeRegistry;
 
                     // Derive left assignment operand from raw expression, i.e., not from GetPropertyUpdateValue:
                     string leftOperand = DeriveExpression(valueExpressionAttribute.Expression, valueExpressionAttribute, property);
@@ -1088,16 +1088,16 @@ namespace Gemstone.Expressions.Model
                 ParameterExpression parsedValue = LinqExpression.Variable(property.PropertyType);
                 ParameterExpression cachedValue = LinqExpression.Variable(typeof(Tuple<bool, object>));
 
-                MethodInfo getTupleItem1 = typeof(Tuple<bool, object>).GetProperty("Item1").GetMethod;
-                MethodInfo getTupleItem2 = typeof(Tuple<bool, object>).GetProperty("Item2").GetMethod;
+                MethodInfo getTupleItem1 = typeof(Tuple<bool, object>).GetProperty("Item1")!.GetMethod!;
+                MethodInfo getTupleItem2 = typeof(Tuple<bool, object>).GetProperty("Item2")!.GetMethod!;
 
                 BlockExpression addParsedValueToCache = LinqExpression.Block(new[] { parsedValue },
                     LinqExpression.Assign(parsedValue, getParsedValue),
                     LinqExpression.Call(s_addCachedValueMethod, propertyInfo, LinqExpression.Convert(parsedValue, typeof(object))),
-                    LinqExpression.Call(instance, property.SetMethod, parsedValue)
+                    LinqExpression.Call(instance, property.SetMethod!, parsedValue)
                 );
 
-                MethodCallExpression setCachedValue = LinqExpression.Call(instance, property.SetMethod, LinqExpression.Convert(LinqExpression.Call(cachedValue, getTupleItem2), property.PropertyType));
+                MethodCallExpression setCachedValue = LinqExpression.Call(instance, property.SetMethod!, LinqExpression.Convert(LinqExpression.Call(cachedValue, getTupleItem2), property.PropertyType));
 
                 return LinqExpression.Block(new[] { cachedValue },
                     LinqExpression.Assign(cachedValue, LinqExpression.Call(s_getCachedValueMethod, propertyInfo)),
@@ -1105,12 +1105,12 @@ namespace Gemstone.Expressions.Model
                 );
             }
 
-            return LinqExpression.Call(instance, property.SetMethod, getParsedValue);
+            return LinqExpression.Call(instance, property.SetMethod!, getParsedValue);
         }
 
         private static string DeriveExpression(string? expression, IValueExpressionAttribute valueExpressionAttribute, PropertyInfo property)
         {
-            return ValueExpressionParser.DeriveExpression(expression ?? valueExpressionAttribute.GetPropertyUpdateValue(property), valueExpressionAttribute, property, typeof(T).FullName);
+            return ValueExpressionParser.DeriveExpression(expression ?? valueExpressionAttribute.GetPropertyUpdateValue(property), valueExpressionAttribute, property, typeof(T).FullName!);
         }
 
         // Function referenced through reflection - see s_addCachedValueMethod
@@ -1124,12 +1124,12 @@ namespace Gemstone.Expressions.Model
         private static Tuple<bool, object> GetCachedValue(PropertyInfo property)
         {
             bool exists;
-            object value;
+            object? value;
 
             lock (s_cachedExpressionValues)
                 exists = s_cachedExpressionValues.TryGetValue(property, out value);
 
-            return new Tuple<bool, object>(exists, value);
+            return new Tuple<bool, object>(exists, value!);
         }
 
         #endregion

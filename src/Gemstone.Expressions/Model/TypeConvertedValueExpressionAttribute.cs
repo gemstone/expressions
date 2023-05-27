@@ -123,7 +123,7 @@ namespace Gemstone.Expressions.Model
             if (ReturnType == typeof(string))
                 return $"Common.TypeConvertToString(Instance.{property.Name})";
 
-            string returnType = ReturnType?.FullName ?? typeof(object).FullName;
+            string returnType = ReturnType?.FullName ?? typeof(object).FullName!;
             return $"Convert.ChangeType(Instance.{property.Name}, typeof({returnType}))";
         }
 

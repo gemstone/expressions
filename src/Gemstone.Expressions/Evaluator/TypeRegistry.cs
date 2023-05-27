@@ -144,7 +144,7 @@ namespace Gemstone.Expressions.Evaluator
                 addAssembly("System.Runtime");
 
                 foreach (AssemblyName assemblyName in typeof(TypeRegistry).Assembly.GetReferencedAssemblies())
-                    addAssembly(assemblyName.Name);
+                    addAssembly(assemblyName.Name!);
 
                 foreach (Type type in RegisteredTypes)
                     assemblies.Add(type.Assembly);
@@ -163,7 +163,7 @@ namespace Gemstone.Expressions.Evaluator
                 HashSet<string> namespaces = new();
 
                 foreach (Type type in RegisteredTypes)
-                    namespaces.Add(type.Namespace);
+                    namespaces.Add(type.Namespace!);
 
                 return namespaces;
             }
@@ -212,7 +212,7 @@ namespace Gemstone.Expressions.Evaluator
                 throw new ArgumentException("Cannot register a type as a symbol. Call \"RegisterType\" instead.");
 
             // Check if symbol name with same type already exists
-            if (m_registeredSymbols.TryGetValue(symbol.Name, out Symbol existingSymbol) && existingSymbol.Type == symbol.Type)
+            if (m_registeredSymbols.TryGetValue(symbol.Name, out Symbol? existingSymbol) && existingSymbol.Type == symbol.Type)
             {
                 // Update value of existing symbol
                 existingSymbol.Value = symbol.Value;
@@ -249,14 +249,14 @@ namespace Gemstone.Expressions.Evaluator
         public object GetNewContext(Type resultType, Type instanceParameterType)
         {
             (Type contextType, PropertyInfo[] instanceProperties, FieldInfo[] instanceFields) = m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), GenerateContextType);
-            object instance = Activator.CreateInstance(contextType);
+            object instance = Activator.CreateInstance(contextType)!;
 
             contextType.GetField(InstanceProperties)?.SetValue(instance, instanceProperties);
             contextType.GetField(InstanceFields)?.SetValue(instance, instanceFields);
 
             foreach (Symbol symbol in m_registeredSymbols.Values)
             {
-                FieldInfo field = contextType.GetField(symbol.Name);
+                FieldInfo? field = contextType.GetField(symbol.Name);
 
                 if (field is null)
                     continue;
@@ -457,7 +457,7 @@ namespace Gemstone.Expressions.Evaluator
 
             Assembly assembly = s_codeAssemblies.GetOrAdd(codeHash, cacheAssembly);
 
-            Type contextType = assembly.GetType($"{contextTypeNamespace}.{ContextTypeClassName}");
+            Type contextType = assembly.GetType($"{contextTypeNamespace}.{ContextTypeClassName}")!;
 
             RegisterType(contextType);
 
@@ -484,7 +484,7 @@ namespace Gemstone.Expressions.Evaluator
             if (string.IsNullOrWhiteSpace(text))
                 return string.Empty;
 
-            using SHA256 sha = new SHA256Managed();
+            using SHA256 sha = SHA256.Create();
             byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(text));
             return BitConverter.ToString(hash).Replace("-", string.Empty);
         }

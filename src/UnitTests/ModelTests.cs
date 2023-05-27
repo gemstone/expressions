@@ -27,6 +27,8 @@ using System.Security.Principal;
 using Gemstone.Expressions.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+#pragma warning disable CA1416
+
 namespace Gemstone.Expressions.UnitTests
 {
     public static class Defaults
