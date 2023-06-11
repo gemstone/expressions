@@ -550,7 +550,7 @@
             The expression update value is typically used to assign modeled property values back
             to expressions allowing synchronization of a model with an external source, e.g., a
             user interface element. For example:
-            <code language="cs">
+            <code>
             [TypeConvertedValueExpression("Form.maskedTextBoxMessageInterval.Text", typeof(string))]
             public int MessageInterval { get; set; }
             </code>
