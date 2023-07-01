@@ -1029,7 +1029,7 @@
             be initialized. Calling this method in advance of any of the static create or update delegate
             generation functions will allow modeled types to self-register any custom symbols and types
             that may be used during evaluation of value expressions attributes, e.g.:
-            <code language="cs">
+            <code>
             static MyModel()
             {
                 TableOperations&lt;MyModel&gt;.TypeRegistry.RegisterType&lt;MyType&gt;();
