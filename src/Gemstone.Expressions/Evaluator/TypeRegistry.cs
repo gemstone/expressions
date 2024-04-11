@@ -90,7 +90,7 @@ namespace Gemstone.Expressions.Evaluator
             get
             {
                 // Get explicitly registered types
-                HashSet<Type> registeredTypes = new(m_registeredTypes.Keys);
+                HashSet<Type> registeredTypes = [..m_registeredTypes.Keys];
 
                 // Append types for registered symbols
                 registeredTypes.UnionWith(m_registeredSymbols.Select(symbol => symbol.Value.Type));
@@ -109,11 +109,11 @@ namespace Gemstone.Expressions.Evaluator
         /// </summary>
         /// <param name="name">Symbol name.</param>
         /// <returns>Symbol value or <c>null</c> if symbol <paramref name="name"/> does not exist.</returns>
-        public object? this[string name] => m_registeredSymbols[name]?.Value;
+        public object? this[string name] => m_registeredSymbols[name].Value;
 
         /// <summary>
         /// Sets value for registered symbol with specified <paramref name="name"/>,
-        /// new symbol will registered if symbol does not exist.
+        /// new symbol will be registered if symbol does not exist.
         /// </summary>
         /// <param name="name">Symbol name.</param>
         /// <param name="type">Symbol type.</param>
@@ -129,7 +129,7 @@ namespace Gemstone.Expressions.Evaluator
         {
             get
             {
-                HashSet<Assembly> assemblies = new();
+                HashSet<Assembly> assemblies = [];
 
                 void addAssembly(string name)
                 {
@@ -160,7 +160,7 @@ namespace Gemstone.Expressions.Evaluator
         {
             get
             {
-                HashSet<string> namespaces = new();
+                HashSet<string> namespaces = [];
 
                 foreach (Type type in RegisteredTypes)
                     namespaces.Add(type.Namespace!);
@@ -430,7 +430,7 @@ namespace Gemstone.Expressions.Evaluator
                     string contextTypeCode = string.Format(contextTypeCodeTemplate, contextTypeNamespace);
 
                     // Add assemblies for registered types, symbols and expression types
-                    HashSet<Assembly> assemblies = new(Assemblies) { resultType.Assembly, instanceParameterType.Assembly };
+                    HashSet<Assembly> assemblies = [..Assemblies, resultType.Assembly, instanceParameterType.Assembly];
 
                     // Also add assemblies for instance properties and fields
                     foreach (Type type in instanceProperties.Select(property => property.PropertyType))

@@ -48,10 +48,10 @@ namespace Gemstone.Expressions
         public static byte[] Compile(string code, IEnumerable<Assembly> references, CSharpCompilationOptions? options = null, string? assemblyName = null)
         {
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(code);
-
+            
             CSharpCompilation compilation = CSharpCompilation.Create(
                 assemblyName ?? Path.GetRandomFileName(),
-                new[] { syntaxTree },
+                [ syntaxTree ],
                 references.Select(assembly => MetadataReference.CreateFromFile(assembly.Location)),
                 options ?? new CSharpCompilationOptions(
                     OutputKind.DynamicallyLinkedLibrary,
