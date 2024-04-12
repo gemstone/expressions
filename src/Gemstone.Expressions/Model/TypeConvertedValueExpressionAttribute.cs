@@ -60,7 +60,10 @@ namespace Gemstone.Expressions.Model
         /// <remarks>
         /// When the <paramref name="returnType"/> is known in advance, it is optimal to provide it.
         /// </remarks>
-        public TypeConvertedValueExpressionAttribute(string expression, Type? returnType = null) : base(expression) => ReturnType = returnType;
+        public TypeConvertedValueExpressionAttribute(string expression, Type? returnType = null) : base(expression)
+        {
+            ReturnType = returnType;
+        }
 
         /// <summary>
         /// Gets the <see cref="ValueExpressionAttributeBase.Expression"/> based value used to update a modeled property.

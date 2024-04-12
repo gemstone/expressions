@@ -1,6 +1,4 @@
-﻿//******************************************************************************************************
-//  TemplateExpression.cs - Gbtc
-//
+﻿//******************************************************************************************************//  TemplateExpression.cs - Gbtc/
 //  Copyright © 2010, Grid Protection Alliance.  All Rights Reserved.
 //
 //  Licensed to the Grid Protection Alliance (GPA) under one or more contributor license agreements. See
@@ -27,7 +25,6 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -35,8 +32,8 @@ using System.Text.RegularExpressions;
 using Gemstone.CharExtensions;
 using Gemstone.Expressions.Evaluator;
 using Gemstone.StringExtensions;
-using ParsedExpression = System.Tuple<string, bool, string>;
 using ParsedEvaluation = System.Tuple<string, string>;
+using ParsedExpression = System.Tuple<string, bool, string>;
 
 namespace Gemstone.Expressions;
 
@@ -134,7 +131,7 @@ public class TemplatedExpressionParser
         m_evaluationParser = new Regex(string.Format(EvaluationParser, startTokenDelimiter, endTokenDelimiter), RegexOptions.Compiled);
 
         // Reserved symbols include all expression operators and delimiters
-        ReservedSymbols = new[] { '\\', '<', '>', '=', '!', startTokenDelimiter, endTokenDelimiter, startExpressionDelimiter, endExpressionDelimiter };
+        ReservedSymbols = [ '\\', '<', '>', '=', '!', startTokenDelimiter, endTokenDelimiter, startExpressionDelimiter, endExpressionDelimiter ];
         m_escapedReservedSymbols = ReservedSymbols.Select(symbol => $"\\{symbol}").ToArray();
         m_encodedReservedSymbols = ReservedSymbols.Select(symbol => symbol.RegexEncode()).ToArray();
 
@@ -194,7 +191,7 @@ public class TemplatedExpressionParser
     /// <see cref="TemplatedExpression"/> value and optionally evaluates any expressions.
     /// </summary>
     /// <param name="substitutions">Dictionary of substitutions. Dictionary keys are tokens to be replaced by the values.</param>
-    /// <param name="ignoreCase">Determines if substitutions should be case insensitive. Defaults to <c>true</c>.</param>
+    /// <param name="ignoreCase">Determines if substitutions should be case-insensitive. Defaults to <c>true</c>.</param>
     /// <param name="evaluateExpressions">Determines if expressions should be evaluated. Defaults to <c>true</c>.</param>
     /// <param name="escapeSubstitutionValues">Determines if reserved symbols in substitution values should be automatically escaped. Defaults to <c>true</c>.</param>
     /// <returns>A string that was based on <see cref="TemplatedExpression"/> with tokens replaced and expressions evaluated.</returns>
@@ -221,7 +218,7 @@ public class TemplatedExpressionParser
     /// Advanced expressions can be parsed using the eval function, e.g., eval{1 + 2}. Eval function expression is delimited by the currently
     /// defined token delimiters, { and } by default. The evaluation engine deals with numbers and strings. The typing of numeric literals
     /// follow C# standards, suffixes such as d, f and m may be used to explicitly specify the numeric type. If no numeric suffix is provided,
-    /// the default type of a numeric literal is assumed to be <see cref="int"/>. String literals should be specified using single quotes
+    /// the default type of numeric literal is assumed to be <see cref="int"/>. String literals should be specified using single quotes
     /// instead of double quotes, this includes substitution parameters, e.g., <c>eval{'{DeviceAcronym}'.Length + 1}</c>. Advanced evaluation
     /// expressions using the eval function are always parsed after common expressions. Eval functions cannot be nested.
     /// </para>
@@ -316,134 +313,106 @@ public class TemplatedExpressionParser
 
     // Parses expressions of the form "[?expression[result]]". Expressions can be nested, e.g., "[?expression1[?expression2[result]]]".
     // Returns list of complete expressions (used as base replacement text), cumulative boolean expression evaluations and expression results
-    [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
     private List<ParsedExpression> ParseExpressions(string fieldReplacedTemplatedExpression, bool ignoreCase)
     {
-        List<ParsedExpression> parsedExpressions = new();
-
         // Find all expressions using regular expression
         Match match = m_expressionParser.Match(fieldReplacedTemplatedExpression);
 
-        if (match.Success)
-        {
-            Group capturedExpressions = match.Groups["Expressions"];
-            StringBuilder completeExpression = new();
-            List<bool> evaluations = new();
-            int depth = 0, lastDepth = 0;
+        if (!match.Success)
+            return [];
 
-            foreach (Capture capture in capturedExpressions.Captures)
+        List<ParsedExpression> parsedExpressions = [];
+        Group capturedExpressions = match.Groups["Expressions"];
+        StringBuilder completeExpression = new();
+        List<bool> evaluations = [];
+        int depth = 0, lastDepth = 0;
+
+        foreach (Capture capture in capturedExpressions.Captures)
+        {
+            if (capture.Value.StartsWith($"{StartExpressionDelimiter}?", StringComparison.Ordinal))
             {
-                if (capture.Value.StartsWith($"{StartExpressionDelimiter}?", StringComparison.Ordinal))
+                // Found binary operation expression
+                depth++;
+                completeExpression.Append(capture.Value);
+
+                // Only apply cumulative AND logic for items at continued depth
+                if (depth == lastDepth && evaluations.Count > 0)
+                    evaluations.RemoveAt(evaluations.Count - 1);
+
+                lastDepth = depth;
+
+                // Parse binary expression
+                CodeBinaryOperatorExpression? expression = ParseBinaryOperatorExpression(capture.Value.Substring(2), out TypeCode expressionType);
+
+                // Evaluate binary expression
+                if (expression is not null)
                 {
-                    // Found binary operation expression
+                    IComparer comparer = expressionType switch
+                    {
+                        TypeCode.Int32 => Comparer<int>.Default,
+                        TypeCode.Double => Comparer<double>.Default,
+                        TypeCode.String => ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal,
+                        _ => throw new ArgumentOutOfRangeException(),
+                    };
+
+                    // Compare operands
+                    int result = comparer.Compare(((CodePrimitiveExpression)expression.Left).Value, ((CodePrimitiveExpression)expression.Right).Value);
+
+                    // Evaluate comparison result
+                    bool evaluation = expression.Operator switch
+                    {
+                        CodeBinaryOperatorType.IdentityEquality => result == 0,
+                        CodeBinaryOperatorType.IdentityInequality => result != 0,
+                        CodeBinaryOperatorType.LessThan => result < 0,
+                        CodeBinaryOperatorType.LessThanOrEqual => result <= 0,
+                        CodeBinaryOperatorType.GreaterThan => result > 0,
+                        CodeBinaryOperatorType.GreaterThanOrEqual => result >= 0,
+                        _ => false
+                    };
+
+                    evaluations.Add(evaluation);
+                }
+                else
+                {
+                    // Expression evaluation fails if there is not an expression
+                    evaluations.Add(false);
+                }
+            }
+            else if (capture.Value.StartsWith(StartExpressionDelimiter.ToString(), StringComparison.Ordinal))
+            {
+                if (depth > 0)
+                {
                     depth++;
+
+                    // Found expression result
                     completeExpression.Append(capture.Value);
 
-                    // Only apply cumulative AND logic for items at continued depth
-                    if (depth == lastDepth && evaluations.Count > 0)
-                        evaluations.RemoveAt(evaluations.Count - 1);
+                    // Complete closed expression
+                    int index = capture.Index + capture.Length;
 
-                    lastDepth = depth;
-
-                    // Parse binary expression
-                    CodeBinaryOperatorExpression? expression = ParseBinaryOperatorExpression(capture.Value.Substring(2), out TypeCode expressionType);
-
-                    // Evaluate binary expression
-                    if (expression is not null)
+                    while (index < fieldReplacedTemplatedExpression.Length && fieldReplacedTemplatedExpression[index] == EndExpressionDelimiter)
                     {
-                        IComparer comparer;
-
-                        // Select comparer based on expression type
-                        switch (expressionType)
-                        {
-                            case TypeCode.Int32:
-                                comparer = Comparer<int>.Default;
-                                break;
-                            case TypeCode.Double:
-                                comparer = Comparer<double>.Default;
-                                break;
-                            case TypeCode.String:
-                                comparer = ignoreCase ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-
-                        // Compare operands
-                        int result = comparer.Compare(((CodePrimitiveExpression)expression.Left).Value, ((CodePrimitiveExpression)expression.Right).Value);
-
-                        // Evaluate comparison result
-                        bool evaluation;
-
-                        switch (expression.Operator)
-                        {
-                            case CodeBinaryOperatorType.IdentityEquality:
-                                evaluation = result == 0;
-                                break;
-                            case CodeBinaryOperatorType.IdentityInequality:
-                                evaluation = result != 0;
-                                break;
-                            case CodeBinaryOperatorType.LessThan:
-                                evaluation = result < 0;
-                                break;
-                            case CodeBinaryOperatorType.LessThanOrEqual:
-                                evaluation = result <= 0;
-                                break;
-                            case CodeBinaryOperatorType.GreaterThan:
-                                evaluation = result > 0;
-                                break;
-                            case CodeBinaryOperatorType.GreaterThanOrEqual:
-                                evaluation = result >= 0;
-                                break;
-                            default:
-                                evaluation = false;
-                                break;
-                        }
-
-                        evaluations.Add(evaluation);
+                        completeExpression.Append(EndExpressionDelimiter);
+                        index++;
+                        depth--;
                     }
-                    else
-                    {
-                        // Expression evaluation fails if there is not an expression
-                        evaluations.Add(false);
-                    }
-                }
-                else if (capture.Value.StartsWith(StartExpressionDelimiter.ToString(), StringComparison.Ordinal))
-                {
+
+                    // Add complete expression, cumulative boolean expression evaluation and expression result to parsed expression list
+                    parsedExpressions.Add(new ParsedExpression(completeExpression.ToString(), evaluations.All(item => item), capture.Value.Substring(1)));
+
+                    // Reset for next expression
+                    completeExpression.Clear();
+
                     if (depth > 0)
-                    {
-                        depth++;
+                        continue;
 
-                        // Found expression result
-                        completeExpression.Append(capture.Value);
-
-                        // Complete closed expression
-                        int index = capture.Index + capture.Length;
-
-                        while (index < fieldReplacedTemplatedExpression.Length && fieldReplacedTemplatedExpression[index] == EndExpressionDelimiter)
-                        {
-                            completeExpression.Append(EndExpressionDelimiter);
-                            index++;
-                            depth--;
-                        }
-
-                        // Add complete expression, cumulative boolean expression evaluation and expression result to parsed expression list
-                        parsedExpressions.Add(new ParsedExpression(completeExpression.ToString(), evaluations.All(item => item), capture.Value.Substring(1)));
-
-                        // Reset for next expression
-                        completeExpression.Clear();
-
-                        if (depth > 0)
-                            continue;
-
-                        evaluations.Clear();
-                        depth = 0;
-                    }
-                    else
-                    {
-                        // Unbalanced expression - exception not expected since regex should already catch this
-                        throw new InvalidOperationException($"Unbalanced delimiters detected in field replaced templated expression \"{fieldReplacedTemplatedExpression}\"");
-                    }
+                    evaluations.Clear();
+                    depth = 0;
+                }
+                else
+                {
+                    // Unbalanced expression - exception not expected since regex should already catch this
+                    throw new InvalidOperationException($"Unbalanced delimiters detected in field replaced templated expression \"{fieldReplacedTemplatedExpression}\"");
                 }
             }
         }
@@ -515,7 +484,7 @@ public class TemplatedExpressionParser
     // Returns list of complete expressions (used as base replacement text) and evaluation results
     private List<ParsedEvaluation> ParseEvaluations(string fieldReplacedTemplatedExpression)
     {
-        List<ParsedEvaluation> parsedEvaluations = new();
+        List<ParsedEvaluation> parsedEvaluations = [];
         MatchCollection matches = m_evaluationParser.Matches(fieldReplacedTemplatedExpression);
 
         foreach (Match match in matches)
@@ -535,7 +504,7 @@ public class TemplatedExpressionParser
     // Static Fields
 
     // Operator symbol array - note that order is critical for proper split
-    private static readonly string[] s_operatorSymbols = { "==", "!=", "<>", "<=", "<", ">=", ">", "=" };
+    private static readonly string[] s_operatorSymbols = ["==", "!=", "<>", "<=", "<", ">=", ">", "="];
 
     #endregion
 }

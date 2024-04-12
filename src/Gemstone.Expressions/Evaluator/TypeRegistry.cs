@@ -90,7 +90,7 @@ namespace Gemstone.Expressions.Evaluator
             get
             {
                 // Get explicitly registered types
-                HashSet<Type> registeredTypes = [..m_registeredTypes.Keys];
+                HashSet<Type> registeredTypes = [.. m_registeredTypes.Keys];
 
                 // Append types for registered symbols
                 registeredTypes.UnionWith(m_registeredSymbols.Select(symbol => symbol.Value.Type));
@@ -178,7 +178,10 @@ namespace Gemstone.Expressions.Evaluator
         /// Creates a cloned instance of this <see cref="TypeRegistry"/>.
         /// </summary>
         /// <returns>Cloned instance of this <see cref="TypeRegistry"/>.</returns>
-        public TypeRegistry Clone() => new(m_registeredTypes, m_registeredSymbols);
+        public TypeRegistry Clone()
+        {
+            return new TypeRegistry(m_registeredTypes, m_registeredSymbols);
+        }
 
         /// <summary>
         /// Registers a new <see cref="Type"/>.
@@ -188,7 +191,10 @@ namespace Gemstone.Expressions.Evaluator
         /// <c>true</c> if the <paramref name="type"/> was registered successfully; otherwise,
         /// <c>false</c> if the <paramref name="type"/> was already registered.
         /// </returns>
-        public bool RegisterType(Type type) => m_registeredTypes.TryAdd(type, 0);
+        public bool RegisterType(Type type)
+        {
+            return m_registeredTypes.TryAdd(type, 0);
+        }
 
         /// <summary>
         /// Registers a new <see cref="Type"/>.
@@ -198,7 +204,10 @@ namespace Gemstone.Expressions.Evaluator
         /// <c>true</c> if <typeparamref name="T"/> was registered successfully; otherwise,
         /// <c>false</c> if <typeparamref name="T"/> was already registered.
         /// </returns>
-        public bool RegisterType<T>() => RegisterType(typeof(T));
+        public bool RegisterType<T>()
+        {
+            return RegisterType(typeof(T));
+        }
 
         /// <summary>
         /// Registers a new or updates an existing <see cref="Symbol"/>.
@@ -232,7 +241,10 @@ namespace Gemstone.Expressions.Evaluator
         /// <typeparam name="T"><see cref="Type"/> of <paramref name="value"/>.</typeparam>
         /// <param name="name"><see cref="Symbol"/> name.</param>
         /// <param name="value"><see cref="Symbol"/> value.</param>
-        public void RegisterSymbol<T>(string name, T value) => RegisterSymbol(new Symbol(name, typeof(T), value));
+        public void RegisterSymbol<T>(string name, T value)
+        {
+            RegisterSymbol(new Symbol(name, typeof(T), value));
+        }
 
         /// <summary>
         /// Gets a new context instance.
@@ -282,7 +294,10 @@ namespace Gemstone.Expressions.Evaluator
         /// assemblies cannot be unloaded, this property should only be called after all the
         /// desired types and symbols have been registered.
         /// </remarks>
-        public object GetNewContext<TResult, TInstanceParameter>() => GetNewContext(typeof(TResult), typeof(TInstanceParameter));
+        public object GetNewContext<TResult, TInstanceParameter>()
+        {
+            return GetNewContext(typeof(TResult), typeof(TInstanceParameter));
+        }
 
         /// <summary>
         /// Gets a compiled context type based on registered types and symbols.
@@ -297,7 +312,10 @@ namespace Gemstone.Expressions.Evaluator
         /// assemblies cannot be unloaded, this property should only be called after all the
         /// desired types and symbols have been registered.
         /// </remarks>
-        public Type GetContextType(Type resultType, Type instanceParameterType) => m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), GenerateContextType).contextType;
+        public Type GetContextType(Type resultType, Type instanceParameterType)
+        {
+            return m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), GenerateContextType).contextType;
+        }
 
         /// <summary>
         /// Gets a compiled context type based on registered types and symbols.
@@ -312,7 +330,10 @@ namespace Gemstone.Expressions.Evaluator
         /// assemblies cannot be unloaded, this property should only be called after all the
         /// desired types and symbols have been registered.
         /// </remarks>
-        public Type GetContextType<TResult, TInstanceParameter>() => GetContextType(typeof(TResult), typeof(TInstanceParameter));
+        public Type GetContextType<TResult, TInstanceParameter>()
+        {
+            return GetContextType(typeof(TResult), typeof(TInstanceParameter));
+        }
 
         private (Type, PropertyInfo[], FieldInfo[]) GenerateContextType((Type, Type) expressionTypes)
         {
@@ -341,7 +362,7 @@ namespace Gemstone.Expressions.Evaluator
 
                 checkForDuplicate(InstanceProperties, $"Reserved name \"{InstanceProperties}\"");
                 checkForDuplicate(InstanceFields, $"Reserved name \"{InstanceFields}\"");
-                
+
                 // Add reserved instance names to field names so they can also be checked
                 fieldNames.Add(InstanceProperties);
                 fieldNames.Add(InstanceFields);
@@ -367,40 +388,42 @@ namespace Gemstone.Expressions.Evaluator
                 return fieldDefinitions.ToString();
             }
 
-            string contextTypeCodeTemplate = $@"
+            string contextTypeCodeTemplate =
+                $$$"""
                 using System;
                 using System.Reflection;
 
-                namespace {{0}}
-                {{{{
-                    public class {ContextTypeClassName}
-                    {{{{
-                        {generateFieldDefinitions()}
+                namespace {0}
+                {{
+                    public class {{{ContextTypeClassName}}}
+                    {{
+                        {{{generateFieldDefinitions()}}}
 
                         public void ExecuteAction(object instance, Action action)
-                        {{{{
+                        {{
                             UpdateFields(instance);
                             action();
-                        }}}}
+                        }}
 
-                        public {resultType.FullName} ExecuteFunc(object instance, Func<{resultType.FullName}> func)
-                        {{{{
+                        public {{{resultType.FullName}}} ExecuteFunc(object instance, Func<{{{resultType.FullName}}}> func)
+                        {{
                             UpdateFields(instance);
                             return func();
-                        }}}}
+                        }}
 
                         private void UpdateFields(object instance)
-                        {{{{
+                        {{
                             Type type = GetType();
 
-                            foreach (PropertyInfo property in {InstanceProperties})
+                            foreach (PropertyInfo property in {{{InstanceProperties}}})
                                 type.GetField(property.Name).SetValue(this, property.GetValue(instance));
 
-                            foreach (FieldInfo field in {InstanceFields})
+                            foreach (FieldInfo field in {{{InstanceFields}}})
                                 type.GetField(field.Name).SetValue(this, field.GetValue(instance));
-                        }}}}
-                    }}}}
-                }}}}";
+                        }}
+                    }}
+                }}
+                """;
 
             string codeHash = GetSha256(contextTypeCodeTemplate);
             string contextTypeNamespace = $"{nameof(Evaluator)}{codeHash}";
@@ -431,12 +454,12 @@ namespace Gemstone.Expressions.Evaluator
                     string contextTypeCode = string.Format(contextTypeCodeTemplate, contextTypeNamespace);
 
                     // Add assemblies for registered types, symbols and expression types
-                    HashSet<Assembly> assemblies = [..Assemblies, resultType.Assembly, instanceParameterType.Assembly];
+                    HashSet<Assembly> assemblies = [.. Assemblies, resultType.Assembly, instanceParameterType.Assembly];
 
                     // Also add assemblies for instance properties and fields
                     foreach (Type type in instanceProperties.Select(property => property.PropertyType))
                         assemblies.Add(type.Assembly);
-                    
+
                     foreach (Type type in instanceFields.Select(field => field.FieldType))
                         assemblies.Add(type.Assembly);
 

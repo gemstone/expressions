@@ -119,7 +119,10 @@ namespace Gemstone.Expressions.Model
         /// The property update value is typically used to assign expression values to a modeled type.
         /// </para>
         /// </remarks>
-        public virtual string GetPropertyUpdateValue(PropertyInfo property) => Expression;
+        public virtual string GetPropertyUpdateValue(PropertyInfo property)
+        {
+            return Expression;
+        }
 
         /// <summary>
         /// Gets the modeled property based value used to update the <see cref="Expression"/>.
@@ -137,7 +140,10 @@ namespace Gemstone.Expressions.Model
         /// user interface element.
         /// </para>
         /// </remarks>
-        public virtual string GetExpressionUpdateValue(PropertyInfo property) => $"Instance.{property.Name}";
+        public virtual string GetExpressionUpdateValue(PropertyInfo property)
+        {
+            return $"Instance.{property.Name}";
+        }
 
         #endregion
     }

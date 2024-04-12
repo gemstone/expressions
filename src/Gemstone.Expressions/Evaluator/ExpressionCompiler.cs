@@ -78,7 +78,10 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public void ExecuteAction() => CompiledAction();
+        public void ExecuteAction()
+        {
+            CompiledAction();
+        }
 
         /// <summary>
         /// Executes compiled <see cref="Func{TResult}"/> based expression.
@@ -87,7 +90,10 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public TResult ExecuteFunction() => CompiledFunction();
+        public TResult ExecuteFunction()
+        {
+            return CompiledFunction();
+        }
     }
 
     /// <summary>
@@ -198,7 +204,6 @@ namespace Gemstone.Expressions.Evaluator
             ScriptOptions options = ScriptOptions.Default
                 .WithReferences(typeRegistry.Assemblies)
                 .WithImports(typeRegistry.Namespaces)
-                
                 .WithOptimizationLevel(OptimizationLevel.Release);
 
             object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType);
@@ -216,7 +221,10 @@ namespace Gemstone.Expressions.Evaluator
         /// <remarks>
         /// Calling this method will automatically compile <see cref="Expression"/>, if not already compiled.
         /// </remarks>
-        public void ExecuteAction(TInstanceParameter? instance) => CompiledAction?.Invoke(instance);
+        public void ExecuteAction(TInstanceParameter? instance)
+        {
+            CompiledAction?.Invoke(instance);
+        }
 
         /// <summary>
         /// Executes compiled <see cref="Func{TInstanceParameter, TResult}"/> based expression.
@@ -236,6 +244,9 @@ namespace Gemstone.Expressions.Evaluator
         /// Returns a string that represents the <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>, i.e., the <see cref="Expression"/> value.
         /// </summary>
         /// <returns>The <see cref="Expression"/> value.</returns>
-        public override string ToString() => Expression;
+        public override string ToString()
+        {
+            return Expression;
+        }
     }
 }
