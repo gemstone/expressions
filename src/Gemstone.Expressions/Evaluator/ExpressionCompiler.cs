@@ -32,16 +32,11 @@ namespace Gemstone.Expressions.Evaluator
     /// <summary>
     /// Represents a runtime C# expression evaluator.
     /// </summary>
-    public class ExpressionCompiler : ExpressionCompiler<object>
-    {
-        /// <summary>
-        /// Creates a new <see cref="ExpressionCompiler"/>.
-        /// </summary>
-        /// <param name="expression">C# expression to compile.</param>
-        public ExpressionCompiler(string expression) : base(expression)
-        {
-        }
-    }
+    /// <remarks>
+    /// Creates a new <see cref="ExpressionCompiler"/>.
+    /// </remarks>
+    /// <param name="expression">C# expression to compile.</param>
+    public class ExpressionCompiler(string expression) : ExpressionCompiler<object?>(expression);
 
     /// <summary>
     /// Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult"/>.
@@ -203,9 +198,10 @@ namespace Gemstone.Expressions.Evaluator
             ScriptOptions options = ScriptOptions.Default
                 .WithReferences(typeRegistry.Assemblies)
                 .WithImports(typeRegistry.Namespaces)
+                
                 .WithOptimizationLevel(OptimizationLevel.Release);
 
-            object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType ?? typeof(TInstanceParameter));
+            object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType);
 
             if (isMethodCall)
                 CompiledExpression = CSharpScript.EvaluateAsync<Expression<Action<TInstanceParameter?>>>($"(instance) => ExecuteAction(instance, () => {Expression})", options, context).Result;

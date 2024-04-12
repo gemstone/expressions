@@ -142,6 +142,7 @@ namespace Gemstone.Expressions.Evaluator
 
                 addAssembly("netstandard");
                 addAssembly("System.Runtime");
+                addAssembly("Microsoft.CSharp");
 
                 foreach (AssemblyName assemblyName in typeof(TypeRegistry).Assembly.GetReferencedAssemblies())
                     addAssembly(assemblyName.Name!);
@@ -404,8 +405,8 @@ namespace Gemstone.Expressions.Evaluator
             string codeHash = GetSha256(contextTypeCodeTemplate);
             string contextTypeNamespace = $"{nameof(Evaluator)}{codeHash}";
 
-            // For now, we must write assembly to a file in order for Roslyn to use it :-p
-            // https://github.com/dotnet/roslyn/wiki/Scripting-API-Samples#parameterize-a-script
+            // For now, we must write assembly to a file in order for Roslyn to use it as in-memory assembly defines
+            // no assembly location. There may be a way around this, but this caches the assembly for reuse anyway.
             Assembly cacheAssembly(string _)
             {
                 string assemblyDirectory = Path.GetFullPath(ContextTypeAssemblyFolder);
