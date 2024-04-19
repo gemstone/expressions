@@ -30,6 +30,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using Gemstone.IO;
 
 namespace Gemstone.Expressions.Evaluator
 {
@@ -432,7 +433,7 @@ namespace Gemstone.Expressions.Evaluator
             // no assembly location. There may be a way around this, but this caches the assembly for reuse anyway.
             Assembly cacheAssembly(string _)
             {
-                string assemblyDirectory = Path.GetFullPath(ContextTypeAssemblyFolder);
+                string assemblyDirectory = FilePath.GetAbsolutePath(ContextTypeAssemblyFolder);
 
                 if (!Directory.Exists(assemblyDirectory))
                 {
