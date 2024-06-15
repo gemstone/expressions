@@ -32,33 +32,177 @@
     </member>
     <member name="M:Gemstone.Expressions.StaticDynamic.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
       <summary>
-            Provides the implementation for operations that get member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class can override this method to specify dynamic behavior for operations such as getting a value for a property.
+            Provides the implementation for operations that get member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"></see>
+            class can override this method to specify dynamic behavior for operations such as getting a value for a property.
             </summary>
-      <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the Console.WriteLine(sampleObject.SampleProperty) statement, where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
-      <param name="result">The result of the get operation. For example, if the method is called for a property, you can assign the property value to result.</param>
+      <param name="binder">
+            Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the
+            member on which the dynamic operation is performed. For example, for the <c>Console.WriteLine(sampleObject.SampleProperty)</c>
+            statement, where <c>sampleObject</c> is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class,
+            binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.
+            </param>
+      <param name="result">
+            The result of the get operation. For example, if the method is called for a property, you can assign the property value to
+            result.
+            </param>
       <returns>
-        <c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of the language determines the behavior. (In most cases, a run-time exception is thrown.)</returns>
+        <c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder
+            of the language determines the behavior. (In most cases, a run-time exception is thrown.)
+            </returns>
     </member>
     <member name="M:Gemstone.Expressions.StaticDynamic.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
       <summary>
-            Provides the implementation for operations that invoke a member. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class can override this method to specify dynamic behavior for operations such as calling a method.
+            Provides the implementation for operations that invoke a member. Classes derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class
+            can override this method to specify dynamic behavior for operations such as calling a method.
             </summary>
-      <param name="binder">Provides information about the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the statement sampleObject.SampleMethod(100), where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, binder.Name returns "SampleMethod". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
-      <param name="args">The arguments that are passed to the object member during the invoke operation. For example, for the statement sampleObject.SampleMethod(100), where sampleObject is derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, args[0] is equal to 100.</param>
+      <param name="binder">
+            Provides information about the dynamic operation. The binder.Name property provides the name of the member on which the dynamic
+            operation is performed. For example, for the statement sampleObject.SampleMethod(100), where sampleObject is an instance of the
+            class derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class, binder.Name returns "SampleMethod". The binder.IgnoreCase property
+            specifies whether the member name is case-sensitive.
+            </param>
+      <param name="args">
+            The arguments that are passed to the object member during the invoke operation. For example, for the statement
+            <c>sampleObject.SampleMethod(100)</c>, where <c>sampleObject</c> is derived from the <see cref="T:System.Dynamic.DynamicObject"></see> class,
+            args[0] is equal to 100.
+            </param>
       <param name="result">The result of the member invocation.</param>
       <returns>
-        <c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)</returns>
+        <c>true</c> if the operation is successful; otherwise, <c>false</c>. If this method returns <c>false</c>, the run-time binder of
+            the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)
+            </returns>
+    </member>
+    <member name="T:Gemstone.Expressions.TemplatedExpressionParser">
+      <summary>
+            Represents a template based token substitution parser that supports binary and advanced expressions.
+            </summary>
+      <remarks>
+        <para>
+            As an example, this parser can use a templated expression of the form:
+            <code>
+            {CompanyAcronym}_{DeviceAcronym}[?{SignalType.Source}=Phasor[-{SignalType.Suffix}{SignalIndex}]]:{Signal.Acronym}
+            </code>
+            then replace the tokens with actual values and properly evaluate the expressions.
+            Example results could look like: GPA_SHELBY-PA1:IPHA and GPA_SHELBY:FREQ
+            </para>
+        <para>
+            Parser also supports more complex C# style expressions using the "eval{}" function, e.g.:
+            <code>
+            eval{'{CompanyAcronym}'.Substring(0,3)}_{DeviceAcronym}eval{'[?{SignalType.Source}=Phasor[-{SignalType.Suffix}]]'.Length}
+            </code></para>
+      </remarks>
+    </member>
+    <member name="M:Gemstone.Expressions.TemplatedExpressionParser.#ctor">
+      <summary>
+            Creates a new <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" />.
+            </summary>
+    </member>
+    <member name="M:Gemstone.Expressions.TemplatedExpressionParser.#ctor(System.Char,System.Char,System.Char,System.Char)">
+      <summary>
+            Creates a new <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" /> with desired delimiters.
+            </summary>
+      <param name="startTokenDelimiter">Character that identifies the beginning of a token.</param>
+      <param name="endTokenDelimiter">Character that identifies the end of a token.</param>
+      <param name="startExpressionDelimiter">Character that identifies the beginning of an expression.</param>
+      <param name="endExpressionDelimiter">Character that identifies the beginning of an expression.</param>
+      <exception cref="T:System.ArgumentException">
+            All delimiters must be unique -- or -- the symbol <c>'u'</c> is reserved for encoding and cannot be used as a delimiter.
+            </exception>
+    </member>
+    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.EndExpressionDelimiter">
+      <summary>
+            Gets the character that identifies the end of an expression.
+            </summary>
+    </member>
+    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.EndTokenDelimiter">
+      <summary>
+            Gets the character that identifies the end of a token.
+            </summary>
+    </member>
+    <member name="M:Gemstone.Expressions.TemplatedExpressionParser.Execute(System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Boolean,System.Boolean)">
+      <summary>
+            Executes replacements using provided <paramref name="substitutions" /> dictionary on the currently defined
+            <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression" /> value and optionally evaluates any expressions.
+            </summary>
+      <param name="substitutions">Dictionary of substitutions. Dictionary keys are tokens to be replaced by the values.</param>
+      <param name="ignoreCase">Determines if substitutions should be case-insensitive. Defaults to <c>true</c>.</param>
+      <param name="evaluateExpressions">Determines if expressions should be evaluated. Defaults to <c>true</c>.</param>
+      <param name="escapeSubstitutionValues">Determines if reserved symbols in substitution values should be automatically escaped. Defaults to <c>true</c>.</param>
+      <returns>A string that was based on <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression" /> with tokens replaced and expressions evaluated.</returns>
+      <remarks>
+        <para>
+            The default token start and end delimiters are { and } but can be overridden in <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" /> constructor.
+            All substitution tokens surrounded by <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.StartTokenDelimiter" /> and <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.EndTokenDelimiter" /> (e.g., {token})
+            will be immediately replaced with their string equivalents before further expression evaluation. As a result of the expression
+            syntax &lt;, &gt;, =, and ! are reserved expressions symbols; <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.StartTokenDelimiter" />, <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.EndTokenDelimiter" />,
+            <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.StartExpressionDelimiter" /> and <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.EndExpressionDelimiter" /> are reserved delimiter symbols. To embed any reserved
+            symbol into the <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression" /> so that it appears in the evaluated result, escape the symbol by prefixing it
+            with a backslash, e.g., \{.
+            </para>
+        <para>
+            The default expression start and end delimiters are [ and ] but can be overridden in <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" /> constructor.
+            Expressions are represented in the form of [?expression[result]] and can be nested, e.g. ([?expression1[?expression2[result]]]).
+            Expressions should not contain extraneous white space for proper evaluation. Only simple boolean comparison operations are allowed
+            in expressions, e.g., A=B (or A==B), A!=B (or A&lt;&gt;B), A&gt;B, A&gt;=B, A&lt;B and A&lt;=B - nothing more. Any expression that
+            fails to evaluate will be evaluated as FALSE. Note that if both left (A) and right (B) operands can be parsed as a numeric value then
+            the expression will be numerically evaluated otherwise expression will be a culture-invariant string comparison. Nested expressions
+            are evaluated as cumulative AND operators. There is no defined nesting limit.
+            </para>
+        <para>
+            Advanced expressions can be parsed using the eval function, e.g., eval{1 + 2}. Eval function expression is delimited by the currently
+            defined token delimiters, { and } by default. The evaluation engine deals with numbers and strings. The typing of numeric literals
+            follow C# standards, suffixes such as d, f and m may be used to explicitly specify the numeric type. If no numeric suffix is provided,
+            the default type of numeric literal is assumed to be <see cref="T:System.Int32" />. String literals should be specified using single quotes
+            instead of double quotes, this includes substitution parameters, e.g., <c>eval{'{DeviceAcronym}'.Length + 1}</c>. Advanced evaluation
+            expressions using the eval function are always parsed after common expressions. Eval functions cannot be nested.
+            </para>
+        <para>
+            When <paramref name="evaluateExpressions" /> is <c>true</c> and values in <paramref name="substitutions" /> intentionally contain
+            expressions to be evaluated, then <paramref name="escapeSubstitutionValues" /> should be set to <c>false</c> so that the reserved
+            symbols in the values are not automatically escaped.
+            </para>
+      </remarks>
+    </member>
+    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.ReservedSymbols">
+      <summary>
+            Gets the reserved symbols - this includes all delimiters and expression operators.
+            </summary>
+      <remarks>
+            The default reserved symbol list is: <c>'\', '&lt;', '&gt;', '=', '!', '{', '}', '[', ']'</c>.
+            </remarks>
+    </member>
+    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.StartExpressionDelimiter">
+      <summary>
+            Gets the character that identifies the start of an expression.
+            </summary>
+    </member>
+    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.StartTokenDelimiter">
+      <summary>
+            Gets the character that identifies the beginning of a token.
+            </summary>
+    </member>
+    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression">
+      <summary>
+            Gets or sets the templated expression to use.
+            </summary>
     </member>
     <member name="T:Gemstone.Expressions.Evaluator.ExpressionCompiler">
       <summary>
             Represents a runtime C# expression evaluator.
             </summary>
+      <param name="expression">C# expression to compile.</param>
+      <remarks>
+            Creates a new <see cref="T:Gemstone.Expressions.Evaluator.ExpressionCompiler" />.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.ExpressionCompiler.#ctor(System.String)">
       <summary>
-            Creates a new <see cref="T:Gemstone.Expressions.Evaluator.ExpressionCompiler" />.
+            Represents a runtime C# expression evaluator.
             </summary>
       <param name="expression">C# expression to compile.</param>
+      <remarks>
+            Creates a new <see cref="T:Gemstone.Expressions.Evaluator.ExpressionCompiler" />.
+            </remarks>
     </member>
     <member name="T:Gemstone.Expressions.Evaluator.ExpressionCompiler`1">
       <summary>
@@ -327,7 +471,7 @@
     <member name="P:Gemstone.Expressions.Evaluator.TypeRegistry.Item(System.String,System.Type)">
       <summary>
             Sets value for registered symbol with specified <paramref name="name" />,
-            new symbol will registered if symbol does not exist.
+            new symbol will be registered if symbol does not exist.
             </summary>
       <param name="name">Symbol name.</param>
       <param name="type">Symbol type.</param>
