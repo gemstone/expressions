@@ -38,7 +38,7 @@ namespace Gemstone.Expressions.Model
         /// Use the <see cref="GetPropertyUpdateValue"/> method to get a per-property
         /// based value for use with the <see cref="ValueExpressionParser"/>. Use
         /// <see cref="ValueExpressionParser.DeriveExpression"/> to automatically
-        /// replace any <c>this</c> keywords with <c>Instance</c> so as to properly
+        /// replace any <c>this</c> keywords with <c>Instance</c> to properly
         /// reference the modeled <see cref="ValueExpressionScopeBase{T}.Instance"/>.
         /// </remarks>
         string Expression { get; }

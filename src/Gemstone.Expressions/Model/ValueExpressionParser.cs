@@ -20,6 +20,10 @@
 //       Generated original version of source code.
 //
 //******************************************************************************************************
+// ReSharper disable UnusedMember.Local
+// ReSharper disable StaticMemberInGenericType
+// ReSharper disable PossibleNullReferenceException
+#pragma warning disable IDE0051 // Remove unused private members
 
 using System;
 using System.Collections.Generic;
@@ -34,9 +38,6 @@ using Gemstone.Identity;
 using Gemstone.Reflection.MemberInfoExtensions;
 using LinqExpression = System.Linq.Expressions.Expression;
 
-// ReSharper disable UnusedMember.Local
-// ReSharper disable StaticMemberInGenericType
-// ReSharper disable PossibleNullReferenceException
 namespace Gemstone.Expressions.Model
 {
     /// <summary>
@@ -162,9 +163,7 @@ namespace Gemstone.Expressions.Model
         #region [ Members ]
 
         // Nested Types
-        private class MinimumScope : ValueExpressionScopeBase<T>
-        {
-        }
+        private class MinimumScope : ValueExpressionScopeBase<T>;
 
         #endregion
 
@@ -246,7 +245,7 @@ namespace Gemstone.Expressions.Model
         /// <remarks>
         /// As long as type <typeparamref name="T"/> defines a parameterless constructor, this method
         /// will create an instance of the modeled class so that any defined static functionality will
-        /// be initialized. Calling this method in advance of any of the static create or update delegate
+        /// be initialized. Calling this method in advance of the static create or update delegate
         /// generation functions will allow modeled types to self-register any custom symbols and types
         /// that may be used during evaluation of value expressions attributes, e.g.:
         /// <code>
@@ -296,7 +295,6 @@ namespace Gemstone.Expressions.Model
         public static Func<T> CreateInstance(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Func<MinimumScope, T> createInstanceFunction = CreateInstance<MinimumScope>(properties, typeRegistry);
-
             return () => createInstanceFunction(new MinimumScope());
         }
 
@@ -327,7 +325,6 @@ namespace Gemstone.Expressions.Model
         public static Func<T> CreateInstanceForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Func<MinimumScope, T> createInstanceFunction = CreateInstanceForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
-
             return () => createInstanceFunction(new MinimumScope());
         }
 
@@ -358,7 +355,6 @@ namespace Gemstone.Expressions.Model
         public static Action<T> ApplyDefaults(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Action<MinimumScope> applyDefaultsFunction = ApplyDefaults<MinimumScope>(properties, typeRegistry);
-
             return instance => applyDefaultsFunction(new MinimumScope { Instance = instance });
         }
 
@@ -390,7 +386,6 @@ namespace Gemstone.Expressions.Model
         public static Action<T> ApplyDefaultsForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Action<MinimumScope> applyDefaultsFunction = ApplyDefaultsForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
-
             return instance => applyDefaultsFunction(new MinimumScope { Instance = instance });
         }
 
@@ -420,7 +415,6 @@ namespace Gemstone.Expressions.Model
         public static Action<T> UpdateInstance(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Action<MinimumScope> updateInstanceFunction = UpdateInstance<MinimumScope>(properties, typeRegistry);
-
             return instance => updateInstanceFunction(new MinimumScope { Instance = instance });
         }
 
@@ -451,7 +445,6 @@ namespace Gemstone.Expressions.Model
         public static Action<T> UpdateInstanceForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Action<MinimumScope> updateInstanceFunction = UpdateInstanceForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
-
             return instance => updateInstanceFunction(new MinimumScope { Instance = instance });
         }
 
@@ -488,7 +481,6 @@ namespace Gemstone.Expressions.Model
         public static Action<T> UpdateExpressions(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null)
         {
             Action<MinimumScope> updateExpressionsFunction = UpdateExpressions<MinimumScope>(properties, typeRegistry);
-
             return instance => updateExpressionsFunction(new MinimumScope { Instance = instance });
         }
 
@@ -521,7 +513,6 @@ namespace Gemstone.Expressions.Model
         public static Action<T> UpdateExpressionsForType<TValueExpressionAttribute>(IEnumerable<PropertyInfo>? properties = null, TypeRegistry? typeRegistry = null) where TValueExpressionAttribute : Attribute, IValueExpressionAttribute
         {
             Action<MinimumScope> updateExpressionsFunction = UpdateExpressionsForType<TValueExpressionAttribute, MinimumScope>(properties, typeRegistry);
-
             return instance => updateExpressionsFunction(new MinimumScope { Instance = instance });
         }
 
@@ -636,7 +627,7 @@ namespace Gemstone.Expressions.Model
 
             properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
-            List<LinqExpression> expressions = new();
+            List<LinqExpression> expressions = [];
             ParameterExpression newInstance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute? valueExpressionAttribute;
@@ -658,7 +649,7 @@ namespace Gemstone.Expressions.Model
                 {
                     try
                     {
-                        expressions.Add(LinqExpression.Call(newInstance, property.SetMethod!, LinqExpression.Constant(defaultValueAttribute!.Value, property.PropertyType)));
+                        expressions.Add(LinqExpression.Call(newInstance, property.SetMethod!, LinqExpression.Constant(defaultValueAttribute.Value, property.PropertyType)));
                     }
                     catch (Exception ex)
                     {
@@ -673,7 +664,6 @@ namespace Gemstone.Expressions.Model
                     {
                         // Pass along any provided type registry in case attribute needs to pre-parse expression
                         valueExpressionAttribute!.TypeRegistry = typeRegistry;
-
                         expressions.Add(AssignParsedValueExpression(valueExpressionAttribute, typeRegistry, property, scopeParameter, newInstance, out expression));
                     }
                     catch (EvaluationOrderException ex)
@@ -771,7 +761,7 @@ namespace Gemstone.Expressions.Model
         {
             properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
-            List<LinqExpression> expressions = new();
+            List<LinqExpression> expressions = [];
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute? valueExpressionAttribute;
@@ -790,7 +780,7 @@ namespace Gemstone.Expressions.Model
                 {
                     try
                     {
-                        expressions.Add(LinqExpression.Call(instance, property.SetMethod!, LinqExpression.Constant(defaultValueAttribute!.Value, property.PropertyType)));
+                        expressions.Add(LinqExpression.Call(instance, property.SetMethod!, LinqExpression.Constant(defaultValueAttribute.Value, property.PropertyType)));
                     }
                     catch (Exception ex)
                     {
@@ -805,7 +795,6 @@ namespace Gemstone.Expressions.Model
                     {
                         // Pass along any provided type registry in case attribute needs to pre-parse expression
                         valueExpressionAttribute!.TypeRegistry = typeRegistry;
-
                         expressions.Add(AssignParsedValueExpression(valueExpressionAttribute, typeRegistry, property, scopeParameter, instance, out expression));
                     }
                     catch (EvaluationOrderException ex)
@@ -898,7 +887,7 @@ namespace Gemstone.Expressions.Model
         {
             properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property is { CanRead: true, CanWrite: true });
 
-            List<LinqExpression> expressions = new();
+            List<LinqExpression> expressions = [];
             ParameterExpression instance = LinqExpression.Variable(typeof(T));
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute? valueExpressionAttribute;
@@ -922,7 +911,6 @@ namespace Gemstone.Expressions.Model
                 {
                     // Pass along any provided type registry in case attribute needs to pre-parse expression
                     valueExpressionAttribute!.TypeRegistry = typeRegistry;
-
                     expressions.Add(AssignParsedValueExpression(valueExpressionAttribute, typeRegistry, property, scopeParameter, instance, out expression));
                 }
                 catch (EvaluationOrderException ex)
@@ -1018,7 +1006,7 @@ namespace Gemstone.Expressions.Model
         {
             properties ??= typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(property => property.CanRead);
 
-            List<LinqExpression> expressions = new();
+            List<LinqExpression> expressions = [];
             ParameterExpression scopeParameter = LinqExpression.Parameter(typeof(TExpressionScope));
             TValueExpressionAttribute? valueExpressionAttribute;
 
