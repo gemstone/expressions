@@ -31,6 +31,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using Gemstone.IO;
+using Gemstone.TypeExtensions;
 
 namespace Gemstone.Expressions.Evaluator
 {
@@ -344,7 +345,7 @@ namespace Gemstone.Expressions.Evaluator
 
             string generateFieldDefinitions()
             {
-                const string FieldTemplate = "\r\npublic {0} {1};";
+                const string FieldTemplate = "\r\n        public {0} {1};";
                 StringBuilder fieldDefinitions = new();
                 HashSet<string> fieldNames = new(StringComparer.Ordinal);
 
@@ -357,7 +358,7 @@ namespace Gemstone.Expressions.Evaluator
                 // Add field definitions for registered symbols to context type
                 foreach (Symbol symbol in m_registeredSymbols.Values.Where(symbol => symbol.Type != typeof(Type)).OrderBy(symbol => symbol.Name))
                 {
-                    fieldDefinitions.AppendFormat(FieldTemplate, symbol.Type.FullName, symbol.Name);
+                    fieldDefinitions.AppendFormat(FieldTemplate, symbol.Type.GetReflectedTypeName(), symbol.Name);
                     fieldNames.Add(symbol.Name);
                 }
 
@@ -369,21 +370,21 @@ namespace Gemstone.Expressions.Evaluator
                 fieldNames.Add(InstanceFields);
 
                 // Add field definitions for instance parameter properties to context type
-                fieldDefinitions.AppendFormat(FieldTemplate, instanceProperties.GetType().FullName, InstanceProperties);
+                fieldDefinitions.AppendFormat(FieldTemplate, instanceProperties.GetType().GetReflectedTypeName(), InstanceProperties);
 
                 foreach (PropertyInfo property in instanceProperties)
                 {
                     checkForDuplicate(property.Name, $"Property \"{property.Name}\" of \"{instanceParameterType.FullName}\"");
-                    fieldDefinitions.AppendFormat(FieldTemplate, property.PropertyType, property.Name);
+                    fieldDefinitions.AppendFormat(FieldTemplate, property.PropertyType.GetReflectedTypeName(), property.Name);
                 }
 
                 // Add field definitions for instance parameter fields to context type
-                fieldDefinitions.AppendFormat(FieldTemplate, instanceFields.GetType().FullName, InstanceFields);
+                fieldDefinitions.AppendFormat(FieldTemplate, instanceFields.GetType().GetReflectedTypeName(), InstanceFields);
 
                 foreach (FieldInfo field in instanceFields)
                 {
                     checkForDuplicate(field.Name, $"Field \"{field.Name}\" of \"{instanceParameterType.FullName}\"");
-                    fieldDefinitions.AppendFormat(FieldTemplate, field.FieldType, field.Name);
+                    fieldDefinitions.AppendFormat(FieldTemplate, field.FieldType.GetReflectedTypeName(), field.Name);
                 }
 
                 return fieldDefinitions.ToString();
