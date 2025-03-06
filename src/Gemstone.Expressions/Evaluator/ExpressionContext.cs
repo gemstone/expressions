@@ -57,7 +57,6 @@ public class ExpressionContext<T> : ISupportContextVariables
     /// <summary>
     /// Gets or sets the default value to use for undefined variables.
     /// </summary>
-    [NotVisibleToExpression]
     public T DefaultValue { get; set; } = default!;
 
     Dictionary<string, object?> ISupportContextVariables.Variables => 
