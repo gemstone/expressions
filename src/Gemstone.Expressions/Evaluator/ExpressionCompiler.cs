@@ -147,6 +147,11 @@ public class ExpressionCompiler<TResult, TInstanceParameter> where TInstancePara
     }
 
     /// <summary>
+    /// Gets or sets the <see cref="ISupportContextVariables"/> instance to use for context variables.
+    /// </summary>
+    public ISupportContextVariables? VariableContext { get; set; }
+
+    /// <summary>
     /// Gets <see cref="Action{TInstanceParameter}"/> delegate for compiled expression.
     /// </summary>
     /// <remarks>
@@ -197,10 +202,7 @@ public class ExpressionCompiler<TResult, TInstanceParameter> where TInstancePara
     /// <c>true</c> for <see cref="Action{TInstanceParameter}"/> based expressions; otherwise,
     /// <c>false</c> for <see cref="Func{TInstanceParameter, TResult}"/> based expressions.
     /// </param>
-    /// <param name="contextVariables">
-    /// Optional <see cref="ISupportContextVariables"/> implementation to use for context variables.
-    /// </param>
-    public void Compile(bool isMethodCall = false, ISupportContextVariables? contextVariables = null)
+    public void Compile(bool isMethodCall = false)
     {
         TypeRegistry typeRegistry = TypeRegistry;
 
@@ -209,7 +211,7 @@ public class ExpressionCompiler<TResult, TInstanceParameter> where TInstancePara
             .WithImports(typeRegistry.Namespaces)
             .WithOptimizationLevel(OptimizationLevel.Release);
 
-        object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType, contextVariables);
+        object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType, VariableContext);
 
         if (isMethodCall)
             CompiledExpression = CSharpScript.EvaluateAsync<Expression<Action<TInstanceParameter?>>>($"(instance) => ExecuteAction(instance, () => {Expression})", options, context).Result;

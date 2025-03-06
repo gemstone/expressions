@@ -258,7 +258,7 @@ public class TypeRegistry
     /// </summary>
     /// <param name="resultType">Return value used <see cref="Type"/> for generated context type functions.</param>
     /// <param name="instanceParameterType">Instance parameter <see cref="Type"/> for generated context type functions.</param>
-    /// <param name="variables">Optional <see cref="ISupportContextVariables"/> implementation to use for context variables.</param>
+    /// <param name="variableContext">Optional <see cref="ISupportContextVariables"/> instance to use for context variables.</param>
     /// <returns>New context instance.</returns>
     /// <remarks>
     /// This method may generate a new runtime type based on registered types and symbols
@@ -267,11 +267,11 @@ public class TypeRegistry
     /// assemblies cannot be unloaded, this property should only be called after all the
     /// desired types and symbols have been registered.
     /// </remarks>
-    public object GetNewContext(Type resultType, Type instanceParameterType, ISupportContextVariables? variables = null)
+    public object GetNewContext(Type resultType, Type instanceParameterType, ISupportContextVariables? variableContext = null)
     {
         (Type contextType, PropertyInfo[] instanceProperties, FieldInfo[] instanceFields, string[] variableNames) = 
             m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), _ => 
-                GenerateContextType(resultType, instanceParameterType, variables));
+                GenerateContextType(resultType, instanceParameterType, variableContext));
 
         object instance = Activator.CreateInstance(contextType)!;
 
@@ -296,7 +296,7 @@ public class TypeRegistry
     /// <summary>
     /// Gets a new context instance.
     /// </summary>
-    /// <param name="variables">Optional <see cref="ISupportContextVariables"/> implementation to use for context variables.</param>
+    /// <param name="variableContext">Optional <see cref="ISupportContextVariables"/> instance to use for context variables.</param>
     /// <typeparam name="TResult">Return value used <see cref="Type"/> for generated context type functions.</typeparam>
     /// <typeparam name="TInstanceParameter">Instance parameter <see cref="Type"/> for generated context type functions.</typeparam>
     /// <returns>New context instance.</returns>
@@ -307,9 +307,9 @@ public class TypeRegistry
     /// assemblies cannot be unloaded, this property should only be called after all the
     /// desired types and symbols have been registered.
     /// </remarks>
-    public object GetNewContext<TResult, TInstanceParameter>(ISupportContextVariables? variables = null)
+    public object GetNewContext<TResult, TInstanceParameter>(ISupportContextVariables? variableContext = null)
     {
-        return GetNewContext(typeof(TResult), typeof(TInstanceParameter), variables);
+        return GetNewContext(typeof(TResult), typeof(TInstanceParameter), variableContext);
     }
 
     /// <summary>
@@ -317,7 +317,7 @@ public class TypeRegistry
     /// </summary>
     /// <param name="resultType">Return value <see cref="Type"/> used for generated context type functions.</param>
     /// <param name="instanceParameterType">Instance parameter <see cref="Type"/> for generated context type functions.</param>
-    /// <param name="variables">Optional <see cref="ISupportContextVariables"/> implementation to use for context variables.</param>
+    /// <param name="variableContext">Optional <see cref="ISupportContextVariables"/> instance to use for context variables.</param>
     /// <returns>Compiled context type based on registered types and symbols.</returns>
     /// <remarks>
     /// This method may generate a new runtime type based on registered types and symbols
@@ -326,15 +326,15 @@ public class TypeRegistry
     /// assemblies cannot be unloaded, this property should only be called after all the
     /// desired types and symbols have been registered.
     /// </remarks>
-    public Type GetContextType(Type resultType, Type instanceParameterType, ISupportContextVariables? variables = null)
+    public Type GetContextType(Type resultType, Type instanceParameterType, ISupportContextVariables? variableContext = null)
     {
-        return m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), _ => GenerateContextType(resultType, instanceParameterType, variables)).contextType;
+        return m_contextTypeCache.GetOrAdd((resultType, instanceParameterType), _ => GenerateContextType(resultType, instanceParameterType, variableContext)).contextType;
     }
 
     /// <summary>
     /// Gets a compiled context type based on registered types and symbols.
     /// </summary>
-    /// <param name="variables">Optional <see cref="ISupportContextVariables"/> implementation to use for context variables.</param>
+    /// <param name="variableContext">Optional <see cref="ISupportContextVariables"/> instance to use for context variables.</param>
     /// <typeparam name="TResult">Return value <see cref="Type"/> used for generated context type functions.</typeparam>
     /// <typeparam name="TInstanceParameter">Instance parameter <see cref="Type"/> for generated context type functions.</typeparam>
     /// <returns>Compiled context type based on registered types and symbols.</returns>
@@ -345,16 +345,16 @@ public class TypeRegistry
     /// assemblies cannot be unloaded, this property should only be called after all the
     /// desired types and symbols have been registered.
     /// </remarks>
-    public Type GetContextType<TResult, TInstanceParameter>(ISupportContextVariables? variables = null)
+    public Type GetContextType<TResult, TInstanceParameter>(ISupportContextVariables? variableContext = null)
     {
-        return GetContextType(typeof(TResult), typeof(TInstanceParameter), variables);
+        return GetContextType(typeof(TResult), typeof(TInstanceParameter), variableContext);
     }
 
-    private (Type, PropertyInfo[], FieldInfo[], string[]) GenerateContextType(Type resultType, Type instanceParameterType, ISupportContextVariables? variables)
+    private (Type, PropertyInfo[], FieldInfo[], string[]) GenerateContextType(Type resultType, Type instanceParameterType, ISupportContextVariables? variableContext)
     {
         PropertyInfo[] instanceProperties = instanceParameterType.GetProperties().Where(info => !info.AttributeExists<PropertyInfo, NotVisibleToExpressionAttribute>()).ToArray();
         FieldInfo[] instanceFields = instanceParameterType.GetFields().Where(info => !info.AttributeExists<FieldInfo, NotVisibleToExpressionAttribute>()).ToArray();
-        Dictionary<string, Type> variablesTypes = variables?.GetVariablesTypes() ?? [];
+        Dictionary<string, Type> variablesTypes = variableContext?.GetVariablesTypes() ?? [];
 
         string generateFieldDefinitions()
         {
@@ -529,7 +529,7 @@ public class TypeRegistry
         return (contextType, instanceProperties, instanceFields, variablesTypes.Keys.ToArray());
     }
 
-#endregion
+    #endregion
 
     #region [ Static ]
 

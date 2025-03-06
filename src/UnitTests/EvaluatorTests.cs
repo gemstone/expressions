@@ -226,9 +226,12 @@ namespace Gemstone.Expressions.UnitTests
                 }
             };
 
-            ExpressionCompiler expr = new("x * y");
+            ExpressionCompiler expr = new("x * y")
+            {
+                VariableContext = context
+            };
 
-            expr.Compile(contextVariables: context);
+            expr.Compile();
 
             Assert.IsTrue((double)expr.ExecuteFunction(context) == 200.0D);
         }
@@ -246,9 +249,12 @@ namespace Gemstone.Expressions.UnitTests
                 }
             };
 
-            ExpressionCompiler<double, ExpressionContext<double>> expr = new("x + y");
+            ExpressionCompiler<double, ExpressionContext<double>> expr = new("x + y")
+            {
+                VariableContext = context
+            };
 
-            expr.Compile(contextVariables: context);
+            expr.Compile();
 
             Assert.IsTrue(expr.ExecuteFunction(context) == 30.0D);
         }
