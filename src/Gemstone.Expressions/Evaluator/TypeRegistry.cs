@@ -74,6 +74,7 @@ public class TypeRegistry
         RegisterType(typeof(Enumerable));
         RegisterType(typeof(Expression));
         RegisterType(typeof(PropertyInfo));
+        RegisterType(typeof(Dictionary<,>));
         RegisterType(typeof(ISupportContextVariables));
     }
 
@@ -417,6 +418,7 @@ public class TypeRegistry
         string contextTypeCodeTemplate =
             $$$"""
                using System;
+               using System.Collections.Generic;
                using System.Reflection;
                using Gemstone.Expressions.Evaluator;
 
@@ -451,9 +453,11 @@ public class TypeRegistry
                            if (!(instance is ISupportContextVariables context))
                                return;
                                
+                           Dictionary<string, object?> variables = context.Variables;
+               
                            foreach (string variableName in {{{InstanceVariables}}})
                            {{
-                               if (context.Variables.TryGetValue(variableName, out object? value))
+                               if (variables.TryGetValue(variableName, out object? value))
                                    type.GetField(variableName).SetValue(this, value);
                            }}
                        }}
