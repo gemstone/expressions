@@ -77,6 +77,7 @@ public class ExpressionContextCompiler<TResult, TContextType> : ExpressionCompil
     /// <summary>
     /// Gets or sets the <see cref="ExpressionContext{TContextType}"/> instance to use for context variables.
     /// </summary>
+    // Shadowing base class ISupportContextVariables-based VariableContext property for strongly typed version
     public new ExpressionContext<TContextType> VariableContext
     {
         get => (ExpressionContext<TContextType>)base.VariableContext!;

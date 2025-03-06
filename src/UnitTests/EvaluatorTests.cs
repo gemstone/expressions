@@ -293,6 +293,19 @@ namespace Gemstone.Expressions.UnitTests
             ExpressionContextCompiler<double, double> compiler = new("x * x + y * y + x + y", context);
 
             Assert.IsTrue(compiler.ExecuteFunction() == 530.0D);
+
+            context.Imports.RegisterType(typeof(Math));
+            context.Variables.Add("value", double.NaN);
+
+            ExpressionContextCompiler<bool, double> expression = new("value > Math.Pow(98.0, 2)", context);
+
+            Assert.IsFalse(expression.ExecuteFunction());
+
+            context.Variables["value"] = 99.0D * 99.0D;
+            Assert.IsTrue(expression.ExecuteFunction());
+
+            context.Variables["value"] = 98.0D * 98.0D;
+            Assert.IsFalse(expression.ExecuteFunction());
         }
     }
 }
