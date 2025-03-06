@@ -23,55 +23,54 @@
 
 using System;
 
-namespace Gemstone.Expressions.Evaluator
+namespace Gemstone.Expressions.Evaluator;
+
+/// <summary>
+/// Represents a symbol consisting of a name, <see cref="Type"/> and value to be accessible for
+/// expressions used with the <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>.
+/// </summary>
+/// <remarks>
+/// A symbol is used define a local class field whose value is accessible to a compiled expression.
+/// </remarks>
+public class Symbol
 {
     /// <summary>
-    /// Represents a symbol consisting of a name, <see cref="Type"/> and value to be accessible for
-    /// expressions used with the <see cref="ExpressionCompiler{TResult, TInstanceParameter}"/>.
+    /// Creates a new <see cref="Symbol"/>.
     /// </summary>
-    /// <remarks>
-    /// A symbol is used define a local class field whose value is accessible to a compiled expression.
-    /// </remarks>
-    public class Symbol
+    /// <param name="name">Name of symbol.</param>
+    /// <param name="type"><see cref="Type"/> of symbol.</param>
+    public Symbol(string name, Type type)
     {
-        /// <summary>
-        /// Creates a new <see cref="Symbol"/>.
-        /// </summary>
-        /// <param name="name">Name of symbol.</param>
-        /// <param name="type"><see cref="Type"/> of symbol.</param>
-        public Symbol(string name, Type type)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException(nameof(name));
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentNullException(nameof(name));
 
-            Name = name;
-            Type = type ?? throw new ArgumentNullException(nameof(type));
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="Symbol"/>.
-        /// </summary>
-        /// <param name="name">Name of symbol.</param>
-        /// <param name="type"><see cref="Type"/> of symbol.</param>
-        /// <param name="value">Initial value for symbol.</param>
-        public Symbol(string name, Type type, object? value) : this(name, type)
-        {
-            Value = value;
-        }
-
-        /// <summary>
-        /// Gets the symbol name.
-        /// </summary>
-        public string Name { get; }
-
-        /// <summary>
-        /// Gets the symbol <see cref="Type"/>.
-        /// </summary>
-        public Type Type { get; }
-
-        /// <summary>
-        /// Gets or sets the symbol value.
-        /// </summary>
-        public object? Value { get; set; }
+        Name = name;
+        Type = type ?? throw new ArgumentNullException(nameof(type));
     }
+
+    /// <summary>
+    /// Creates a new <see cref="Symbol"/>.
+    /// </summary>
+    /// <param name="name">Name of symbol.</param>
+    /// <param name="type"><see cref="Type"/> of symbol.</param>
+    /// <param name="value">Initial value for symbol.</param>
+    public Symbol(string name, Type type, object? value) : this(name, type)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// Gets the symbol name.
+    /// </summary>
+    public string Name { get; }
+
+    /// <summary>
+    /// Gets the symbol <see cref="Type"/>.
+    /// </summary>
+    public Type Type { get; }
+
+    /// <summary>
+    /// Gets or sets the symbol value.
+    /// </summary>
+    public object? Value { get; set; }
 }

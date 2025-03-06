@@ -23,19 +23,18 @@
 
 using System;
 
-namespace Gemstone.Expressions.Model
+namespace Gemstone.Expressions.Model;
+
+/// <summary>
+/// Represents an exception related to <see cref="ValueExpressionAttributeBase.EvaluationOrder"/> values.
+/// </summary>
+public class EvaluationOrderException : Exception
 {
     /// <summary>
-    /// Represents an exception related to <see cref="ValueExpressionAttributeBase.EvaluationOrder"/> values.
+    /// Creates a new <see cref="EvaluationOrderException"/>.
     /// </summary>
-    public class EvaluationOrderException : Exception
+    /// <param name="message">Exception message.</param>
+    public EvaluationOrderException(string message) : base(message)
     {
-        /// <summary>
-        /// Creates a new <see cref="EvaluationOrderException"/>.
-        /// </summary>
-        /// <param name="message">Exception message.</param>
-        public EvaluationOrderException(string message) : base(message)
-        {
-        }
     }
 }

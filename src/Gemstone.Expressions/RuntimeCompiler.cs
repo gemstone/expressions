@@ -30,23 +30,23 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
 
-namespace Gemstone.Expressions
+namespace Gemstone.Expressions;
+
+/// <summary>
+/// Runtime C# code compiler.
+/// </summary>
+public static class RuntimeCompiler
 {
     /// <summary>
-    /// Runtime C# code compiler.
+    /// Compiles C# <paramref name="code"/> to a raw <see cref="Assembly"/>.
     /// </summary>
-    public static class RuntimeCompiler
+    /// <param name="code">C# code to compile.</param>
+    /// <param name="references">References to use for compilation.</param>
+    /// <param name="options">Compilation options.</param>
+    /// <param name="assemblyName">Assembly name to use.</param>
+    /// <returns>Raw <see cref="byte"/> array representing compiled <see cref="Assembly"/>.</returns>
+    public static byte[] Compile(string code, IEnumerable<Assembly> references, CSharpCompilationOptions? options = null, string? assemblyName = null)
     {
-        /// <summary>
-        /// Compiles C# <paramref name="code"/> to a raw <see cref="Assembly"/>.
-        /// </summary>
-        /// <param name="code">C# code to compile.</param>
-        /// <param name="references">References to use for compilation.</param>
-        /// <param name="options">Compilation options.</param>
-        /// <param name="assemblyName">Assembly name to use.</param>
-        /// <returns>Raw <see cref="byte"/> array representing compiled <see cref="Assembly"/>.</returns>
-        public static byte[] Compile(string code, IEnumerable<Assembly> references, CSharpCompilationOptions? options = null, string? assemblyName = null)
-        {
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(code);
             
             CSharpCompilation compilation = CSharpCompilation.Create(
@@ -74,5 +74,4 @@ namespace Gemstone.Expressions
 
             return stream.ToArray();
         }
-    }
 }

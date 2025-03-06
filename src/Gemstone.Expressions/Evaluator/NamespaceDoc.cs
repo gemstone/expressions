@@ -23,14 +23,13 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Gemstone.Expressions.Evaluator
+namespace Gemstone.Expressions.Evaluator;
+
+/// <summary>
+/// The <see cref="Gemstone.Expressions.Evaluator"/> namespace organizes all Gemstone library
+/// functionality related to runtime expression evaluation.
+/// </summary>
+[CompilerGenerated]
+class NamespaceDoc
 {
-    /// <summary>
-    /// The <see cref="Gemstone.Expressions.Evaluator"/> namespace organizes all Gemstone library
-    /// functionality related to runtime expression evaluation.
-    /// </summary>
-    [CompilerGenerated]
-    class NamespaceDoc
-    {
-    }
 }

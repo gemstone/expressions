@@ -21,20 +21,25 @@
 //
 //******************************************************************************************************
 
-namespace Gemstone.Expressions.Model
+using Gemstone.Expressions.Evaluator;
+
+namespace Gemstone.Expressions.Model;
+
+/// <summary>
+/// Represent a base class used for providing contextual scope when evaluating
+/// instances of the <see cref="ValueExpressionAttributeBase"/>.
+/// </summary>
+/// <remarks>
+/// This class should be extended with public instance fields that will be automatically
+/// exposed to <see cref="ValueExpressionAttributeBase"/> expressions.
+/// </remarks>
+/// <typeparam name="T">Type of associated model.</typeparam>
+/// <remarks>
+/// The <see cref="NotVisibleToExpressionAttribute"/> attribute can be used to hide fields
+/// and properties from the expression that may be for internal use only.
+/// </remarks>
+public abstract class ValueExpressionScopeBase<T> : IValueExpressionScope<T> where T : class
 {
-    /// <summary>
-    /// Represent a base class used for providing contextual scope when evaluating
-    /// instances of the <see cref="ValueExpressionAttributeBase"/>.
-    /// </summary>
-    /// <remarks>
-    /// This class should be extended with public instance fields that will be automatically
-    /// exposed to <see cref="ValueExpressionAttributeBase"/> expressions.
-    /// </remarks>
-    /// <typeparam name="T">Type of associated model.</typeparam>
-    public abstract class ValueExpressionScopeBase<T> : IValueExpressionScope<T> where T : class
-    {
-        /// <inheritdoc />
-        public T? Instance { get; set; }
-    }
+    /// <inheritdoc />
+    public T? Instance { get; set; }
 }

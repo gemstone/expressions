@@ -21,23 +21,22 @@
 //
 //******************************************************************************************************
 
-namespace Gemstone.Expressions.Model
+namespace Gemstone.Expressions.Model;
+
+/// <summary>
+/// Defines an interface used for providing contextual scope when evaluating
+/// instances of the <see cref="IValueExpressionAttribute"/>.
+/// </summary>
+/// <typeparam name="T">Type of associated model.</typeparam>
+public interface IValueExpressionScope<T> where T : class
 {
     /// <summary>
-    /// Defines an interface used for providing contextual scope when evaluating
-    /// instances of the <see cref="IValueExpressionAttribute"/>.
+    /// Gets or sets the current <typeparamref name="T"/> instance.
     /// </summary>
-    /// <typeparam name="T">Type of associated model.</typeparam>
-    public interface IValueExpressionScope<T> where T : class
-    {
-        /// <summary>
-        /// Gets or sets the current <typeparamref name="T"/> instance.
-        /// </summary>
-        /// <remarks>
-        /// By using the <see cref="ValueExpressionParser.ReplaceThisKeywords"/> function, expressions
-        /// can reference the current <typeparamref name="T"/> instance using the <c>this</c> keyword.
-        /// See <see cref="ValueExpressionParser{T}.CreateInstance{TExpressionScope}"/>.
-        /// </remarks>
-        T? Instance { get; set; }
-    }
+    /// <remarks>
+    /// By using the <see cref="ValueExpressionParser.ReplaceThisKeywords"/> function, expressions
+    /// can reference the current <typeparamref name="T"/> instance using the <c>this</c> keyword.
+    /// See <see cref="ValueExpressionParser{T}.CreateInstance{TExpressionScope}"/>.
+    /// </remarks>
+    T? Instance { get; set; }
 }

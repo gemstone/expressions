@@ -23,20 +23,19 @@
 
 using System;
 
-namespace Gemstone.Expressions.Model
+namespace Gemstone.Expressions.Model;
+
+/// <summary>
+/// Defines a C# expression attribute that when evaluated will specify the default value for a property.
+/// </summary>
+[AttributeUsage(AttributeTargets.Property)]
+public sealed class DefaultValueExpressionAttribute : ValueExpressionAttributeBase
 {
     /// <summary>
-    /// Defines a C# expression attribute that when evaluated will specify the default value for a property.
+    /// Creates a new <see cref="DefaultValueExpressionAttribute"/>
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property)]
-    public sealed class DefaultValueExpressionAttribute : ValueExpressionAttributeBase
+    /// <param name="expression">C# expression that will evaluate to the desired default value.</param>
+    public DefaultValueExpressionAttribute(string expression) : base(expression)
     {
-        /// <summary>
-        /// Creates a new <see cref="DefaultValueExpressionAttribute"/>
-        /// </summary>
-        /// <param name="expression">C# expression that will evaluate to the desired default value.</param>
-        public DefaultValueExpressionAttribute(string expression) : base(expression)
-        {
-        }
     }
 }

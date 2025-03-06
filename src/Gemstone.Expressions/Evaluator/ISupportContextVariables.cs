@@ -1,7 +1,7 @@
 ﻿//******************************************************************************************************
-//  NamespaceDoc.cs - Gbtc
+//  ISupportContextVariables.cs - Gbtc
 //
-//  Copyright © 2019, Grid Protection Alliance.  All Rights Reserved.
+//  Copyright © 2025, Grid Protection Alliance.  All Rights Reserved.
 //
 //  Licensed to the Grid Protection Alliance (GPA) under one or more contributor license agreements. See
 //  the NOTICE file distributed with this work for additional information regarding copyright ownership.
@@ -16,21 +16,28 @@
 //
 //  Code Modification History:
 //  ----------------------------------------------------------------------------------------------------
-//  10/16/2019 - J. Ritchie Carroll
+//  03/05/2025 - J. Ritchie Carroll
 //       Generated original version of source code.
 //
 //******************************************************************************************************
 
-using System.Runtime.CompilerServices;
+using System;
+using System.Collections.Generic;
 
-namespace Gemstone.Expressions;
+namespace Gemstone.Expressions.Evaluator;
 
 /// <summary>
-/// The <see cref="Gemstone.Expressions"/> namespace organizes all Gemstone library functionality
-/// related to expressions. The root expressions namespace also includes common expressions classes,
-/// e.g., <see cref="StaticDynamic"/> and <see cref="RuntimeCompiler"/>.
+/// Defines an interface for types that support context variables.
 /// </summary>
-[CompilerGenerated]
-class NamespaceDoc
+public interface ISupportContextVariables
 {
+    /// <summary>
+    /// Gets the dictionary of variable values that can be accessed in an expression.
+    /// </summary>
+    Dictionary<string, object?> Variables { get; }
+
+    /// <summary>
+    /// Gets the dictionary of variable types that can be accessed in an expression.
+    /// </summary>
+    Dictionary<string, Type> GetVariablesTypes();
 }

@@ -25,61 +25,60 @@ using System;
 using System.Reflection;
 using Gemstone.Expressions.Evaluator;
 
-namespace Gemstone.Expressions.Model
+namespace Gemstone.Expressions.Model;
+
+/// <summary>
+/// Represents a base attribute class for C# expressions that when evaluated will specify a new value for a property.
+/// </summary>
+[AttributeUsage(AttributeTargets.Property)]
+public abstract class ValueExpressionAttributeBase : Attribute, IValueExpressionAttribute
 {
+    #region [ Constructors ]
+
     /// <summary>
-    /// Represents a base attribute class for C# expressions that when evaluated will specify a new value for a property.
+    /// Creates a new <see cref="ValueExpressionAttributeBase"/>
     /// </summary>
-    [AttributeUsage(AttributeTargets.Property)]
-    public abstract class ValueExpressionAttributeBase : Attribute, IValueExpressionAttribute
+    /// <param name="expression">C# expression that will evaluate to the desired value.</param>
+    /// <exception cref="ArgumentNullException">Parameter <paramref name="expression"/> cannot be <c>null</c>.</exception>
+    protected ValueExpressionAttributeBase(string expression)
     {
-        #region [ Constructors ]
+        if (string.IsNullOrWhiteSpace(expression))
+            throw new ArgumentNullException(nameof(expression));
 
-        /// <summary>
-        /// Creates a new <see cref="ValueExpressionAttributeBase"/>
-        /// </summary>
-        /// <param name="expression">C# expression that will evaluate to the desired value.</param>
-        /// <exception cref="ArgumentNullException">Parameter <paramref name="expression"/> cannot be <c>null</c>.</exception>
-        protected ValueExpressionAttributeBase(string expression)
-        {
-            if (string.IsNullOrWhiteSpace(expression))
-                throw new ArgumentNullException(nameof(expression));
-
-            Expression = expression;
-        }
-
-        #endregion
-
-        #region [ Properties ]
-
-        /// <inheritdoc />
-        public string Expression { get; }
-
-        /// <inheritdoc />
-        public bool Cached { get; set; }
-
-        /// <inheritdoc />
-        public int EvaluationOrder { get; set; }
-
-        /// <inheritdoc />
-        public TypeRegistry? TypeRegistry { get; set; }
-
-        #endregion
-
-        #region [ Methods ]
-
-        /// <inheritdoc />
-        public virtual string GetPropertyUpdateValue(PropertyInfo property)
-        {
-            return Expression;
-        }
-
-        /// <inheritdoc />
-        public virtual string GetExpressionUpdateValue(PropertyInfo property)
-        {
-            return $"Instance.{property.Name}";
-        }
-
-        #endregion
+        Expression = expression;
     }
+
+    #endregion
+
+    #region [ Properties ]
+
+    /// <inheritdoc />
+    public string Expression { get; }
+
+    /// <inheritdoc />
+    public bool Cached { get; set; }
+
+    /// <inheritdoc />
+    public int EvaluationOrder { get; set; }
+
+    /// <inheritdoc />
+    public TypeRegistry? TypeRegistry { get; set; }
+
+    #endregion
+
+    #region [ Methods ]
+
+    /// <inheritdoc />
+    public virtual string GetPropertyUpdateValue(PropertyInfo property)
+    {
+        return Expression;
+    }
+
+    /// <inheritdoc />
+    public virtual string GetExpressionUpdateValue(PropertyInfo property)
+    {
+        return $"Instance.{property.Name}";
+    }
+
+    #endregion
 }
