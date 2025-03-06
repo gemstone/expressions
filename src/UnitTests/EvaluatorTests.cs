@@ -258,5 +258,41 @@ namespace Gemstone.Expressions.UnitTests
 
             Assert.IsTrue(expr.ExecuteFunction(context) == 30.0D);
         }
+
+        [TestMethod]
+        public void ExpressionContextCompilerTests()
+        {
+            ExpressionContext context = new()
+            {
+                DefaultValue = double.NaN,
+                Variables =
+                {
+                    ["x"] = 10.0D,
+                    ["y"] = 20.0D
+                }
+            };
+
+            ExpressionContextCompiler compiler = new("x * x + y * y", context);
+
+            Assert.IsTrue((double)compiler.ExecuteFunction() == 500.0D);
+        }
+
+        [TestMethod]
+        public void TypedExpressionContextCompilerTests()
+        {
+            ExpressionContext<double> context = new()
+            {
+                DefaultValue = double.NaN,
+                Variables =
+                {
+                    ["x"] = 10.0D,
+                    ["y"] = 20.0D
+                }
+            };
+
+            ExpressionContextCompiler<double, double> compiler = new("x * x + y * y + x + y", context);
+
+            Assert.IsTrue(compiler.ExecuteFunction() == 530.0D);
+        }
     }
 }
