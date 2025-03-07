@@ -297,7 +297,6 @@ namespace Gemstone.Expressions.UnitTests
 
             Assert.IsTrue(compiler.ExecuteFunction() == 530.0D);
 
-            context.Imports.RegisterType(typeof(Math));
             context.Variables.Add("value", double.NaN);
 
             ExpressionContextCompiler<bool, double> expression = new("value > Math.Pow(98.0, 2)", context);
