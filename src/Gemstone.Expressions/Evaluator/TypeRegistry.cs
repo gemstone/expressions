@@ -35,6 +35,7 @@ using System.Text;
 using Gemstone.IO;
 using Gemstone.Reflection.MemberInfoExtensions;
 using Gemstone.TypeExtensions;
+using ConcurrentTypeHashSet = System.Collections.Concurrent.ConcurrentDictionary<System.Type, int>;
 
 namespace Gemstone.Expressions.Evaluator;
 
@@ -53,7 +54,8 @@ public class TypeRegistry
     private const string InstanceVariables = "_instanceVariables";
 
     // Fields
-    private readonly ConcurrentDictionary<Type, int> m_registeredTypes;
+    private readonly ConcurrentTypeHashSet m_registeredTypes;
+    private readonly ConcurrentTypeHashSet m_registeredStaticTypes;
     private readonly ConcurrentDictionary<string, Symbol> m_registeredSymbols;
     private readonly ConcurrentDictionary<(Type resultType, Type instanceParameterType), (Type contextType, PropertyInfo[] instanceProperties, FieldInfo[] instanceFields, string[] variableNames)> m_contextTypeCache;
 
@@ -66,7 +68,8 @@ public class TypeRegistry
     /// </summary>
     public TypeRegistry()
     {
-        m_registeredTypes = new ConcurrentDictionary<Type, int>();
+        m_registeredTypes = new ConcurrentTypeHashSet();
+        m_registeredStaticTypes = new ConcurrentTypeHashSet();
         m_registeredSymbols = new ConcurrentDictionary<string, Symbol>(StringComparer.Ordinal);
         m_contextTypeCache = new ConcurrentDictionary<(Type, Type), (Type, PropertyInfo[], FieldInfo[], string[])>();
 
@@ -79,9 +82,10 @@ public class TypeRegistry
     }
 
     // Used to create a cloned TypeRegistry instance
-    private TypeRegistry(IEnumerable<KeyValuePair<Type, int>> registeredTypes, IEnumerable<KeyValuePair<string, Symbol>> registeredSymbols)
+    private TypeRegistry(IEnumerable<KeyValuePair<Type, int>> registeredTypes, IEnumerable<KeyValuePair<Type, int>> registeredStaticTypes, IEnumerable<KeyValuePair<string, Symbol>> registeredSymbols)
     {
-        m_registeredTypes = new ConcurrentDictionary<Type, int>(registeredTypes);
+        m_registeredTypes = new ConcurrentTypeHashSet(registeredTypes);
+        m_registeredStaticTypes = new ConcurrentTypeHashSet(registeredStaticTypes);
         m_registeredSymbols = new ConcurrentDictionary<string, Symbol>(registeredSymbols);
         m_contextTypeCache = new ConcurrentDictionary<(Type, Type), (Type, PropertyInfo[], FieldInfo[], string[])>();
     }
@@ -172,11 +176,19 @@ public class TypeRegistry
             HashSet<string> namespaces = [];
 
             foreach (Type type in RegisteredTypes)
-                namespaces.Add(type.Namespace!);
+            {
+                if (type.Namespace is not null)
+                    namespaces.Add(type.Namespace);
+            }
 
             return namespaces;
         }
     }
+
+    /// <summary>
+    /// Gets distinct static types for all types registered with <see cref="RegisterStaticType"/>.
+    /// </summary>
+    public IEnumerable<string> StaticTypes => m_registeredStaticTypes.Keys.Select(type => type.GetReflectedTypeName());
 
     #endregion
 
@@ -188,7 +200,7 @@ public class TypeRegistry
     /// <returns>Cloned instance of this <see cref="TypeRegistry"/>.</returns>
     public TypeRegistry Clone()
     {
-        return new TypeRegistry(m_registeredTypes, m_registeredSymbols);
+        return new TypeRegistry(m_registeredTypes, m_registeredStaticTypes, m_registeredSymbols);
     }
 
     /// <summary>
@@ -215,6 +227,45 @@ public class TypeRegistry
     public bool RegisterType<T>()
     {
         return RegisterType(typeof(T));
+    }
+
+    /// <summary>
+    /// Registers a new static <see cref="Type"/>, i.e., for access in expressions with <c>static using</c>.
+    /// </summary>
+    /// <param name="type">Type to register as a static type.</param>
+    /// <returns>
+    /// <c>true</c> if the <paramref name="type"/> was registered successfully; otherwise,
+    /// <c>false</c> if the <paramref name="type"/> was already registered.
+    /// </returns>
+    /// <remarks>
+    /// Registering a static type will allow the type to be used in expressions without prefixing the type
+    /// with its name, i.e., referenceable in code via a <c>static using</c>. This is useful for types that
+    /// are used frequently e.g., <c>Math</c> or <c>Enumerable</c>. Note that adding a static using for a
+    /// type will automatically register the type via <see cref="RegisterType"/>.
+    /// </remarks>
+    public bool RegisterStaticType(Type type)
+    {
+        RegisterType(type);
+        return m_registeredStaticTypes.TryAdd(type, 0);
+    }
+
+    /// <summary>
+    /// Registers a new static <see cref="Type"/>, i.e., for access in expressions with <c>static using</c>.
+    /// </summary>
+    /// <typeparam name="T">Type to register as a static type.</typeparam>
+    /// <returns>
+    /// <c>true</c> if the <typeparamref name="T"/> was registered successfully; otherwise,
+    /// <c>false</c> if the <typeparamref name="T"/> was already registered.
+    /// </returns>
+    /// <remarks>
+    /// Registering a static type will allow the type to be used in expressions without prefixing the type
+    /// with its name, i.e., referenceable in code via a <c>static using</c>. This is useful for types that
+    /// are used frequently e.g., <c>Math</c> or <c>Enumerable</c>. Note that adding a static using for a
+    /// type will automatically register the type via <see cref="RegisterType"/>.
+    /// </remarks>
+    public bool RegisterStaticType<T>()
+    {
+        return RegisterStaticType(typeof(T));
     }
 
     /// <summary>
@@ -421,7 +472,7 @@ public class TypeRegistry
                using System.Collections.Generic;
                using System.Reflection;
                using Gemstone.Expressions.Evaluator;
-
+               
                namespace {0}
                {{
                    public class {{{ContextTypeClassName}}}
@@ -434,7 +485,7 @@ public class TypeRegistry
                            action();
                        }}
                
-                       public {{{resultType.FullName}}} ExecuteFunc(object instance, Func<{{{resultType.FullName}}}> func)
+                       public {{{resultType.GetReflectedTypeName()}}} ExecuteFunc(object instance, Func<{{{resultType.GetReflectedTypeName()}}}> func)
                        {{
                            UpdateFields(instance);
                            return func();

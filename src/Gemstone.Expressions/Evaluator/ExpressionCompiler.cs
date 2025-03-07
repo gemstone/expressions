@@ -22,6 +22,7 @@
 //******************************************************************************************************
 
 using System;
+using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
@@ -208,7 +209,7 @@ public class ExpressionCompiler<TResult, TInstanceParameter> where TInstancePara
 
         ScriptOptions options = ScriptOptions.Default
             .WithReferences(typeRegistry.Assemblies)
-            .WithImports(typeRegistry.Namespaces)
+            .WithImports(typeRegistry.Namespaces.Concat(typeRegistry.StaticTypes))
             .WithOptimizationLevel(OptimizationLevel.Release);
 
         object context = typeRegistry.GetNewContext(typeof(TResult), InstanceParameterType, VariableContext);

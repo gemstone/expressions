@@ -94,6 +94,9 @@ namespace Gemstone.Expressions.UnitTests
             ExpressionCompiler<double> piConst = new("Math.PI");
             ExpressionCompiler<double> cosExpr = new("Math.Cos(Math.PI)");
 
+            piConst.TypeRegistry.RegisterType(typeof(Math));
+            cosExpr.TypeRegistry.RegisterType(typeof(Math));
+
             Assert.IsTrue(piConst.ExecuteFunction() == Math.PI);
             Assert.IsTrue(cosExpr.ExecuteFunction() == -1.0D);
 
@@ -312,6 +315,36 @@ namespace Gemstone.Expressions.UnitTests
             ExpressionContextCompiler<double, double> expression2 = new("PI * value", context);
 
             Assert.IsTrue(Math.Abs(expression2.ExecuteFunction() - Math.PI * 98.0D * 98.0D) < 1e-5);
+        }
+
+        [TestMethod]
+        public void TypeExpressionContextCompilerWithStaticTypeTests()
+        {
+            ExpressionContext<double> context = new()
+            {
+                DefaultValue = double.NaN,
+                Variables = { ["value"] = 98.0D * 98.0D }
+            };
+
+            // Register "Math" type as a static type, i.e., accessed with "static using" directive
+            context.Imports.RegisterStaticType(typeof(Math));
+
+            ExpressionContextCompiler<double, double> expression1 = new("PI * value", context);
+            
+            Assert.IsTrue(Math.Abs(expression1.ExecuteFunction() - Math.PI * 98.0D * 98.0D) < 1e-5);
+
+            ExpressionContextCompiler<double, double> expression2 = new("Sqrt(value)", context);
+
+            Assert.IsTrue(Math.Abs(expression2.ExecuteFunction() - Math.Sqrt(98.0D * 98.0D)) < 1e-5);
+
+            ExpressionContextCompiler<double, double> expression3 = new("Sin(value)", context);
+
+            Assert.IsTrue(Math.Abs(expression3.ExecuteFunction() - Math.Sin(98.0D * 98.0D)) < 1e-5);
+
+            ExpressionContextCompiler<double, double> expression4 = new("Math.Cos(value)", context);
+
+            // Directly accessing "Math" type when registered as a static type should still work
+            Assert.IsTrue(Math.Abs(expression4.ExecuteFunction() - Math.Cos(98.0D * 98.0D)) < 1e-5);
         }
     }
 }
