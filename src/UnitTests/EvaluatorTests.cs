@@ -306,6 +306,12 @@ namespace Gemstone.Expressions.UnitTests
 
             context.Variables["value"] = 98.0D * 98.0D;
             Assert.IsFalse(expression.ExecuteFunction());
+
+            context.Imports.RegisterSymbol("PI", Math.PI);
+
+            ExpressionContextCompiler<double, double> expression2 = new("PI * value", context);
+
+            Assert.IsTrue(Math.Abs(expression2.ExecuteFunction() - Math.PI * 98.0D * 98.0D) < 1e-5);
         }
     }
 }
