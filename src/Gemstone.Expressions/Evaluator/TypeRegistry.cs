@@ -121,7 +121,16 @@ public class TypeRegistry
     /// </summary>
     /// <param name="name">Symbol name.</param>
     /// <returns>Symbol value or <c>null</c> if symbol <paramref name="name"/> does not exist.</returns>
-    public object? this[string name] => m_registeredSymbols[name].Value;
+    public object? this[string name]
+    {
+        get
+        {
+            if (m_registeredSymbols.TryGetValue(name, out Symbol? symbol))
+                return symbol.Value;
+
+            return null;
+        }
+    }
 
     /// <summary>
     /// Sets value for registered symbol with specified <paramref name="name"/>,
