@@ -682,7 +682,7 @@ public class ValueExpressionParser<T> : ExpressionCompiler<T> where T : class
         expressions.Add(newInstance);
 
         // Return a delegate to compiled function block            
-        return LinqExpression.Lambda<Func<TExpressionScope, T>>(LinqExpression.Block(new[] { newInstance }, expressions), scopeParameter).Compile();
+        return LinqExpression.Lambda<Func<TExpressionScope, T>>(LinqExpression.Block([newInstance], expressions), scopeParameter).Compile();
     }
 
     /// <summary>
@@ -810,7 +810,7 @@ public class ValueExpressionParser<T> : ExpressionCompiler<T> where T : class
         }
 
         // Return a delegate to compiled function block
-        return LinqExpression.Lambda<Action<TExpressionScope>>(LinqExpression.Block(new[] { instance }, expressions), scopeParameter).Compile();
+        return LinqExpression.Lambda<Action<TExpressionScope>>(LinqExpression.Block([instance], expressions), scopeParameter).Compile();
     }
 
     /// <summary>
@@ -925,7 +925,7 @@ public class ValueExpressionParser<T> : ExpressionCompiler<T> where T : class
         }
 
         // Return a delegate to compiled function block
-        return LinqExpression.Lambda<Action<TExpressionScope>>(LinqExpression.Block(new[] { instance }, expressions), scopeParameter).Compile();
+        return LinqExpression.Lambda<Action<TExpressionScope>>(LinqExpression.Block([instance], expressions), scopeParameter).Compile();
     }
 
     /// <summary>
@@ -1079,7 +1079,7 @@ public class ValueExpressionParser<T> : ExpressionCompiler<T> where T : class
             MethodInfo getTupleItem1 = typeof(Tuple<bool, object>).GetProperty("Item1")!.GetMethod!;
             MethodInfo getTupleItem2 = typeof(Tuple<bool, object>).GetProperty("Item2")!.GetMethod!;
 
-            BlockExpression addParsedValueToCache = LinqExpression.Block(new[] { parsedValue },
+            BlockExpression addParsedValueToCache = LinqExpression.Block([parsedValue],
                 LinqExpression.Assign(parsedValue, getParsedValue),
                 LinqExpression.Call(s_addCachedValueMethod, propertyInfo, LinqExpression.Convert(parsedValue, typeof(object))),
                 LinqExpression.Call(instance, property.SetMethod!, parsedValue)
@@ -1087,7 +1087,7 @@ public class ValueExpressionParser<T> : ExpressionCompiler<T> where T : class
 
             MethodCallExpression setCachedValue = LinqExpression.Call(instance, property.SetMethod!, LinqExpression.Convert(LinqExpression.Call(cachedValue, getTupleItem2), property.PropertyType));
 
-            return LinqExpression.Block(new[] { cachedValue },
+            return LinqExpression.Block([cachedValue],
                 LinqExpression.Assign(cachedValue, LinqExpression.Call(s_getCachedValueMethod, propertyInfo)),
                 LinqExpression.IfThenElse(LinqExpression.IsTrue(LinqExpression.Call(cachedValue, getTupleItem1)), setCachedValue, addParsedValueToCache)
             );
