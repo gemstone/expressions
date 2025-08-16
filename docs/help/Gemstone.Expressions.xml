@@ -72,120 +72,6 @@
             the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)
             </returns>
     </member>
-    <member name="T:Gemstone.Expressions.TemplatedExpressionParser">
-      <summary>
-            Represents a template based token substitution parser that supports binary and advanced expressions.
-            </summary>
-      <remarks>
-        <para>
-            As an example, this parser can use a templated expression of the form:
-            <code>
-            {CompanyAcronym}_{DeviceAcronym}[?{SignalType.Source}=Phasor[-{SignalType.Suffix}{SignalIndex}]]:{Signal.Acronym}
-            </code>
-            then replace the tokens with actual values and properly evaluate the expressions.
-            Example results could look like: GPA_SHELBY-PA1:IPHA and GPA_SHELBY:FREQ
-            </para>
-        <para>
-            Parser also supports more complex C# style expressions using the "eval{}" function, e.g.:
-            <code>
-            eval{'{CompanyAcronym}'.Substring(0,3)}_{DeviceAcronym}eval{'[?{SignalType.Source}=Phasor[-{SignalType.Suffix}]]'.Length}
-            </code></para>
-      </remarks>
-    </member>
-    <member name="M:Gemstone.Expressions.TemplatedExpressionParser.#ctor">
-      <summary>
-            Creates a new <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" />.
-            </summary>
-    </member>
-    <member name="M:Gemstone.Expressions.TemplatedExpressionParser.#ctor(System.Char,System.Char,System.Char,System.Char)">
-      <summary>
-            Creates a new <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" /> with desired delimiters.
-            </summary>
-      <param name="startTokenDelimiter">Character that identifies the beginning of a token.</param>
-      <param name="endTokenDelimiter">Character that identifies the end of a token.</param>
-      <param name="startExpressionDelimiter">Character that identifies the beginning of an expression.</param>
-      <param name="endExpressionDelimiter">Character that identifies the beginning of an expression.</param>
-      <exception cref="T:System.ArgumentException">
-            All delimiters must be unique -- or -- the symbol <c>'u'</c> is reserved for encoding and cannot be used as a delimiter.
-            </exception>
-    </member>
-    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.EndExpressionDelimiter">
-      <summary>
-            Gets the character that identifies the end of an expression.
-            </summary>
-    </member>
-    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.EndTokenDelimiter">
-      <summary>
-            Gets the character that identifies the end of a token.
-            </summary>
-    </member>
-    <member name="M:Gemstone.Expressions.TemplatedExpressionParser.Execute(System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean,System.Boolean,System.Boolean)">
-      <summary>
-            Executes replacements using provided <paramref name="substitutions" /> dictionary on the currently defined
-            <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression" /> value and optionally evaluates any expressions.
-            </summary>
-      <param name="substitutions">Dictionary of substitutions. Dictionary keys are tokens to be replaced by the values.</param>
-      <param name="ignoreCase">Determines if substitutions should be case-insensitive. Defaults to <c>true</c>.</param>
-      <param name="evaluateExpressions">Determines if expressions should be evaluated. Defaults to <c>true</c>.</param>
-      <param name="escapeSubstitutionValues">Determines if reserved symbols in substitution values should be automatically escaped. Defaults to <c>true</c>.</param>
-      <returns>A string that was based on <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression" /> with tokens replaced and expressions evaluated.</returns>
-      <remarks>
-        <para>
-            The default token start and end delimiters are { and } but can be overridden in <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" /> constructor.
-            All substitution tokens surrounded by <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.StartTokenDelimiter" /> and <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.EndTokenDelimiter" /> (e.g., {token})
-            will be immediately replaced with their string equivalents before further expression evaluation. As a result of the expression
-            syntax &lt;, &gt;, =, and ! are reserved expressions symbols; <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.StartTokenDelimiter" />, <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.EndTokenDelimiter" />,
-            <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.StartExpressionDelimiter" /> and <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.EndExpressionDelimiter" /> are reserved delimiter symbols. To embed any reserved
-            symbol into the <see cref="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression" /> so that it appears in the evaluated result, escape the symbol by prefixing it
-            with a backslash, e.g., \{.
-            </para>
-        <para>
-            The default expression start and end delimiters are [ and ] but can be overridden in <see cref="T:Gemstone.Expressions.TemplatedExpressionParser" /> constructor.
-            Expressions are represented in the form of [?expression[result]] and can be nested, e.g. ([?expression1[?expression2[result]]]).
-            Expressions should not contain extraneous white space for proper evaluation. Only simple boolean comparison operations are allowed
-            in expressions, e.g., A=B (or A==B), A!=B (or A&lt;&gt;B), A&gt;B, A&gt;=B, A&lt;B and A&lt;=B - nothing more. Any expression that
-            fails to evaluate will be evaluated as FALSE. Note that if both left (A) and right (B) operands can be parsed as a numeric value then
-            the expression will be numerically evaluated otherwise expression will be a culture-invariant string comparison. Nested expressions
-            are evaluated as cumulative AND operators. There is no defined nesting limit.
-            </para>
-        <para>
-            Advanced expressions can be parsed using the eval function, e.g., eval{1 + 2}. Eval function expression is delimited by the currently
-            defined token delimiters, { and } by default. The evaluation engine deals with numbers and strings. The typing of numeric literals
-            follow C# standards, suffixes such as d, f and m may be used to explicitly specify the numeric type. If no numeric suffix is provided,
-            the default type of numeric literal is assumed to be <see cref="T:System.Int32" />. String literals should be specified using single quotes
-            instead of double quotes, this includes substitution parameters, e.g., <c>eval{'{DeviceAcronym}'.Length + 1}</c>. Advanced evaluation
-            expressions using the eval function are always parsed after common expressions. Eval functions cannot be nested.
-            </para>
-        <para>
-            When <paramref name="evaluateExpressions" /> is <c>true</c> and values in <paramref name="substitutions" /> intentionally contain
-            expressions to be evaluated, then <paramref name="escapeSubstitutionValues" /> should be set to <c>false</c> so that the reserved
-            symbols in the values are not automatically escaped.
-            </para>
-      </remarks>
-    </member>
-    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.ReservedSymbols">
-      <summary>
-            Gets the reserved symbols - this includes all delimiters and expression operators.
-            </summary>
-      <remarks>
-            The default reserved symbol list is: <c>'\', '&lt;', '&gt;', '=', '!', '{', '}', '[', ']'</c>.
-            </remarks>
-    </member>
-    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.StartExpressionDelimiter">
-      <summary>
-            Gets the character that identifies the start of an expression.
-            </summary>
-    </member>
-    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.StartTokenDelimiter">
-      <summary>
-            Gets the character that identifies the beginning of a token.
-            </summary>
-    </member>
-    <member name="P:Gemstone.Expressions.TemplatedExpressionParser.TemplatedExpression">
-      <summary>
-            Gets or sets the templated expression to use.
-            </summary>
-    </member>
     <member name="T:Gemstone.Expressions.Evaluator.ExpressionCompiler">
       <summary>
             Represents a runtime C# expression evaluator.
@@ -334,6 +220,177 @@
             Gets or sets the <see cref="T:Gemstone.Expressions.Evaluator.TypeRegistry" /> used for compilation.
             </summary>
     </member>
+    <member name="P:Gemstone.Expressions.Evaluator.ExpressionCompiler`2.VariableContext">
+      <summary>
+            Gets or sets the <see cref="T:Gemstone.Expressions.Evaluator.ISupportContextVariables" /> instance to use for context variables.
+            </summary>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.ExpressionContext">
+      <summary>
+            Represents a dynamic expression context for evaluating expressions with variables and imports.
+            </summary>
+      <remarks>
+            All variables that can be used in an expression should be defined before the expression is
+            compiled. For compilation, variable values can simply be initialized with default values and
+            then updated later before the expression is evaluated.
+            </remarks>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContext.#ctor">
+      <summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Gemstone.Expressions.Evaluator.ExpressionContext</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.ExpressionContext`1">
+      <summary>
+            Represents a dynamic expression context for evaluating expressions with variables and imports.
+            </summary>
+      <typeparam name="T">
+        <markup>
+          <include item="SMCMissingParamTag">
+            <parameter>typeparam</parameter>
+            <parameter>T</parameter>
+            <parameter>T:Gemstone.Expressions.Evaluator.ExpressionContext`1</parameter>
+          </include>
+        </markup>
+      </typeparam>
+      <remarks>
+            All variables that can be used in an expression should be defined before the expression is
+            compiled. For compilation, variable values can simply be initialized with default values and
+            then updated later before the expression is evaluated.
+            </remarks>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContext`1.#ctor">
+      <summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Gemstone.Expressions.Evaluator.ExpressionContext`1</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="P:Gemstone.Expressions.Evaluator.ExpressionContext`1.DefaultValue">
+      <summary>
+            Gets or sets the default value to use for undefined variables.
+            </summary>
+    </member>
+    <member name="P:Gemstone.Expressions.Evaluator.ExpressionContext`1.Imports">
+      <summary>
+            Gets the type registry used to resolve imported types for an expression.
+            </summary>
+    </member>
+    <member name="P:Gemstone.Expressions.Evaluator.ExpressionContext`1.Variables">
+      <summary>
+            Gets the dictionary of variables that can be accessed in an expression.
+            </summary>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.ExpressionContextCompiler">
+      <summary>
+            Represents a runtime C# expression evaluator, for any return value types and
+            a general purpose <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContext" />.
+            </summary>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContextCompiler.#ctor(System.String,Gemstone.Expressions.Evaluator.ExpressionContext)">
+      <summary>
+            Creates a new <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContextCompiler" />.
+            </summary>
+      <param name="expression">C# expression to compile.</param>
+      <param name="context">Expression context used to define expression accessible field values.</param>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`1">
+      <summary>
+            Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult" />
+            and a general purpose <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContext" />.
+            </summary>
+      <typeparam name="TResult">Return value <see cref="T:System.Type" /> for function based expressions.</typeparam>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`1.#ctor(System.String,Gemstone.Expressions.Evaluator.ExpressionContext)">
+      <summary>
+            Creates a new <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`1" />.
+            </summary>
+      <param name="expression">C# expression to compile.</param>
+      <param name="context">Expression context used to define expression accessible field values.</param>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2">
+      <summary>
+            Represents a runtime C# expression evaluator, strongly typed for a specific return value <typeparamref name="TResult" />
+            and an <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContext`1" /> with <typeparamref name="TContextType" /> variables.
+            </summary>
+      <typeparam name="TResult">Return value <see cref="T:System.Type" /> for function based expressions.</typeparam>
+      <typeparam name="TContextType">Expression context <see cref="T:System.Type" /> for variables.</typeparam>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2.#ctor(System.String,Gemstone.Expressions.Evaluator.ExpressionContext{`1})">
+      <summary>
+            Creates a new <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2" />.
+            </summary>
+      <param name="expression">C# expression to compile.</param>
+      <param name="context">Expression context used to define expression accessible field values.</param>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2.ExecuteAction">
+      <summary>
+            Executes compiled <see cref="T:System.Action" /> based expression.
+            </summary>
+      <remarks>
+            Calling this method will automatically compile <see cref="T:System.Linq.Expressions.Expression" />, if not already compiled.
+            Method automatically applies <see cref="P:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2.VariableContext" /> variables for execution.
+            </remarks>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2.ExecuteFunction">
+      <summary>
+            Executes compiled <see cref="T:System.Func`1" /> based expression.
+            </summary>
+      <returns>Evaluated expression result.</returns>
+      <remarks>
+            Calling this method will automatically compile <see cref="T:System.Linq.Expressions.Expression" />, if not already compiled.
+            Function automatically applies <see cref="P:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2.VariableContext" /> variables for execution.
+            </remarks>
+    </member>
+    <member name="P:Gemstone.Expressions.Evaluator.ExpressionContextCompiler`2.VariableContext">
+      <summary>
+            Gets or sets the <see cref="T:Gemstone.Expressions.Evaluator.ExpressionContext`1" /> instance to use for context variables.
+            </summary>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.ISupportContextVariables">
+      <summary>
+            Defines an interface for types that support context variables.
+            </summary>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.ISupportContextVariables.GetVariablesTypes">
+      <summary>
+            Gets the dictionary of variable types that can be accessed in an expression.
+            </summary>
+      <returns>
+        <markup>
+          <include item="SMCMissingTag">
+            <parameter>returns</parameter>
+            <parameter>M:Gemstone.Expressions.Evaluator.ISupportContextVariables.GetVariablesTypes</parameter>
+          </include>
+        </markup>
+      </returns>
+    </member>
+    <member name="P:Gemstone.Expressions.Evaluator.ISupportContextVariables.Variables">
+      <summary>
+            Gets the dictionary of variable values that can be accessed in an expression.
+            </summary>
+    </member>
+    <member name="T:Gemstone.Expressions.Evaluator.NotVisibleToExpressionAttribute">
+      <summary>
+            Defines an attribute that will mark a property or field in an instance type used
+            as context to an <see cref="T:Gemstone.Expressions.Evaluator.ExpressionCompiler" /> as not visible to expressions.
+            </summary>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.NotVisibleToExpressionAttribute.#ctor">
+      <summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Gemstone.Expressions.Evaluator.NotVisibleToExpressionAttribute</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
     <member name="T:Gemstone.Expressions.Evaluator.Symbol">
       <summary>
             Represents a symbol consisting of a name, <see cref="P:Gemstone.Expressions.Evaluator.Symbol.Type" /> and value to be accessible for
@@ -401,10 +458,11 @@
             Gets total count of generated context types.
             </summary>
     </member>
-    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType``2">
+    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType``2(Gemstone.Expressions.Evaluator.ISupportContextVariables)">
       <summary>
             Gets a compiled context type based on registered types and symbols.
             </summary>
+      <param name="variableContext">Optional <see cref="T:Gemstone.Expressions.Evaluator.ISupportContextVariables" /> instance to use for context variables.</param>
       <typeparam name="TResult">Return value <see cref="T:System.Type" /> used for generated context type functions.</typeparam>
       <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</typeparam>
       <returns>Compiled context type based on registered types and symbols.</returns>
@@ -416,12 +474,13 @@
             desired types and symbols have been registered.
             </remarks>
     </member>
-    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType(System.Type,System.Type)">
+    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetContextType(System.Type,System.Type,Gemstone.Expressions.Evaluator.ISupportContextVariables)">
       <summary>
             Gets a compiled context type based on registered types and symbols.
             </summary>
       <param name="resultType">Return value <see cref="T:System.Type" /> used for generated context type functions.</param>
       <param name="instanceParameterType">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</param>
+      <param name="variableContext">Optional <see cref="T:Gemstone.Expressions.Evaluator.ISupportContextVariables" /> instance to use for context variables.</param>
       <returns>Compiled context type based on registered types and symbols.</returns>
       <remarks>
             This method may generate a new runtime type based on registered types and symbols
@@ -431,10 +490,11 @@
             desired types and symbols have been registered.
             </remarks>
     </member>
-    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext``2">
+    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext``2(Gemstone.Expressions.Evaluator.ISupportContextVariables)">
       <summary>
             Gets a new context instance.
             </summary>
+      <param name="variableContext">Optional <see cref="T:Gemstone.Expressions.Evaluator.ISupportContextVariables" /> instance to use for context variables.</param>
       <typeparam name="TResult">Return value used <see cref="T:System.Type" /> for generated context type functions.</typeparam>
       <typeparam name="TInstanceParameter">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</typeparam>
       <returns>New context instance.</returns>
@@ -446,12 +506,13 @@
             desired types and symbols have been registered.
             </remarks>
     </member>
-    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext(System.Type,System.Type)">
+    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.GetNewContext(System.Type,System.Type,Gemstone.Expressions.Evaluator.ISupportContextVariables)">
       <summary>
             Gets a new context instance.
             </summary>
       <param name="resultType">Return value used <see cref="T:System.Type" /> for generated context type functions.</param>
       <param name="instanceParameterType">Instance parameter <see cref="T:System.Type" /> for generated context type functions.</param>
+      <param name="variableContext">Optional <see cref="T:Gemstone.Expressions.Evaluator.ISupportContextVariables" /> instance to use for context variables.</param>
       <returns>New context instance.</returns>
       <remarks>
             This method may generate a new runtime type based on registered types and symbols
@@ -490,6 +551,38 @@
       <summary>
             Gets registered types including explicitly registered types and types for registered symbols.
             </summary>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterStaticType``1">
+      <summary>
+            Registers a new static <see cref="T:System.Type" />, i.e., for access in expressions with <c>static using</c>.
+            </summary>
+      <typeparam name="T">Type to register as a static type.</typeparam>
+      <returns>
+        <c>true</c> if the <typeparamref name="T" /> was registered successfully; otherwise,
+            <c>false</c> if the <typeparamref name="T" /> was already registered.
+            </returns>
+      <remarks>
+            Registering a static type will allow the type to be used in expressions without prefixing the type
+            with its name, i.e., referenceable in code via a <c>static using</c>. This is useful for types that
+            are used frequently e.g., <c>Math</c> or <c>Enumerable</c>. Note that adding a static using for a
+            type will automatically register the type via <see cref="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterType(System.Type)" />.
+            </remarks>
+    </member>
+    <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterStaticType(System.Type)">
+      <summary>
+            Registers a new static <see cref="T:System.Type" />, i.e., for access in expressions with <c>static using</c>.
+            </summary>
+      <param name="type">Type to register as a static type.</param>
+      <returns>
+        <c>true</c> if the <paramref name="type" /> was registered successfully; otherwise,
+            <c>false</c> if the <paramref name="type" /> was already registered.
+            </returns>
+      <remarks>
+            Registering a static type will allow the type to be used in expressions without prefixing the type
+            with its name, i.e., referenceable in code via a <c>static using</c>. This is useful for types that
+            are used frequently e.g., <c>Math</c> or <c>Enumerable</c>. Note that adding a static using for a
+            type will automatically register the type via <see cref="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterType(System.Type)" />.
+            </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterSymbol(Gemstone.Expressions.Evaluator.Symbol)">
       <summary>
@@ -530,6 +623,11 @@
         <c>true</c> if the <paramref name="type" /> was registered successfully; otherwise,
             <c>false</c> if the <paramref name="type" /> was already registered.
             </returns>
+    </member>
+    <member name="P:Gemstone.Expressions.Evaluator.TypeRegistry.StaticTypes">
+      <summary>
+            Gets distinct static types for all types registered with <see cref="M:Gemstone.Expressions.Evaluator.TypeRegistry.RegisterStaticType(System.Type)" />.
+            </summary>
     </member>
     <member name="T:Gemstone.Expressions.Model.DefaultValueExpressionAttribute">
       <summary>
@@ -596,7 +694,7 @@
             Use the <see cref="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" /> method to get a per-property
             based value for use with the <see cref="T:Gemstone.Expressions.Model.ValueExpressionParser" />. Use
             <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser.DeriveExpression(System.String,Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.MemberInfo,System.String)" /> to automatically
-            replace any <c>this</c> keywords with <c>Instance</c> so as to properly
+            replace any <c>this</c> keywords with <c>Instance</c> to properly
             reference the modeled <see cref="P:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.Instance" />.
             </remarks>
     </member>
@@ -774,11 +872,11 @@
             attribute allows the order of evaluation to be changed. 
             </para>
         <para>
-            When no <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.EvaluationOrder" /> is specified, the sort order for a property
+            When no <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.EvaluationOrder" /> is specified, the sort order for a property
             will be zero. Properties will be ordered numerically based on this value.
             </para>
         <para>
-            For any <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" /> value that references the <c>this</c> keyword,
+            For any <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression" /> value that references the <c>this</c> keyword,
             a positive evaluation order will be required.
             </para>
         <para>
@@ -791,16 +889,16 @@
             Gets C# expression that will evaluate to the desired value.
             </summary>
       <remarks>
-            Use the <see cref="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" /> method to get a per-property
+            Use the <see cref="M:Gemstone.Expressions.Model.IValueExpressionAttribute.GetPropertyUpdateValue(System.Reflection.PropertyInfo)" /> method to get a per-property
             based value for use with the <see cref="T:Gemstone.Expressions.Model.ValueExpressionParser" />. Use
             <see cref="M:Gemstone.Expressions.Model.ValueExpressionParser.DeriveExpression(System.String,Gemstone.Expressions.Model.IValueExpressionAttribute,System.Reflection.MemberInfo,System.String)" /> to automatically
-            replace any <c>this</c> keywords with <c>Instance</c> so as to properly
+            replace any <c>this</c> keywords with <c>Instance</c> to properly
             reference the modeled <see cref="P:Gemstone.Expressions.Model.ValueExpressionScopeBase`1.Instance" />.
             </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetExpressionUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
-            Gets the modeled property based value used to update the <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" />.
+            Gets the modeled property based value used to update the <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression" />.
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Assignment expression based on source property.</returns>
@@ -814,11 +912,14 @@
             to expressions allowing synchronization of a model with an external source, e.g., a
             user interface element.
             </para>
+        <para>
+            Default implementation should return <c>$"Instance.{property.Name}"</c>.
+            </para>
       </remarks>
     </member>
     <member name="M:Gemstone.Expressions.Model.ValueExpressionAttributeBase.GetPropertyUpdateValue(System.Reflection.PropertyInfo)">
       <summary>
-            Gets the <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" /> based value used to update a modeled property.
+            Gets the <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression" /> based value used to update a modeled property.
             </summary>
       <param name="property">Property from which attribute was derived.</param>
       <returns>Expression based on source property.</returns>
@@ -830,12 +931,15 @@
         <para>
             The property update value is typically used to assign expression values to a modeled type.
             </para>
+        <para>
+            Default implementation should return <c>Expression</c>.
+            </para>
       </remarks>
     </member>
     <member name="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.TypeRegistry">
       <summary>
             Gets or sets any <see cref="T:Gemstone.Expressions.Evaluator.TypeRegistry" /> to use if the attribute
-            <see cref="P:Gemstone.Expressions.Model.ValueExpressionAttributeBase.Expression" /> needs to be pre-parsed.
+            <see cref="P:Gemstone.Expressions.Model.IValueExpressionAttribute.Expression" /> needs to be pre-parsed.
             </summary>
     </member>
     <member name="T:Gemstone.Expressions.Model.ValueExpressionParser">
@@ -1170,7 +1274,7 @@
       <remarks>
             As long as type <typeparamref name="T" /> defines a parameterless constructor, this method
             will create an instance of the modeled class so that any defined static functionality will
-            be initialized. Calling this method in advance of any of the static create or update delegate
+            be initialized. Calling this method in advance of the static create or update delegate
             generation functions will allow modeled types to self-register any custom symbols and types
             that may be used during evaluation of value expressions attributes, e.g.:
             <code>
