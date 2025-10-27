@@ -33,6 +33,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Gemstone.Collections.CollectionExtensions;
+using Gemstone.Configuration;
 using Gemstone.Expressions.Evaluator;
 using Gemstone.Identity;
 using Gemstone.Reflection.MemberInfoExtensions;
@@ -79,10 +80,11 @@ public class ValueExpressionParser : ValueExpressionParser<object>
     {
         // Setup default type registry for parsing value expression attributes
         DefaultTypeRegistry = new TypeRegistry();
-        DefaultTypeRegistry.RegisterType<Guid>();            
-        DefaultTypeRegistry.RegisterType(typeof(UserInfo));
+        DefaultTypeRegistry.RegisterType<Guid>();
         DefaultTypeRegistry.RegisterType(typeof(Common));
         DefaultTypeRegistry.RegisterType(typeof(StringExtensions.StringExtensions));
+        DefaultTypeRegistry.RegisterStaticType<UserInfo>();
+        DefaultTypeRegistry.RegisterStaticType<Settings>();
 
         // Define a regular expression to find "this" keywords
         s_findThisKeywords = new Regex(@"(^this(?=[^\w]))|((?<=[^\w])this(?=[^\w]))|(^this$)", RegexOptions.Compiled | RegexOptions.Multiline);
